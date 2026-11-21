@@ -1,173 +1,144 @@
 /*
- * Responsive, code-rendered version of Abhi's ORIGINAL ASCII portrait.
- * Source: the existing assets/ascii-portrait.svg text rows. No AI image, GIF,
- * generated likeness, font-dependent SVG text layout or external library.
- * Every glyph occupies its own deterministic cell on a HiDPI canvas.
+ * Abhi's user-supplied coloured ASCII portrait, re-rendered as a fixed grid.
+ * Original: ascii-art-2026-11-21-21-00-41(1).html
+ * Generator: jasperbernaers.com/image-to-ascii/
+ * The original 90 x 60 characters and per-character RGB values are preserved.
+ * No AI imagery, GIF, injected markup, remote assets or external libraries.
  */
 (() => {
- 'use strict';
- const canvas = document.getElementById('ascii-portrait');
- if (!canvas) return;
- const DESKTOP = [
- ":      ..    .+*=,...,:::,,.  .=%#++#@=      .::::,.. ...,,.,+%%%#*-     #@%.            ,,,.,:#@@@#+==-",
- ":            -#*=,    ,,,,,     ,=--+%=      .:::,,.   ,::..:*%%%%#*-...=@@%.      ......,,,,,-%@@@*+==-",
- ",      .... ,-**=:,..,,,,,,,,   ,-,:=#=      .::::.     ...:=#%%####*-:-%@@%.       ,:::::::::=%@@@*+==:",
- ",      ...   :*#=:,,,,,,,,,::::=+-,,-#=      .-:::.   .:=+*#%%%%#*+=,  .#@@@:     .,-======---+@@@%*===:",
- ":            .**=,,,,,,,,,,,:-=**-..-#=      .::--===*#%%@@@@@@@@@##=,.:*%@*     .,:-++++++++*%@@@%*===,",
- ":            .*#=:,,,,,,,,,,:-+#*:..:#=      ,+*#%%%%@@@@@@@@@@@@@%%@%#%%*@#.    ,,:-========+%@@@%+===.",
- ":       ..   :*#=:,,,,,,,,,,,:=#*:..:#=    ,-#%%%%%@@@@@@@@@@@@%@@%%%%##%###-..:--==++*******#@@@@%+==-.",
- ":      ,,,...:*#-,....,,,,,,:-+#*: .:#= .=#@@@@@@@@@@@@@@@@@@@@@@@%%@@#%%@%***+++++********++*@@@@#+==-.",
- ":     .,,,...:*#-.    .,,,,,:=*#+,  :*##@@@@@@@@@@@@@@@@@@@@@@@@@@%@@%##%%%##%%%*----======--+@@@@#+==-",
- "-     .:,,,::=##=:,,,,::::::-=*#+,  -%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@%%%%##%%*:--=+====--+@@@@#+==-",
- "-      .....,-*#=-::---====+*#%%*,.=@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%+++***++===*@@@@#==--",
- "+.    ,::----+#%#+++++**##%%@@@%*-*@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@%%#*++**++===+*@@@@*=--:",
- "#:    :+++++**%@%*+==++*#%@@@@%#*#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@%%##*+++++++++#@@@@*=--:",
- "=      :. .,:=#@#+--==+**#%@@%##*%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@@@#%#%+==+***###@@@@@*=--:",
- "-      .      -%*,..-=---=*%@@@%%@@@@@@@@@@@@@@@@@@%%%%%########%%@@@@@@@@@@@%%###%#+++*****#@@@@%*=--:",
- "=      ,     .-%+.  :=-:::-=+%@@%@@@@@@@@@@@@@%%##**********++****#%%@@@@@%@@@%##%%#+++++***#@@@@%+=--,",
- "+     ,-:,...:+%+:,,--::::::=#@@%@@@@@@@@@@@%#***++++++++++++++++++**####*#%@@%%####+++++++**@@@@%+---,",
- "*     ,-===--=*%#+--==----=+#@@%#@@@@@@@@@%#**********++++==++++++++===++++*%@@%%#%*++++++++*%@@@#+---,",
- "#,     -======*##+==------=+#%@%#%@@@@@@@%#%%%%@@@@@@@%#**+**#%%@%%%%##*++=+*%@@@#%*+++===++*%@@@#+---,",
- "@@#+-:-*##*=--+#%*++*+++=--=**#%#@@@@@@%#%@@@@@@@@@@@@@%###**#%@@@@@@@@@@%#*=*@@@##+*++===++*@@@@#=---.",
- "@@@@@@@%%%#+-:-*%%%@@@%##*+==--=*@@@@@%%%%%%#####%%%%%%@%##***###%%#########**%%%#*+*++**+++*@@@@*=---.",
- "@@@@@@@@@@%#+::-*@@@@@@@%#*=::::=#@@#%@@%*##%%%%%%%@@@%%%#**#**%@@@%%####+==%%#%###*=-=+**++*@@@@*=--:",
- "@@@@@@@@@@@@*-:=*@@@@@@@@@#+=--=##%%@@#*%##%@@@%@@@%@@%#%*--+*#@@%@@@#%%%#+=%#*@%**=:::-=+++*@@@@*=--:",
- "@@@@@@@@@@@%#++*%@@@@@@@@@@%*-,*@%##@******##%%%%%%%%##%#=-::++*#%%%%#**+==:**=@#+*#=,,::=++#@@@@*=--:",
- "@@@@@@@@@#=:.. .-%@@@@@@@@@#=, *%#*%@+++++++++********#*+=:,,--==++**+=---:,=+:@*=+%*,,::=++#@@@%+---:",
- "@@@@@@@@%=:,.    :#@@@@@@#=,   =%#*%@+++==========+++*+++=-:,,,:=------:::,,:::#*-+%*.,,:--=#@@@%+---:",
- "@@@@@@@@#=:,..    -#%#*=-:,..   *#*%%+=++========++**==+==-:,,,,-+==---:::,,,,:**=+#:....,,-*@@@%+-:-,",
- "@@@@@@@@#=-:,..    ,:,,...,,,.. .**#%*=+++++++++***#*=+**++=---,:**++==--::,,,:#*=+:      .:*@@@#+---,",
- "@@@@@@@@%*=:,....     .......    ,#***+++***+++***###%@@%##**%%*++**++==--::::-++=-,,,. .,,:*@@@#=---,",
- "@@@@@@@@@#+=-:,,.   .,..          ,**++*********######%%%%%%#**+++*##*++==---::-=-::-,   ..,=@@@#=---.",
- "@@@@@@#*##*==---:.  ,,,,,.         ,+**********##%%#########*+++++*#%#*++====---,-=-::...:::+@@@#=---.",
- "@@@@@@+==+++==++=-,.,::::,,.        .-=********#%@@@%%%#####**####%@%**+++==--:..,.  .,:-++*@@@@*=--:",
- "@@@@@%+--=+++++++=:,::::::,,..,.       *******+*#####******++==+++*#*++=====-         .,=++#@@@@*=--:",
- "@@@@@#*=:-++++===-::----:::,:=*=,....  :#******+++********++++======+=======,        .....,=@@@@*---:",
- "@%%@@%#*=+**++===-:-=+===-:,:-=:,...,.  :*******+++++++++==---------=======,          .,-::=%@@@+---:",
- ",..,-==--+**++==-:-=*****+====-::,...,:,,=###****++++=====---:::::---=====:           .-%##%@@@%+-:-,",
- ".       .=**+==---=+******+***+++=+++*#**+*####****++++======--:::--==++=.           .,-=-=*@@@%+-:-,",
- ".   ....:*#*+=--:-++****####*******#@@@@#+*#%%%#*******++**++======++++=-                   *@@%+---,",
- "         =#+==---=+*****#%#******##%@@@+::*##%%%%###*****###**+++***++==-     .=+++=-==-:::-%@@#=---,",
- "        .+*+=-:=***###*#%%#*****#%%@@@+, .*###%#%%%%############**++====-,     =%%@@@@@@@@@@@@@#=---.",
- "  ,:--==*#*=--=#%%######%%####*#%%@@%+,,.,**######%%%%@%%%%%##***+=====---. ,. -#@@@@@@@@@@@@@@#=---.",
- "=+**###%#*+=,.,+*######%%%%@@@%##+-,.,:-,-**#######%%%%%%%###**++======---- ,:  .:-+*@@@@@@@@@@#=---.",
- "@@@@@@%%%*+-. .:-=*##%%@@@%%#+:.. .,,-=::#**########%%%%%%###**+++=====---* .-: ...   -#@@@@@@@*=---",
- "%####*****+===*######*+=-:,..,..,::.:=-:-%**#########%%%%####**++++====--=+ ,--  .. ..  ..:=*%@*===-",
- "#****+++++=+#@#=:,. ..    .,:--,,,..-=-:-%**###############***++++++===--#:.,=-. . ......     .,,:-:",
- "#*#####***-:=, .   ,,..   ..,--:::.:==--:*#*##############*******++++==-*+.,:=+:   ......  ....,:.",
- "#####%%%%+,:.  ,:. ...... .:+=::::,=+----=%################******++++==*#.,,:-+-.  ..,,,,..  ..,:.",
- "#**##**#- .:-,..::.  .....:==::,:,:==-----+%###############******+++++*#,.,,:-+-.  ....,,,,..,,:.",
- "**+++=-:    ,-:..-:. ....,:=:,,,.,---::----=#**###########*****++++++#+,.,,,,-+-. .,..,,,,::,,:,...... .",
- "*++=-,     ..,-,.,=:. .,.,-=-::,.::-::::--=--++++************+++===+*-.,,,,..:+-  .....,,::-:::.,,,::.,:",
- "+==:        ..:-..:=:. ..,-=-:,,,::::::::--=--=====++++++++++==--===:,,,,,...:+- .......,:::-:.,,::,.::,",
- "=:       ..  ..-:..-+,...,-=:,,:,,:::::-::-===--================--:,:,::,.,,:-+: ,,:,.,,,::--.,:::,.::,.",
- ",         ...  ,-...=+,,,,--:::::,,:-::--:,:-=+==--------====--:::::::,,.,,,:==, ,::,,,,::--,,-::,.-:,.",
- "   .   .   .,, .-:..,+=..,-----::,,,:::::::,:-==+++==-------------::,,,.,,,,--=, ,:,,,,:::-,,-::.,=:....",
- "    ..  ..  .:, :-...:*:.,--:::::,,,::::::-:,,:--==+++++====--::-,.:,,,,,,,:---..::,,,,::-:,-::,,=:.....",
- "    .,.  .....:,.=,..,=+.,:::,:::,,,,:::::--:.,:---------::,,,,:-,,,,,:,,,,:---..:::::,:-=,--::.-,,,,,..",
- "     .:,   ...,:.:-...:*,.-:,::::,,,,::::::--:..,,:--------:::::,,,,,,,,,,,:---..::-:::--:-=::,::,,,,,..",
- "   ..  :,.. ..,:,.:,..,*:.--:::::,,,,,::::::--:,....,,,,,,,,.,,,,,,:,,,,,,::---..,::::---:+::,-:::,,,,,,",
- " .  .. .:.::..,:::::...+-.:-:::::,,.,,:::::::--::,...    ....,,,:::,,,,,,,::--:., ,:::--,=-::--::,,,,,,.",
- "  .. ,. ,,.:=, ,:--:...=-.,::::::,.,.,,:::::::--::::,,,,...,,:::::,,,,,,,,::--:.-: ,:--::=:::=-::::,,,,.",
- " . ...,. ,..:+: ,:--,..--.,::::::,.,,,,,:::::::::::::::,,,::::::,,,,,,,,,,::---.--.,::-:--::=-::-::,,.,,",
- " .. ..,. ,,..,=- .-+,..:-..,:-:::,...,,,,:::::::::::,,,,,,,:::,,,,,,,,,,,,,:---.--,,::-:=-:==:--::,,,,,.",
- "... . ., .,..,.--.=*,..:-..,::::,::,,,:::::--:::::::::::::,,::::::::::::::::--=.:=:.:-:=+::+-=-::::,,,,,",
- ". .. ..,.....,,.-:-*,..,-...::::::-==========+==========-----===============++=,:+-.,-:*+:=+=-:::::,,,,,",
- "   . ..,,.,..,,.,=*+,,.,=. .,:::::=======++++++++++++++====+++++++======++++++-::=+:,:-#=:++=:::::,,,,,.",
- "    . ..,.......,*@=,,.,+,. ,:::::===++++==+=++++===+===++===-=-=--:--,=-+++++-::=++-:=%--*+---::--:,,.."
-];
- const MOBILE = [
- ",    .  .==,..,:,,  ;x=*%;   .::,.  .,.:x%%x;. -@*        ,,,:%@#*=+",
- ",    .. :**:..,,,,.  ;;-X;   .::,.  .,,+%%#%x;:X@*     ,:::::-%@#==-",
- ",    .  .*x:,,,,,,:;=+,:X;   .;:;::-=x%###%x+..X@*.  .,+===++=#@X==;",
- ",       .*x:,,,,,,:-x+,,X;   ,+xXX%##@@@@@@#%xxX%*   ,:+=====x@@X==:",
- ",    .. ,*x:,,,,,,,-X+.,x:.;=%###@@@@@@@@#@%%##%#x-;-+==*****#@@X=+,",
- ",   .,,.,**,  .,,,:=X-.,*X%#@@@@@@@@@@@@@@@#@##%%%%X*--+===+-X@@X=+,",
- ":   .,,,;Xx;,:;---+x%-.+#@@@@@@@@@@@@@@@@@@@@#@@###%%*-+===++X@@%=+,",
- "-   ,:--+X%=++=x%%#@%=*#@@@@@@@@@@@@@@@@@@@@@@@@@#%#%%===+===%@@x+-.",
- "=   :;:;+%#=+=+x%#@##x@@@@@@@@@@@@@@@@@@@@@@@@@@@%@#%#*=+==xX@@@*+;.",
- ";   .   .+X:.-+-+x%@##@@@@@@@@@@#%%%%%%%%%%#@@@@@@###%%++***#@@#*+;.",
- ";   ,,...+*,.;-::;+#@#@@@@@@@#XX*======++==*x###%#@%##%+++==X@@#+-;.",
- "+   :+=-+*%+-+---+X@##@@@@@#%xxxxxx*====*=*=*x*+=*####x+++++*#@#+-;.",
- "%*:,-xx=+*#*++++-+xX%#@@@######@@@@#%Xx*##@##@#XX=x@@#*=+==+x@@#=-; ",
- "@@@@###*;-x%#@##X=+-+X@@##%%%###%%#%##Xxx#######XXx%%%==+*=+x@@X=-: ",
- "@@@@@@@#+;=#@@@@@x+;+%###%%%######@#%X+=x##@##%%**%X#x*;;+=+x@@X=-, ",
- "@@@@@@#x+;=#@@@@@#x:=#%#*===XxXXXXX%X*;:+*XxXx=++;=*%=X-,:++%@@x+-, ",
- "@@@@@#+,. .+#@@@#=: -%x#=+=========*+=;,:;+++-;;::;+x+x-,:-+%@@*--, ",
- "@@@@@#+:.  .+*+;:,. .=x%*++======x*===-;::+=++-;:,,-*==....:*@@*--, ",
- "@@@@@%=;,..  ......  ,*x*++*=+=*x#%%%Xx*x=+*===-;::-=+:,. .,*@@x--. ",
- "@@@@##X=-::. .,..     .+==*****%####%%%X=++*#x+=++-;--;:. ,,=@@x--. ",
- "@@@#===+=++;.,::,.     .;=****x%#@%%%%%*xXXX#x=+==-,.,..,:-=%@#*-;  ",
- "@@@#=-+++++-:;;;:,,;;..  :x***=*xXx***=+==+**====+.     .:;=#@#=-;  ",
- "Xx%%x+==+==-;===-;;+;,....;*x**=+++++=+-----+====,      .;-+%@%+-;  ",
- ". .:::=*+=--+***==*=--;;-=+*#%X*=+++==++;::-+=++,       ,=*x#@X-;:  ",
- "   ..,x*=-;-+**x%%x***x###x=%%%Xxx**=**==+==++=;   .,.,.,,.,x@X+-:  ",
- "     .*=+-==xXx%%%***%%@#+,-##%%%%XXX##%Xx*====;   :*xXXXxxx#@%+-:  ",
- ",:-=*xx=;+X%###%%##%%%Xx-:,+x####%%#%%%#X*====+-:.,.=X%#@@@@@@%+-:  ",
- "%%#@%%=-.,-x%#%##%#*-;,,;-;xx#####%%%%##*++===+-+.:..,,;*@@@@@x+-,  ",
- "%%%*====xxxx**-;:,,:,,,,+;+xx######%%#%X*+++==+++.;: . ....:+*+++,  ",
- "%X%Xx=+-=;,....  .,-::,;=--Xx#########x**==++=+=;,--. ....  ..,,.   ",
- "%%#X%x::,.,,.....:+-:::=---*%#########X***=++=x+,,;+, ..,,....,.    ",
- "x=*=-, .::.;, ...;-,,,;-;;--*XX######%x**=+++x-,,,;+, ..,,,:,,,.....",
- "=+;,   ..;,,-,..,++:,,:;::;++-++*=======++==+:,,,.,+,....,:;;:,,,,,:",
- "-,    . .,;.:-..,+;,:,:::;:;++++=========+-;:,:,,,;-.,,.,,:;;,::,,:.",
- ".      .. :,.--,,-;;::,::;;::-==+++--+++-;;::,,,,:--.,:,,::;:;:,;:..",
- "   . .. ,,,;.,+:,-;:::,,:::;:,;-+++++++-;;;,,,,,,:-;.:,,,:;:;:,;:...",
- "   .,  ..,,;,.;-.;::::,,:::;-:,:;----;:::::,,,,,,;-;.:;::;--;:::,,,.",
- "  . .,...,:,:.,+,-::::,,,:::;-:,..,,,,,,,,,,,,,,:;-:.,::;-;-:;::,,,,",
- " ....,,::.:;:..+,:::::,,,::::;-:,,.....,:::,,,,,:;-,:.,:-:+:;+::,,,.",
- " .....,.;:,:-,.-,,::::.,,,::::::::::,,::::,,,,,,,;-:;:,:;;-;+;;;:,,,",
- ".. ...,.,:;,=,.;,.:::,,,,:::;;::::::::,::::::::::;-;:-,;;+;-+-;:,,,,",
- " .......,,:-=,.::.,:::-======++=====++--=========++-:+::;*;++;:::,,,",
- "    .,....,*x,.::.,:::+=+++=++++==+==+==+++---+++++;:=-;+x-=-;:;;,,."
-];
- const ART_ASPECT = 666 / 702;
- const scaleDevice = () => Math.min(2, Math.max(1, window.devicePixelRatio || 1));
- function paint() {
-  const rect = canvas.getBoundingClientRect();
-  const w = rect.width, h = rect.height;
-  if (!w || !h) return;
-  const dpr = scaleDevice();
-  const pxW = Math.max(1, Math.round(w * dpr));
-  const pxH = Math.max(1, Math.round(h * dpr));
-  if (canvas.width !== pxW || canvas.height !== pxH) {
-   canvas.width = pxW; canvas.height = pxH;
+  'use strict';
+  const canvas = document.getElementById('ascii-portrait');
+  if (!canvas) return;
+  const SOURCE = [
+    ["@%%%@@@@@@@@@@@@@@@@#%@@@@@@@#****%@@@@@@@@@@@@@@####%%##@@@@@@@@@@@@**%@@@@@@@@@%@@@@@@@@", "a7a29ea09c959c9690a09c95a9a49dada79fa9a49daaa69fc2bcb8d5cfccdfdbd9dfdedadedfdcffffffffffffffffffffffffefffffc5dff096adbc616c72828b90b7c2ccc0cad5aeb6c2adb8c4b8c5d0b1bdc596a3a9676d713232322a2a2a2f2f2f2f2f2f777777ffffffffffffffffffffffffffffffffffffffffffffffffeaf9ffcedce9c7d5e3dce9f4ecf7ffa6acb262626154565646494c666b6d8b929580868a535458505459f3fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffdfffaa3b4933b423b3f3e3f807e7aa6a29acac6bcffffffffffffffffffffffffffffffffffffe2e4e68f928b9fa39ecaceccffffffffffffffffffffffffffffffffffff"],
+    ["%@@@@@@@@@@%@@@@@@@@#%@@@@%@@%****%@@@@@@@@@@@@@####%@@##@@@@@@@@@@@%**%@@@@@@@@@@@@@@@@@@", "8e8e88aaa9a6b4b1aeb6b2acbcb7b1c5bebad0cbc6dedbdbe2e0e3cccac7aaa9a8959a9fbbc1c7feffffffffffffffffffffffffffffd2edfa93a7b66a7278848992b6bac5b6bbc5a9b0bb9faab7939faa98a2a7a2a8ad767a7c3f3f422e2e2e2f2f2f3030307b7b7bfffffffffffffffffffffffffffffffffffff7f9ffe2e9f3dee9f6deecf9e6f4ffdee6f2bcbdc170716e6161605252534c4e538f99a0c0ced699a2a754575d575c62fcfffffffffffffffffffffffffffffffffffffffffffffffffffffcffffbddbd17081782c3031464445888580a9a69ed4cec7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"],
+    ["@@@@@%@@@#*%@@@@@@@@@@@@@@@@@@****%@@@@@@@@@@@@@@##%@@@%#@@@@@@@@@@@%*#%@@@@@@@@@@@@@@@@@@", "aaacaeb6bec0b0b8bdacb7bda0aab2969d9e9ca0a0adb2b69fa3a85c5e6231343671767beff8feffffffffffffffffffffffffffffffffffffffffffacb0b3a4a6a8c5c8cbb4babca7acb3adb3beb6becacfd5dbdee4e8a3a8ac4444443534343c3a3a3a39387f807ffffffffffffffffffffffffffefcf7fdf9f7fffdfaf9fafcf2f9fff8fffffeffffffffffffffffb4bcbe64636268686785898be0f4f8ffffffffffff869094636a71ffffffffffffffffffffffffffffffffffffffffffffffffffffffe8fff9bddecc71857b2c31344d4c4d8e8e85aeaaa2dfd9d2ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"],
+    ["%@@@@@@@%#*%@@@@@@@@%@@@@@@@@@@@@%@@@@@@@@@@@@@@%##%@@@%#@@@@@@@@@@@%*#%@@@@@@@@@@@@@@@@@@", "8f938ea9b1b2cad8dfd8e5f3ccdae8f4fffffdffffcbd9e3828b90434649252628868988ffffffffffffffffffffffffffffffffffffffffffeef4f6989896b8b8bbffffffffffffffffffeff0f2f0f0f2fafefffffffffffffff4ffffa9a4a3c0b3ac9c928aa09f99ffffffffffffffffffffffffecece9e4e3e0f2f0edfffffffffffff6ffffd6e4f0ecf8ffe5f0fc8b90946362616e6d6d929595e4f4f8fffffff4ffff767f8461676ef8fffffffffffffffffffffffffffffffffffffffff9ffffe5fffae9fff7d8f0e07b89802e303254535296968eb4b1a8e9e4defffffffffffffffffffffffffffffffffffff9ffe9f7ffd8ffffffffffffffffffffffffffffffffffffffffffffffff"],
+    ["@@@@@@@@@%*%@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@##%%@@@##@@@@@@@@@@@#*#%@@@@@@@@@@@@@@@@@@", "b8c2c59fa7a4adb7b7ffffffffffffffffffe6f8ffe0effdd4e2ee70777c2c2f318e9293ffffffffffffffffffffffffffffffffffffffffffdedcdb969594b4b4b4ededeef7f7f8f0f2f4edeef0eaedeee9eaeae3e6ecfeffffeffafec2c0baf3e6dcc1b8aeadada9ffffffffffffffffffffffffe5e5e3dcdcdaf4f7f8fffffffffffffffffff4ffffd9dee4a8a3a4786e6d7067637e7c7a929092b6bcbed5e3e99aa6ac52565a5d626be4f7ffffffffffffffffffffffffffceece3bce0dbc0dedfc6e2e0c8e2dfb4ccc764716e2c2f325c5c599d9d94b8b4acf7f3edffffffffffffffffffffffffffffffffffffe2eedbcce5b3f3ffbefffffdffffffffffffffffffffffffffffffffffff"],
+    ["@@@@@@@@@@*%@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@%###*####@@@#%@@@@@@@@@@%**#@@@@@@@@@@@@@@@@@@@", "a0ada99ca39ca9b2a3d0dcd5ffffffffffffffffffffffffffffff9ca3a7313435818585fffffffffffffffffffffffffffffffffffffffffffffffca2a29eb4b4b6eeeef0f6f6f8f4f4f7f6f7f9f6f7f9eff0f3dbdee2b8bec1858a8cc2bdb8fffaefd0c7beb0b0aaffffffffffffffffffffffffdcdbd9c6c2bdb3aea7a7a098867a727161576a59535046434a423f4d44404c44404e4946666362a0a2a2d1dadca8aeb06a6b6b7e868bffffffffffffffffffeeffffc7e8e29dbec189aab293acb399aab493a2a8757f843a3f4426282e646362a3a29abbb7aefffffaffffffffffffffffffffffffffffffffffffc4d2c2a3bc9ee9f6d9fffffffffffffffffffffffffffffffffffff6d8db"],
+    ["@@@%@@@@@%*%@@@@@@@@%@@@@@@@@@%@@@@@@@@####******#*#####%@@@@@@%%%%#**#@@@@@@@@@@@@@@@@@@@", "a3b0b1a0aaa4a0a99e8e9592b1bec4ffffffffffffffffffffffff808588272a2c7b7c7effffffffffffffffffffffffffffffffffffffffffeeeeea969895aaaaace4e4e6eff0f4f0f2f6f2f4f7f3f7f9f2f7f8e3e8ecbac4c87e8488cbc6c0fffffdd5d0cab3b3aefffffffffffffffffeb2a69e75645a67574d5a4d44594a44483c39423936453c3b403a36453e3a443c3b4d454345403f5d5654635c5967615e68625e6e6b6a777a7bcbdbdae6fdf9c5dcd8b2c7c7a2b8b88ba6a9849ca2889ca089989d85939467727532363b2b2c306d6c6aa8a89fbebcb2ffffffffffffffffffffffffffffffffffffffffffe8fcd1c7e3adc1dba9edfed0ffffffffffffffffffffffffd4cecccebcba"],
+    ["@@@@@@@@%#*%@@@@@@@@%@@@@@@@@@%@@@%%#************##########%@@@@@@@%**%@@@@@@@@@@@@@@@@@@@", "d0e2eac6d6dccedbdfd8e4e6dfe9efeef9ffe4f0f6b8c4c87e8586484a4c3132327e807fffffffffffffffffffffffffeeeef0f7f6f9fefeffdbdbde9c9a9cbabcbefffffffffffffffffff8f8faf2f2f0ededecd8d9da9fa8ac777e80d4d0caffffffdcd4cb8b86808b827c594f4a3c353136312e38322f3b353136302e39342f3a3430443e39463f3b4c433e4e42404e423f4f44404f4643534c48524a48635c58635d595a5453706867756d6c6e6b677f857ba4c6a9a2c8aa94bca38fb6a390b6a495b8a89ebead758a7f3139382f3031757470b0aca4c5c1b8ffffffffffffffffffffffffffffffffffffffffffc6dbb2bad59db4d09abcd9a0dcf8b3e8ffbbe3f9c4dee9c6d5d5bcdfe2c4"],
+    ["@@@@@@@@%#*%@@@@@@@@%@@@@@@@@%#@@%*******************#######%@@%@@@%**%@@@@@@@@@@@@@@@@@@@", "a6b4b7c2ceb0e8f0b6cfd5b0b2b6a3c4c8b2c2c7b7a7ada67a807c494d4c2f3030787b7afffffffffffffffffffffffff6f6f8f6f6f8edeef2c6c6c88c8c8ea3a3a7d8d9dcdedfe3d5d5d8cacbcbc4c4c4bdbdbdaaaaaa7e8184686d6ed2cec7fcf3e68c80764036322c262522201e201e1c22201e26222127242125221e22211e2522212b26252c28262f2b2834312f383132353030352f2e3e3532463b3a4e46464e49494d4848524c4d605a5d6a6667635e60858a7f9cc0ac88aca080a39c88aca294bbad98beae6882782c35353435357c7b77b6b1a9cac6bcffffffffffffffffffffffffffffffffffffffffffd2eab3a0ba8896b092b1ccb4c1dfc2c0e0c7b2d5c1adceb3c2dcb6d4eac0"],
+    ["%%%%%%%%#**#@@@@@@@%#%%@@%#####%#***+++++*++++*********#####%%%%@@@#**%@@@@@@@@@@@@@@@@@@@", "6e7776767b708c8f748e90767e80757a7c7a7a7c7b747777636868434545242525525453dfe0dfffffffffffffe0e0e0b4b4b4b0b0b1adadad9a989972706e7472729a999da6a6a89f9e9d908b8675716c5959534e4f4952534a686b619a938c53463f42362f2b2624211c1c1b181a1a18181817181818181a181a1a1a1a1616161313131313121613141c1a18211b1b2a22213428273b2f2e43343140302f3a2f2e453b3a4e4546585253535053504e525c5a5c78747486949382a3a082a3a08baca792b3aa8caea25c726a272e2f393a3b85847fbbb4adcfcbc1ffffffffffffffffffffffffffffffffffffffffffdff2b4c1d8a3b4d0a8bbdcbec0e5d6c8eae5cfefeec8e8dfbcd8bcbcd4b3"],
+    ["##%%##%@%#*#@@@@@@@@%%@@@%%###%#**++++++++****#####*****#####%@%%%%#**%@@@@@@@@@@@@@@@@@@@", "575948676b567a7c677778626768546062527c7f63aaac8099997f5757532a2a2e6a6a6afffffffffffffffffffffffffffffffffffff9f9fcd0ced0847f827c7b7ec0c0c6c5c5cbadacaca69c948c8077645e534c4c445c5d5676756b635a523a2f2a3128271817181716161714161714171613141412131712131a13132b1d1b452e2650322a5d3931663f36704538764939724636673f3153352c46322f483532493635503f3c5c4d49544846605452726b67756c6d888f8a92b8b282a2a67592986d888f637b813e4c502024264040428c8b88c0bab2d6d0c7fffffffffffffffffffffffffffffffffffffffffffaffc7f9ffc0edffbadbfabbc8f3c4c1f0cebeeccfb6dec1b0ccadb0c7aa"],
+    ["%#####%@@#*#@@@@@@@@@@@@@@@@%###***+**##%%%%%%%%%%%%##*##*#%#%@%%%%#*#%@@@@@@@@@@@@@@@@@@@", "82885d686b5262634f636452686a5d67685a888862d2c88bc8b88e746a5a353232686868ffffffffffffffffffffffffffffffffffffffffffffffffaeacada3a2a3fffffff3f3f8cfced0dfd4ccedcebddcbaa9a9968a56564d595750574c434336312f2221241a1a1c17142a1d1a4a2f266c43388556439a6450aa7259b77c61c28067c17f67c08066c18067c48267c48268c07c66b3745e9d63507c4d40613b345a3b346b483e6b4840543e3a6e5d5a807471665e5d82827e89a9a482a7a381a39f7a99986b868a3f4d501e2225484848959592c4bdb7dbd8d2ffffffffffffffffffffffffffffffffffffeaf4e9bdd2a6cae3add5efb0d6f2aaaecf9c8fb89994c1a0a0cba3b2cfaab6cfae"],
+    ["@@@%%%%%##*#@@@@@@@@%%@@@@@@%###*****#%%%%%%@@@@@%%@%%%%%####%%@@%%#*#%@@@@@@@@@%%@@@%%%%@", "adb258e0e26ededb7ba39f727e7e6b8f86709f8a6d8c78616c6356534e4a48444564615efffcfcfffffffffffff7f2f3bebcc5c5c4cbcac8d0bdbbbe8f898a888488bebdc4c5c4ccc7c5c8e3cccaf8c4bae5b2a4a38b7f5957505e5a5363564d43342f322624241818281a164c2f26895948a9715db47b64b87e68bb816bbe846cc4856cd08e70da9375db9577da9476d48c72ce8a71cf8b75d08c77ce8c77cb8a75ca8871c4846ea6705e6a463f5e4a4671605e7a6c6b84827f86a4a088aca686ada785a8a37a9994455654212526504f4f9e9d99c7c2b7e2dfdaffffffffffffffffffffffffffffffffffffbececa768f7788a3888aaa9092b49c90b3a686a79e7e9f8f7fa08c88a9969abaaa"],
+    ["@@@%%%######%@@@%%@@%%%@@@@@%###***###******#%%%%##**##%%%**%%%@@@%#*#@@@@@@@@@@@@@@@@@@@@", "ffff74f2f67cccc5789f926e938871857e6a6863595957565250534d4d4f4c4a4e5352569c9c9ef0f0f2fffffff0f0f39c9ca099989faeaab2b6b1b7908b8e77777b9a9ca4a9a9b6adacb6beb2b6d8bebeccbcba94938e686c6764635e6a584f42342f31242134211e5d3e357f584a64493e4e393240302b3a2b25422c2a48302c543a31785042a76a54b6755db4755e9a63526c493c604439573e364c363258443c7659509e7668c48e7bb47e6c5339354936367f706d908f8e88a3a28eb3ad93b8b18eb3aa7f9d9544534f222526585858a6a49fc8c4bae8e6e4ffffffffffffffffffffffffffffffffffffc8decf99b7959ebd9999bc9c96bea7a2cec4b3e0e5ccf6ffe6ffffedffffe6ffff"],
+    ["%##************###%@@%####%%@@@#**############%%%###%%%%%%##%%@@%%%#*#@@@@@@@@@@%@@@@@@@@@", "9698645e5d504d4949464345423f423e3b3e3a383b39363a39363a3b393e3f3c433f3c433c3b423f3e4443424849484e54535963616692888fcbc0c5beb6ba78777c5356604a4d5d4a4f625760786d7b9d8b9fc5b1c4e5bcd0edb1bed97e6d6645352e4e3a395a48446b544c7f61578962578a62568a62578862567c5c526d4f496a4c436e4e3f825846a46e58ad78619f725e89645678584c7e5c508c685c966d609c7062a47b6eaa84788f746b72666068575381716a958f8c95aab48ba4ae7c989982a29d78958f3f4c4924252661615eaeada7ccc8bef3f0efffffffffffffffffffffffffffffffffffffb1bbbd82939295aaa2a2bca9aeccc1b6d9dbbde2efbbdbefacc7daa6c0d1b6d0e0"],
+    ["#*****************#%@%****##@@%####%%####*###%@@%######%@%##%@@@@@%**#@@@@@@@@@@%%%%%%%%%%", "49464a4543443f3c3e3a383a363438323034312f32312f3234313534313634313838353b3b393f3b393f38353b38353a323035342e34544d509d9090bbaca981777b43424e32344431344435394a3f455a636c849ea0b6c7c4cfc08e8ba35349804c3e5a3e3990665a9871679467588b5d4e744d446b4d4558403b503b38664d466c4d487e6159966659f3a484ffae8ead8072816156674d4653423c5e4c467f6158926458b77e6bd699868c68627c64605e423fae7e71ce968cd4e2f0c2dceda7bdc695acb17f90953e44482526276a6a66b3b3acd0cac2faf9f9ffffffffffffffffffffffffffffffffffffbdbec1989ca48c949e80868c81868a90939a9396a282869484818b8f888c787276"],
+    ["*****************%@@@@#****#@@%#%#%%@%%%%%%%%%@@@@@%%@@@@@@%@%@@@@%**%@@@@@@@@@@@%##%@@%##", "3c3a3b39363835323534313532303434313535323636343836343a36343a343138312f353532393a383e3631382c252c362c2c94766cf3c6b2ffefd9fff2e4ceb8b35d54542b26261d1b1d2220273531396a6367c2aaaeffeef2cb766dad4d45a764566b4d42c28e7bc28f7ece9681cb8c75c58871b87c6ab07563ad7460ae7761b07662a3766ad08b75ffb698ffcfa8ffb89fe2a996d49277c78870c78870de957bf9a88bffba9dffceb6d9a699d59e8e8a6c63e69284cb5a53dfbebed4f2f9bedad2a0b8ad7b8c85383e3b28282a727270bab8b3d2cec5ffffffffffffffffffffffffffffffffffffffffffe0dad8b4b7bb89939e68707a676b719d9da2c2c2c7a9a4a8ae8c8884635e53433f"],
+    ["***************+#@@@@@@%#%@@@@@%%#@@@@@@@@%@@@@@@@@@@@@@@@@%@%@@@@@**%@@@@@@@@@@@@@@@@@%##", "38353635323535323635323636343838353939363b3c3a3e3c3a3e3b393e38353a312e312f2b31312b3126202517131670564fe0b19effe2c8fffce3fffff8ffffffdfc7be7e6e66726862968e8ac0bab8e5e5ecfffffffffffffffafeb35d56a85e4e92594dd49884d89581dc9a89e29d8be49c8ae29882de947ed68e78c48574d09080da957fe39982ffa990ffc6adffd8c0ffccb4f3a893f2a38affa992ffb29affbea7ffcfbaffdac5ffdbc7fabaa8a9786def9681d86d64e8edffe8ffffe3feffd4e8f99daab63e42482e2e2f7c7b7ac1bdb8d4cfc8ffffffffffffffffffffffffffffffffffffffffffded9dac6c6cfb6becca0b3c79fb6d2c2d6f4e2eeffd6d6e89c8182684d48614842"],
+    ["************++++#@@@@@@@@@@@@@@@%%%%%%%%%%%%#%%%%@@%%@@@@@@@@@@@@@@**%@@@@@@@@@@@@@@@@@%##", "363436323032312f3232303436343839363b3e3b424340454340453c3a3f312f352522271a171c161616131313161313614a43be9989ffcbb7ffead2fff8e0fffff4fffffffffffffffffffffffffefffff9fcfff9fefffffffffffffff6e2e4b46859b67160c58975cb8872cc816dd07f6ad4826dd1806bc57660b76c56ad6754b76b57a75d49ae634ec87660d98870c87a63de8c74e09077c87762d8856dec9680fda88fffbaa0ffcbb4ffd1b8f4aa96e28974f6957effdbfaf0f9fff3fffffffffffcecf7bda7b0453e43323235848481c4c1bad4d1caffffffffffffffffffffffffffffffffffffffffffd8dcf2c4cce8bdcae3c5cedcd4c8d0e9d1d4e8cfced1b0a9986b63774842824a42"],
+    ["***********++++*#%@@@@@@@@@@@@@@@%%%%%%%%%%%###%%@%%%%@@@@@@@@@@@@@#*%@@@@@@@@@@%%%%#%@@%%", "2f2c2e2c2a2e2c2a2e2e2b2f302e31363439403e43454348423f43323034211e21141414131313131313171416403c4361535990716ccf9e8ff8bba6ffcfb7ffe6d1fffff3fffff7fcf3f0fffefffffffffffffffffffffffffffffffffffffffee8e9c48171c08671bb7b64ba725ac0745cc5755dbd6e53ac6348a76248a7664ea0664e945d49945d4899604ca06752bb806cd08e75d28b71b87259ae634ac6755ce08c72ef9c80f8a88cffb69effbaa2ffb8a0dcc5ccc6cef3d2e0ffffffffffffffffe8e0ecbbb0604e4c3a3a3c8c8b89c6c2bcdad4cefffffffffffffffffffffffffffffffffffff3fcff8caad1819dc28b93a7a78986ad7c7290665d90685dd6a392eeb09fb87a6aa96a54"],
+    ["**********++++*%@@@@@@@@@@@@@@@@@@@%%%%%######%%%%###%%@@@@@@@@@@%#**%@@@@@@@@@%%@@@@@@@@%", "2a22252524252524252825272a272b2e2b2f353236403e43403e432e2b2f1a181a1313131313131313132e2c329893a7b8b1c5b39da7c7958ad59886d5907fea9c8bffcfbbffe9daf2e2dce6dfdcede6e5fcf9fcffffffffffffffffffffffffffffffffffffe5ceccb7806cb47059ba6e58c1745abd725889523e673c30724235814a3f995c509f6053a96259b46e64bb766ba66759945d4e8452429a5c45c6785ed6896de09478ea9e85f7bcaafff2f0fffffffffffafffffffffffffcf0f3d0c5cba099a26c687428282e404040959492cac7c1e2ded6fffffffffffffffffffffffffffffffffffff3f7fd818fa27e869cc0a0a9ffd1c5ffd2c0ffcab8ffc1b0ffc7b4ffefd8ffc7b2b37a6a"],
+    ["***********++*#%@@%@@@@@@@@@@@@@@@@@%%%%%%%%%%%%@@@@@@@@@@@@@@@@@@%*#@@@@@@@@@@@@@@@@@@@@@", "221e20211e202420212722252c262b2b272b2a262a322f323b353a322c301c1a1b1313131313142421265456678a92b1c2c2dec2adb6bc8c7cce937fda9982eaa28bffbca4f9c8b8d5c2bccfc6bedbd4cceae6dcdfdfd6a7aeb4bdc8d2faffffffffffffffffffffffedc8beb87660b87059bc7258c57b5ec78063c17b60bd785dbd755cbd765dc47b63cc816bd58870e5967cf2a082f2a384e99d7ee39577e6997cec9e81ed9f84edae9cfffffffffffffffffffffffffffffffffffffff6e4ffe9d6ffd4c69a84802e2a2c4848489f9e9acccac4eae6defffffffffffffffffffffffffffffffffffffffffffdffffb6c0d5c4c1d1ffdbdbffe4d6ffcbbbffc6b6ffe3d0fffcecffffffdad8e6"],
+    ["**********#@@@@@@%%@@@@@%%%@@@@@@@@@@%%%%%@@@@@@@@@@@@@@@@@@@@@@%%#*#@@@@@@@@@@@@@@@@@@@@@", "1d1b1c1d1b1c1c1a1b1e1b1d2c282b322f322c262b2b252a342e32382f326c4e44c8967efac4a7ecb8a4c49f95c4a7aad1b6c0b69394b48172d1927fe8a28afab196fab699cf9c81b48b70ae886cb49684c4baaebcc0b1b2c8b4bee4d0d5fee6e8fff8f4fef8f4eee9f9eae0cca896ad6d56b26c52b87157c47e60cb8566d48b70de9376e99878f7a081fea685ffb08effb895ffb895ffba96ffb492f9a986ed9f81e59c81e3ad9afffaf9fffffffffffffffffffffffffffffffffffff0edf0a3989f9986886d5e5e2a27274f4f4ea6a4a2cfcbc6f4eee6fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7eeffdbc8ffccbcffeedeffffffffffffe8f2ff"],
+    ["++++******@@@@@@@%%@@@@%%%%%%%%%%###%%#%%%%%%%%@@@@@@@@@@@@@@@@@@@@*#@@@@@@@@@@@@@@@@@@@@@", "1b181a1b181a1a17181816171c1a1b2725272a272a2521242e272b443638cf8e76ffe0b8fffad1ffffd9fffdd2fff9d0ffdebcc88b7bb47e6edb9884f7ae93fcb89fd9a88fb88c71b18667a97f60a3785aa37a5ca87f61b18566b48c6db08e6e98856d6d6b605a595372706b99847aa06b54986049a2644eb36e56bd775ac67c62cf8064d98868db886ad88667e69274f6a281ffad8cffad8ef0a485d69478d19278eaac94fffff8fffffffffffffffffffffffffffffffffffffffffffffffffdfdfffafcffaaaaae363638595857adaca8cecac5faf2ecffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffd1c6ffc2b7fff9eeffffffffffffffffff"],
+    ["**********@@@@@@@@%@@@%%%%#%%%%%#*#@@%####%%%%%%%%%%@@@@@@@%%%%%%%#*#@@@@@@@@@@@@@@@@@@@@@", "2420212622242b26272621222722242e282a3530313631322b2627353031c8c0bbffffffffffffffffffffffffffffffffffffc6a699c18874eaa78ef8b399d6a490ae8e7c9c7b669f7b629e7758886142966d4dae8162b48567ad8162946c507659454a433a6d6a63d8d1cbe8cec1ac7058995d45925943925943995d46aa634cb1644db4674eb3684faa6249b3684fbd7459bc7a60b87f67c1856ed49076e89d80fab095fffae6fffffffffffffff4e08e8c93787b8475777f74767b7172767b7b81777a7f4e4f50262626605e5db0aeaacac6c0fff7effffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffeffffffffffffffffffffffffff"],
+    ["**********%@@@@@%%@@@##%%####%%##%@@@%%%########%%%@@@@@@@@@#*******#@@@@@@@@@@@@@@@@@@@@@", "2a25262a2526322e2f342f302a25262c2728312e2f393536393435322e2f857670ffe8d8ffefd1ffc49aecad81db9e76bb866db07c6cdc9c86fab69ece9988866659846858886d598e705a86664f77584280614c82665390715c9370567f5d447159449a8877e9ceb7ffe9ccf7caadb3755caa6a4ea3644a9d6046985a4290523c8549328248318b4d3895563e9f6048b06c56bd7a61cf8a70e2997bed9e7ef6a381ffb090ffc8b2fffedefff8d4fffff2a79e9d4e4c4d3435352b2c2f2524272020221d1d201b1b1d222224646462b0ada9c5c0bafffcf4ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"],
+    ["***********######%@@@@%%#####@@@@@@@@%%%%######%%%@@@@@@@@@@@@@@**+*#@@@@@@@@@@@@@@@@@@@@@", "2b282a2c27282f2a2b3f3a3b342f302a25262f2a2b3a35363c3839342c2f4a3c3b6b4e406c4d3a6345316648387c564880584ebb8070fcbcacfffffefcf7f9c7bcbda78c8093705986665072543f6c4e38775944806858ccb39dffffeeffffe6fff0c8ffe0bcecbd99e8bc99c4967cb7775dae6b4fa8664aa46349a0604599583f93503a934e399a543fa35d48b06853bb745aca8268d88f70e49676ef9e7cf7a682ffb292e2a389ffe6c4ffd8acffefc8ffffd8fff7caffffe2fffffcb7a8a02e2b2c1c1b1b1716162626266d6d6bb3b1aac6c2b8fffff6ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffededf7"],
+    ["***********#%%%%%@%%%@@@@@@@@@@@@@@@%%%%%#####%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "2f2c2e2e282a2c27283c3839464243322e2f272224363132403b3c302b2c3e35367a6053a47b63ad8167b2866bb78a6cc08e6ecc9477c29080857474807774b6a498f6dac1fff2d4fffddcffffe2ffffe6ffffd9ffd1adecba93ffecc4fff4cafff0c7facca7e9b793e2b492b18166b37457b16b50a9644aa66146a46045a05e44a05c439e5840a35d44aa634cb46e54c27a5ece8467d68b6bdc8f6ce69674f3a27ffaac86d89e80ffdcb7ffcca3ffc8a0ffffe8ffffd1ffffe3fffcd1ffffd8ffffdcfffffcfffffffff7dfead6c6d9cec4d1cbc0fffffdfffffffffffffffffffffffffffffffffffffef7ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"],
+    ["*****#*****#%%%#%@@@@@@@@@@@@@@@@@@@@%%%%%##%%%%%%%%@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "322e2f342f302f2a2b322e2f4642444a4548342f302c27283f3a3b403b3c42393a7e5e4fa27053a26a4e9d644c9960469e664cd0997effdcc6ffffdcffffdafff4ccffffdbfff3c8fff8ceffffdbffffe4ffffd9facaa2e9b389ffd8b0ffd6aeffd9b2daa782eab490eebd94c494749f664cad6b4daa6649a96246a76045a65e43a66043a96148ac644db26a52bd7458c27a5dc77e61cf8264d58967dc926ee59d78c88c6efdc5a2ffe3b8ffc596e5a67bfff3c8ffffefffffd4fff4c6fff3c4fff9cbffffdeffffe3fff8ceffe5bbffecc6ffffeffffffffffffffffffffffffffffffffffffffffdf4ffe2e5fffffffffffffffffffffffffffffffffdffffffffffffffffffffffffffffffff"],
+    ["*****##****#%%%%@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%%%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "342f303832343832343631323e393b544e52504c4f3632343934354642434840427c5e52a9775cb37761bb7768cc897bf6bea9ffffe5fff2cbffd9b3fff0c6ffe9bdffe6bbffffd4ffffd2fffccffff7ceffcba6f0ba92ffd6aaffdfb4ffe0b7f6c29decb893fac7a0f2be93e5b28bba866aa46b4fa76649a96245aa6145ac6146ac6146ac6148b3674fb76b53bc7057c07458c67b5eca8062cc8566cc8a6abc886bf0bb99ffe4b7ffe0b1ffca9ce3a378ffe8beffffedfff6c6fff4c5ffeebeffe6b7ffe0b2ffe5b7ffe8baffe6bafff9d1ffffe4ffffeaffffefffffeafff4d8fffff7ffffffffeddfffe4e8fffffffffffffffffffffffff8eff8efe3edfff0f9ffffffffffffffffffffffff"],
+    ["******######%@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "2f2c2e2f2a2b2f2a2b342f303b36384644455854575752564a4446504444574543826057c18a77d99e88ffdbc2fffff2ffffefffffe5ffffd8ffedc2ffd5adffeac2ffd2a8ffdfb2ffffd4fff9d0ffefc8f9c29af2bb90ffcfa3ffeabdffe0b7ffcca3ffd0a6ffd5a9fecca0f0bc92eab28bdca382d49475cf8b6bc67f60c1775ac1755ac0755cc47a61c77f63cb8064d4896be49676eda07ce59e7be0a688ffd2aaffe8b7ffe8b7ffefbdffe2b1e3a47bffefc4ffffd0fff6c5fff4c4fff0beffe2b1ffd1a3ffca9effd4a9ffe5bbffe4b8ffdbb0ffe4bbffe6c1ffe5befffed9fffddafffffaffffffffffffffffffffffffffffffffffffffe9eff8e0e4ffe6eaffdee3ffffffffffffffffff"],
+    ["****###%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "573f35563e35533b32543c3557403a614c44765d5898776ec19482e6aa90e9a98cd8a08cffd8c2fffff0fffff4ffffeaffffe3ffffdbffffdcffffd9ffecc0ffdbb2ffe9c0f4c199ffd6adfff7caffecc1f6be94fac498ffdcb1ffdaadffdbb1ffd2a7ffcea2ffcea2fcca9efdca9eeeb88ee4aa81e9ac85eea684f4a482f4a382f0a081eea082e99e81e59d7fe59a7ce69c7beea681ffbc94ffcba2ffd6aaffdaaaffe2b2ffeebdffecbcffcb9ee3a87efff4caffe2b2ffdfb0ffefbeffe9b7ffdcaaffcf9fffca9fffdcb2ffdbadffd4a7ffe5bbffd6aeffdbb1fff7ceffffe3ffffe8fffff2ffffffffffffffffffffffffffeef6ecd9dfdbcad0cabbc0d1b2b8e4b0b6ecb2b3facac6eebcae"],
+    ["##%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%", "86594390604998664ea36c54b0765dbe8268d5967af9b294ffc7a6ffd8b4ffefcbffffeffffff7ffffe5ffffe9ffffe2ffffdcffffdcfffdcffff4c7fff8ccffdcb4ffe8bdffe0b6eab790ffdab1ffeabef9c498f3bc90fcc599ffcea2ffdfb3ffdfb4ffcba0fec89efcc89dfecb9fffd2a8fdc59ce4a980da9a74da9872eaa782f7b292fdb798feba99ffbd9affc09cf9bb94fabd94fdc196ffca9dffdaadffeabbffeebdffe9baffdfaef9c193eeb68bfffacaffdbaaffdbaaffe4b3ffdeacffd4a6ffcb9fffd0a4ffd2a4ffd8aaffe2b8ffcba2ffdeb2fff7ccffffd5ffffd5ffffdcffffe8fffff4fffffffffffffffffffffffffaeef4e2dee9f0eefedbcedaaa7c80a86768b77872b37c6b"],
+    ["#%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%#%%%", "94644d9f6c54ad755ab67c62c1866bd29478eda88bffbea0ffcfacffe9c5ffffeaffffefffffe5ffffdcfffcccffffdcffffdffffed2ffffd4fff4c7ffe3b6ffe2b7ffd8aefff3c6fcc89ff2bd96ffe2b7ffcca0ffcca0ffd4a8ffcca0ffdcb1ffe8bcffd9adffcca0ffcb9ffcc79dffcea3ffe0b4ffd2a9fac29af8c096ecb289dca078d89d75e6a981f7b890ffcca0ffdaadffd8acffd4a6ffecbdffe5b8ffe2b4ffe0b3ffdfb2ffd1a4f8c194fdc69afff7c6ffd0a0ffd4a6ffdeadffdaa8fec598fac298ffd0a4ffcc9fffdbb3ffd9aeffe3b4ffeec0ffefc4fff6cafffacfffffd4ffffdaffffdbffffe3fffffcfffffffff2f6e4d4d9bdb1b69d8e938c6e74856263986b66a975639a6653"],
+    ["%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%##", "96674fa37259b37a61c18668d19272e09d7ff6ae90ffc6a7ffeccaffffeaffffe9ffffe0ffffdcffffd9ffffe0ffeec2ffe5baffffdcffffd4fff8ccffe5b7ffdcb0ffe0b8ffeec2ffe8c0eab390ffd9b1ffcfa2ffd5a7ffd0a2ffcfa3ffdcb1ffedc1ffe5baffd6aaffcfa2ffcca0fcc59affca9fffe8bbfff7caffeac1ffd2a8f9c096f3b88ff7bb93ffc89effd6a9ffdbacffd9acffe8bbffe4b7ffdcb0ffdfb2ffe3b6ffe2b4ffd0a3f8c094ffcfa3fff3c2ffd8a7ffca9dffc89cfac195f7be95fec69defb78fffd2a8ffd4a8ffd8acffe3b6ffe8bbffecbeffefc2ffedc1fff9d0ffffe2ffffecfffff2ffffffffffffffefece6d2d4d4c0c2baa6adae9aa2bea2a4b78a7f8f624f6b493a"],
+    ["%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%#*", "986850a36e57ac755dc08468d19375df9d7cf3b090fff4d2fffff6ffffe9ffffe0ffffdcffffd9ffffd9fff9ccffffd9ffedc0ffeec2ffd4a9fff3c7ffe9bcffd0a3ffd1a8ffeabefff3c8f2bc98ffdbb3ffd4a7ffca9dffcc9fffd0a3ffdfb3ffefc4ffecc0ffdeb3ffd4a9ffcea2ffcb9ffdc69cfdc59cffd1a7ffe6bbfff6c6fffdccffffcffffecefff9c7fff4c4ffe9bbffdbb1ffd2acffd6aeffdfb3ffe4b7ffe5b8ffdfb2ffd0a3f7be94ffd2a7ffe3b3fffac4ffd1a3ffc89cfac498fdc69defba93ffcca3fac49cfac299ffd8aaffe2b3ffe2b4ffe6bafff3c5fffccfffffdaffffe0ffffe8fffff0fffffdfffffffffff6e4d0d1cfbcc0bea9b1bc9fa0bc8e88946c605e453f382b2c"],
+    ["%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%##**", "a26c57a9745caa755cba8063cf9271dfa07effcba4ffffe2ffffe4ffffe3ffffdeffffdbffffd9ffffd8ffffd5ffefc4ffffd6ffedc1ffeec4ffc89effd9b0ffecc0fdc59fffd2adfff2c7fec8a4ffe2b8ffe5b8ffd0a3ffcea0ffd1a4ffe3b4fff0c5ffeec2ffe8bcffdcb1ffd2a7ffcfa4ffcba0feca9fffcea2ffd0a6ffd1a7ffd5a9ffdeb2ffe3b7ffdeb3ffd0aaffcea9ffd4acffdcb3ffe5b8ffeabdffecbeffe9bcffdfb2ffcfa3f6bd94ffd0a6ffd4a6ffd5a7ffedbaffcea0fdc69af9c299fdc69ff8c29aecb793fcc59effcba2ffd8adffe5bbffedc0fff2c6fffacefffed4ffffe0ffffe6ffffeefffff8fffffffff2dbae8e7b9f7e6da97e6ea974678f5d53714943533c3a3b3f3e"],
+    ["%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%##*#", "a26d52b07a5eb0785eb77e63ce9072e8ad8cffeac5ffffe3ffffd9ffffdcffffdfffffdaffffd8ffffd8ffffd6fff6cafff8cefff7cbfff4c8fff2c8ffdfbaffd9b4f7c4a0f7c29effefc5ffd4adffe8befff4c6ffd9acffcb9effd5a7fcdeceffe6d9ffe6d8fee2d0f9dccaeed2bee6c8b4e5c8b4eacfbaedd1bceed2beeed5c2efd4c1f2d2c0f7d8c6ffdecff6d9c8f6d8c6f4d8c5f0d5c2f2d5c2f8dac6fadcc8f9dcc7f7dac4ecceb8dbbeaae9c7b0ffd6a9f0b68cffecbaffd0a4f6c095e0ad89f2bd96dba988e6b28ff8c29dffd4a9ffdbb0ffe3b7ffeabeffedc1ffeec4fff4cbffffdbffffe8ffffe9ffffefffffffffffe8c5a08bb4887abb817aa26660844f486a433c3f35322e594e"],
+    ["%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%#*##", "ac765dae7860b17b61ba8066d69e82ffeccaffffe9ffffdeffffe0ffffd2ffffdcffffdeffffdcffffd6ffffd9fffed2ffecbefffcd1fff3c8fff0c7ffedc6ffdbbad1a285edba98ffecc4ffd9b3ffe4bdfffccfffe4b7ffd2a6ffd8a9dadef356ccff4accff4dccff53caff56c7ff54c0ff53b8ff54baff59c0ff59c2ff5ac1ff5ec4ff62c6ff66c8ff67c8ff64c7ff6ebbff89a6e9a798ccc199c0d49fbbcf9fc0b3a0cf81b2f660baff58b3ffb7c2d4ffd2a9d69f7affd6aaffd4a8e8b48fc29576e5b28cce9d7cefbd98ffcca4ffd2a8ffdab0ffe0b4ffe5b8fff7ccfff9cffff8d0fffad6ffffe2ffffeefffff8fffffffffde5e3b19ddf9989d48a7aa766597a48424e35323b4e452b6e5d"],
+    ["%%%@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@%@@@@@@%@@@@@@@@@@@@@@@@@@@%%#####", "b67e66c0866cc58c71cf987bffdbbbfffff8ffffefffffdbffffd8ffffe0fffdcfffffdbffffd6ffffdeffffd6ffffd4ffedc1fffcd0fff2c8ffefc6ffedc5f8c7a6ae826ae6b393ffecc4ffd8b2fdc7a4fff6caffeec0ffd4a6ffdaaec4dcff59c7ffb399ccff828bff817eff8e82d5a2b867acfc3fbaff42bdff48c0ff5eb1ff8998dbc493bdf999a0ff9e92ff7b71ffad7fff9c76ff9e77ffa47affae81ff9071ff7863ff7266be85b157b0ffadc1defdcea3dea781d49d78e8b38cc09476c6997bd09e7cc69878efbc99f3be9af0bb94ffcea6ffe6bcffefc4fff4cbfffcd2ffffd8ffffdfffffe4ffffecfffff3fffffffffff2e5a495c27767a864528c503f80493b7e534a5e685d2c7060"],
+    ["%@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@@@%@@@@@@@@@@@@@@@@@@@###@@@#", "c48970d1967cd99f85ffe4c5fffff8ffffefffffeaffffe6ffffdaffffd9ffffe2fffccfffffdbffffd5fffacffffed2fff0c5fff7ccfff0c7ffefc6ffecc4dfb4988e6b56e2b08fffedc4ffd1aee5b28fffe9bdffefc2ffd1a4ffe3bea9d6ff8bb7ffff7a6eff675cff7b67ff7b68ff7e7cff928bffa68affa684ff8e72ff9475ff7e67ff8267ffa680ff826aff9374ff926eff9c74ff9c72ffa278ffb181ff8b6dff826aff8a6bbe86aa57aafea6bad4f2c09ae6b389d8a47fd4a37ea98064cb9f80c69878d1a485e5b28ff0bd99f6c29effd5aeffeec5fff2c6fff9cefffad0ffffd5ffffdcffffe8fffff4fffff9fffffffffff0ca96889250448a4d40986154f3d8ccffffffc4a39a885a4a"],
+    ["%@@@@@@@@@@@@@@@@@@@@@#@@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@@%%@@@@@%@%@@@@@@@@@@@@@@@@@##@@@%#", "c78c74dca38afffff0fffff9fffff7fffff4ffffecffffe4ffffe3ffffdcffffdbffffe4fffcd0ffffd9fff0c7ffffd6fff2cbfff2cbffefc5ffeec4ffe3bdc09881785443dead8bffefc4fccaa7daa784ffe3b8ffdbb0ffd5a7ffe4cf96ceff50bdffb795c7ff9075ff9e7aff8064ff7661ff7a63ff9574ff9876ff9976ff9476ff705eff886dffb484ff5954ff8a6eff9470ffa076ffa376ff9272ff886dff7662ff7a66ff7b7177a2e23faaff9eb2ccf3c29cecba8edaaa84d0a27e9d725ac79a7cba8e71daac8be9ba93f7c8a0ffd9b1ffe0b7ffe9beffeec2fff6cafffcd0ffffd6ffffe2ffffedfffff0fffffaffffffffffffcca69981493f93584ec59085ffffffffffffa07f75824c3c"],
+    ["@@@@@@@@@@@@@@@@@@@@@%#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%@%%%@@@@@%@%@@@@@@@@@@@@@@@@@##%@@@#", "d59d82ffffeafffff3ffffecffffe4ffffdeffffdcffffdbffffdcffffe0ffffdcffffe0ffffdefffcd2ffeec2ffeec8ffecc7fff0c8ffeecaffeec7ffd1b1a7816a825d48dfae8bffecc1fcc8a4d8a381ffdbb3ffd8acffd8a9eadcd894ccff46bdff969edbff826aff9072ff8b6dff8468ff8266ff8066ff9672ff9075ff7e64ff816aff8a6dffb285ff886aff8266ff745dff8264ff725dff8066ff8a68ff6656ff7a62c87b92589de63ea4fa96aac8edbd99ecb892dfb08bc89c7a926b52c89e7fbd9276dfb190f7c8a6ffd5b1ffd9b1ffe2b7ffe8bdffecc0fff2c6fff4c8fffacfffffd5ffffdbffffe8fffff6ffffffffffffe4c5b87e504890584eb3766bffece3fffffff7eae2845646"],
+    ["@@@@@@@@@@@@@@@@@@@@%#%@@@@@@@@@%%@@@@@@@@%@@@@@@@@@@@@%%%@@@@%%@%@@@@@@@@@@@@@@@@@%#%@@@@", "ffdab8ffe9c5ffeac7ffdbb8ffe4bcfff2c5fffdccfffccaffeebeffe2b4ffe2b8fff2c6ffffd5ffffdbffd9b2ffe3baffeac6ffeec8ffe4c0dbc1aa998c7f7a5a46987158e0ae8cffeac1ffd4aed9a780ffd5adffdbaeffd6aadbdbda86c2f949aeffbe84a3ff9f77ff8066ff7b62ff7f64ff7662ff856affae7cff9974ff6c5aff7e67ff7461ffa87bff866aff8263ff8c67ffac7bfcba90d1b0a4d1aea7efb695ff9271c6728b5796e039a3f48aa7c5e5b796ecb894e5b68fbe92748f6a52c59a7eb1866dd5a88ce6b798f8caa7ffd5b1ffdab4ffdfb7ffe4bcffe4bdffe2bcffe9c1fff3ccfffed6ffffe2ffffeafffff6ffffffffefdc9c776d7c4c409c6256d09d90ffffffffffffe4d8d1"],
+    ["@@@@@@@@@@@@@@@@@@@@%#%@@@@@@@@@%%@@@@@@@@@%%@@@@@%%@@@%%%%@@@%%%%@@@@@@@@@@@@@@@@@@##%@@@", "ffdbb7ffecceffeaceffdbb7ffd8b2ffd2acffd8adffd9aeffd9b0ffdcb2ffe4b8ffedbeffe9baffe2b7ffc09dffdabeffe3c7ffd9b7eeccb0c4beb195948a5d52469a7760dfad8affecc2ffe2bbdea782f6bd96ffd9b1ffd0a8cfd0d286c5fe43aeffb484a7ffa97bff9e71ff946dff926cff9972ff9370ff9271ff886bff8468ff6057ff6356ffb67eff715dff8967ffa975ff9f70ff6152ff3c40ff8562fcb480caaa9d888bb74498e3329eef80a2c4dbb293dcb08ad2a6819d75589f7a60bd94779d7660bd967ee0b195e5ad8eefad8bffb893ffc196ffc69affc89dffd2a6ffd9a9ffe0b4ffe6bcffecc2fff0ceffeed1ffeed8fffff4d2b1a884584e8b5749b47f74fffffdffffffffffff"],
+    ["@@@@@@@@@@@@@@@@@@@@@#%@@@@@@@@@%%%@@@@@@%@%%@@@%##%@@@%%%%@@%%%%%%@@@@@@@@@@@@@@@@@%#%@@@", "ffcea4ffd8b0ffd8b0ffd5aeffd9b1ffd6aeffd5acffe0b3ffecbdfff3c2fff4c2fff2befff0bdffecbaffe8b8ffdaaaffcfa8ffd8b6ffdbbaefceb8a7a49d5c56508e7462daac8affe3baffeec6eeb894d9a27cdfa782eebd98c5c2c57cbcf636b3ff49a7fc968bbad88c8bff7f66ff775eff986dffb27eff715dff504eff7060ff6156ff6858ff946eff9d70ff9d74ff534fff1b31ff2434ff6753feac75f8a86ef0a46d809ab23696df3096e3769cbed6ae93d9ac89b78c6e906a4fb0886cba9072967159a37862d59a7ceeaa86feb38bffbd93ffca9dffcb9fffc095ffc89effe4baffe4bdffe5bcffe3bcffe6c2ffedcbfff0d4ffe2cef0cabbb1887b925e53b78175ffffffffffffffffff"],
+    ["@@@@@@@@@@@@@@@@@@@@@#%@@@@@@@@@%%%@%#@@@@@@@@%##%%%%@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@%%@@@", "ffd6b2ffdcb6fff6cbffffd6ffffd4fff3c8ffe4baffe9bcfff6c8fffacbfffac8fff8c6fff3c0ffeebbffe9b7ffe5b3ffe0b1ffd0a2ffc59affc6a0c2a794756c649e826ecfa282ffd4adffefc7ffd5b0e5b088d49d75dbaa86b6b1b277b2e635aeff38acff6ea9d8f2ae86fd745afc3039ff8163ffb078ffae7bffae7bffa876ffa374ff775dff8667ff4846ff2635ff2138ff4c5aff646bed6257e67f57ed9e68efa26b8a9aa93892d82e8cd57c94add0a28ce5a886e9a782f2b089ffbe94ffc296ffc196ffcba0ffd8acffd8aaffcea0ffc89dffc89effc79effc59cffbb93ffbc95ffd0aaffe0b8ffecc4ffefcefff2d5ffecd0fff9e6ffffffd5b0aa9d6b63b47a71feded9ffffffffffff"],
+    ["@@@@@@@@@@@@@@@@@@@@@@%@@@@@@@@%%%@@@##%@@%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "f8a493ffc6b2ffc8b3ffd5b0ffe5bbffedc4fffad0fff3c6ffe5baffe8b8fff0c0fff6c4ffefbdffe5b6ffe6b4ffe5b2ffe4b0ffd6a7ffc799ffb38af4a781c69274ac8c71bd9677ecbb96ffe9c1ffe9c0ffd2a7e4b084d19f78ae9e96749dcb359ce948a4eaacacaefdad76f98061ee2b32ea2730e8726de08e78f99574ff6d5dff6258ff7b84e9b1c5f9dbe0f2dcdfffd4baffdeb7ffdab4ffd4adffcca2ffc89affca9affd0a7ffd5adffd6a8ffd4a4ffd4a3ffcf9dffcf9fffd6a6ffd2a0ffd2a2ffd9a9ffdfaeffe4b6ffe9bcffe6bbffe0b2ffdcadffdfb1ffe4b7ffe8bbffe5b8ffd4a8ffd4adffe9c7ffd4b6ffc4a8ffe3d0ffffffffffffffe2dce6aaa2ca8f85faccc4ffffffffffff"],
+    ["@@@%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "d98a6dea9986df907fcb816cc8806ace826dd48871d88c75df957cf2a789ffb896ffc8a2ffd5acffdeb1ffe2b2ffecbbffe0aeffdaaaffca9dffbc8fffaa81f29f77db9a76c69476d5a07ffec19effcba4ffc89ffdbc92efaa84f3ae8bf0b49cf4b69affbc9affc195ffc493ffc595ffc698ffca99ffcb9affdebaffe8c4ffdaaaffd5a2fed8c6e4e4f4fff9f8fffff8ffe6b6ffeeb8ffeebaffeab6ffe8b2ffe5adffe0aaffe0aaffe0aaffdeaaffdbaaffdbaaffd9a9ffd5a4ffd2a2ffd4a3ffd5a6ffdaadffe3b4ffe8baffe8baffe6b8ffe6b8ffe6b8ffecc0ffedc2ffdfb6ffd5acffcfa8ffb792ffcea4ffe8c1fff8d2fffddefff8e4ffffffffffffffeae5deaea7ffccc5ffffffffffff"],
+    ["@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "ffba8fffba8fffbb90ffbb90ffbd93ffbd94ffbd95ffc196ffc498ffc798ffc89affcc9fffcb9effca9dffca9dffc89affc89cffcc9cffce9dffd09fffcb9affcb9affc89cffca9cffcb9dffcb9cffcb9dffc89dffcea0ffcf9effcf9effd2a0ffd2a0ffd5a2ffd19dffcf9cffcf9fffd1a0ffd4a3ffd2a2ffd09fffcfa2fff6d8ffdeb0e5bca7d9efffffffffffefbefffac6fff8c5fffac6fff9c5fff4beffefbaffeeb8ffe8b3ffe3b0ffdfaaffdca9ffd9a8ffd8a7ffdbaaffd9a8ffd2a3ffd0a2ffdeb1ffeabcffe9bcffdcb2ffd2a9ffcba2ffcaa2ffcca6ffcfa7ffc89fffbd95ffd1aaffeec6fffcd6ffffe2ffe0c0ffc2a0ffcba9ffd9c4f3dbd5ead6d2f0d1cfffe0daffffffffffff"],
+    ["@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "ffbd94ffbc92ffbc92ffc096ffc096ffc195ffc59affc79cffca9dffcb9dffce9fffd0a0ffcc9dffce9effcc9effd1a2ffd0a0ffcf9effce9dffd0a0ffd09fffce9dffd1a0ffd4a3ffd2a4ffd0a2ffd1a2ffd4a3ffd2a2ffd0a0ffd1a0ffd1a0ffd2a2ffd2a2ffd29fffd19effce9dffcc9dffcb9cffca9affc595ffc598ffc79affdbc2faceb6cef0f8f8efe3ffd8aeffe8baffeebdffeebcffeebdffeabbffe8b8ffe4b3ffe0b0ffdcaaffdba9ffdcacffdeadffdcacffdeaeffdaacffd6a9ffd1a6ffd5aaffd5a9ffcfa3ffcb9fffcea3ffcba3ffc19affd1aafff4cffff0cff3b49cd88c75f39f85ffb796ffc09cffcba7ffd9b8ffd5beffc6b6ffe2d4fffffcfaf7f6e4e2e2e5dfdffff9f8"],
+    ["@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%@@@@@@@%%@@@@@@@@", "ffb286ffb389ffb68bffbb92ffbc93ffbe94ffc195ffc599ffc499ffc499ffc59affc79dffc79dffca9dffcea0ffce9fffcb9dffcf9fffce9fffcc9effcc9effcc9dffcf9fffd0a2ffcfa0ffcc9effcf9effce9dffcf9effcc9cffca9affc696ffc798ffc696ffc595ffc696ffc695ffc495ffc295ffc194ffbd90ffb48bffad84f6a47edb9d7faea6b0bdacb1ffc49dffc79effcaa0ffcba2ffcaa0ffc59dffbd96ffc099ffca9fffcba2ffc7a0ffcba3ffcea4ffcca2ffc49affbc93ffb48affb289ffb189fca982e89671d98967d18263ca7e5ebc7053c27454de8c6df6a684ffbc98ffc8a3ffd8bbffe6d9ffd0c0c27c67cc7a63faa692ffe4d5ffffffffffffffffffffffffffffffffffff"],
+    ["@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%@@@@@@@@@@@@@@", "f9a67cfda97fffad84fead82feae82ffb185ffb186ffb186ffb188ffb289ffb38affb78effb78effba8fffbc90ffbd93ffbb92ffbc92ffbe93ffbe94ffbe93ffbe92ffbc90ffbc90ffbc90ffbe90ffbd8fffbd8fffbd8fffba8cffba8bffba8bffb88affba8cffba8cffba8bffb88bffb78bffb68cffb88fffb78effb38affb186faa97fe2946d947170988e90ad8271ad6e58aa6852a9644eb66c53c4775dc1765abd7458c2765ac57b60c67e62c78166c47f63c17c62bb765db3715aa96852aa6a4fac6b50ae6c4fba7556c17859c87f5ece8461d08664d28864d48a67d68e6bd48a67de9070ee9e7bfcaa89ffb896ffbd9effb398fab89fffffe4ffffffffffffffffffffffffffffffffffff"],
+    ["@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%####%%%%%%%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "ea9870e99870ed9c74ef9d75f29f76f4a478f4a377f6a47af8a77cfaa87efda87efea87ffda77efea87fffad84ffa980ffae85ffae85ffac82ffae85ffad84ffad84ffac82ffad82ffb084ffb184ffb185ffb388ffb185ffae82ffae82ffad81ffae82ffb084ffb185ffad81ffa97fffa87ffea880fda77ff9a37cf29d78e08f71bc76599f6048844e387c53438c6050a2634aae6b50b47052bb7556c17a59c47c59c57e59c7815dc6805ec57e5dcc8160cf8561d68a63db8e66de9268e0936ae3946be5956be6986ce9996de8986de6966ce9996eef9d74f29d74f49f76faa67cfda77effad84ffb38cffbb96ffc4a2ffc6a8ffc5a9ffcbaeffffdffffffafffff7fffffcfffffeffffffffffff"],
+    ["@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%###%%%%%%%%%@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@", "ed9a72ec9971ef9d76ef9d76ee9c74ec9971ea9870ee9c72f09c72ee9a72ef9c72f29d75f49f78fca880ffb089ffb48effb48bffb18affac85fda87ffda77efda77efda77efea87fffaa81ffac82ffac81ffa97fffac81ffad81fea97ffaa47af7a078f29d75ed9872e8936cdc8a67ca7a5cb66a50a66045a25c43a45d43a76046b0684cbc7453c57c59d08560d58862d48662d68662d98964da8b64de8f67de8e66dc8c64dc8e66df8f67e28f68e4926ae4936ae5946be49368e49368e4936ae5946be5946ae5946ae8956ce8966ce8966de9996eee9a70f09c72f29d74f69f76fca47bffaa82ffb38cffbb96ffc09affc1a0ffc2a4ffcab0fffce5fffffffffffefffffdfffffafffffafffff6"],
+    ["@@@@@@@@@@@@@@@@@@@@@@@@@@@@@%%%######%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@@@@@@@@@@@@@@", "e99571e69570e49370e08f6be08f6adf8c6ade8e6bf4ac8bffcbadffdac2ffcfbbf6b299eca082e59a7ceea489eea786ee9e78e89874ed9d78f2a27ffaac89ffbb9cfdbda2f0a481ea9670ec956ee89470e5926ce28e6ada896cbe7658a3634a935a4392584093593f9559409c5d43a06044a46245aa6749b36b4db86d4fba6e50be7456c27756c77c59cb7f5ace815dcf7f5cd1825dd4855ed4855ed4855ed2845dd1825cd2815cd4825dd2815cd1805ad18058d4815cd2805ad4815cd6845ad9855ed6845ed98562db8862de8b63e28f67e4926ae8956de9966ef29c75f49f77f7a27bfda781ffa984ffb18cffb894ffbb95ffb895ffd2bafffff4fffffffffffefffffafffffdfffffdfffff8"],
+    ["%%%%@@@@%@@@%%@@%%%%%%%@%##############%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@@@@@@@@@@@", "cb7b5dcb7b5ecc7e62cb7e62d48e76f4ccbcf8c5b3da947bd1896de5a793f6baaade9c85d18b6dcf856ad68c71da9576d88664d68666d48564d28264d58667d18464c8886cc59e8aad826d885c457b5c485e493e5845386c5444593f3564483a5d3f30634232704a387a4f3b865744925e469c6248a3644aaa684ab16a4ab76c4ebb7153c07554c57a57c67b58cb7f5ad1815ed1815dd1815dcf805acf7f5ccf8059cf8059d0815ad0815acc7e57cc7e57cc7e59ce7e58cb7b57ce7c59cc7b59cc7a5acc7a59cc7a59cf7e5ad07f5cd1805cd68560dc8b66e28f6ce89470e99574ef9977f7a07efda782fda785ffac89ffac8affb69cffedd6fffffdfffffdfffffcfffffcfffff6fff8e5f6ded2"],
+    ["####@%%%%%%%%%#%#####%@@##*#######%%%%###*####%%%%%%%%@@@@@@@@@%%%%%%%%%%%%%@@@@@@@@@@@@@@", "814831824c36864e3a925e4ab6968aba907fa26d59a874609f6752ac7b6cb78f899e766e9466589f675294614e9566549a5d4492573c7e4c387f4e3a95664fb0846ddab8a9d0a896905e46714028683a2271432a75452b71422874442c71432a7b4f3888685c7472887c7b96817f987a75866e626a624e4a5d3e315e3826683c2877442e864c3596583ea66346b16b4ebc7254c67a58cb7e59cf805dd28461d98964dc8b67de8e6be2926de0926ae2926ce3926ce4936dde8f6bdc8c6ad98967d28562d0805ece815ecb7e5acb7b58cb7a58cb7a57cc7a5ace7b5dd07e5ed48164d9866be39075e8957aed9a7cf3a082fcb092ffe2c7fffffdfffffcfffff3fff4e5eadbd4d0d0d6e6f0fcffffff"],
+    ["%%%%@@@@@@@%%%%%%@@@@@@%%%####%%%%###########%#########%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@@@@@", "be6831ba662cb8642cbc6a36e3956effd2b7fcbba2eea484df906bd58e6ed49278cf886dc57a5dc07556c07554cf8564d1896ad48f71e3a68cf6bda6ffc4a8feb699f8a47cde8253bd622fbc602cb35927b4592ab05826b75c27bd6027b75e26b75d26ba6128b25a26ae5a2ab05a2ab05925b45d22b65d22aa5420b25926b45c25a75321aa5724b65d2aa856229e4f21934a1e85431e84432484452788492e955236a45d40b16646b86b4cbb6e4fbd7252c17454c27657c27759c57a5dc67b5ec87e60cb7e60ce8263d08464d28666d48868d18467d28568ce8166c57a60be7157c17258cf7e61db8b70e59376ed9d7cffbea2fffcecfffff7fffff4fffaf3fffdffffffffffffffffffffffffff"],
+    ["@@%@@@@@@@@@@@@@@@@@@@@@@@%%%%%%%%%%%%%%%%%%%%%%%%%%%%%@%%%%%%%%%%%%%%%%%%%%%%%@@@@@@@@@@@", "f88946f68543f38240f48544ff9e62ffc699ffae7fffad81ffad85fdad8bfeb090ffb494ffbb9dffbea0fdae8bf8a884fca885ffb390ffaa7fffaa7effa77affaa7effb081ff9a64fd8a4df78244f48040f68040f27f40f3803fed7c3bea7838f27f3cf6823fee7b3aec7a38e97839ed7b3af07f3ae97835e27634e27634e57838e47838e67c39e27835df7739d57034d97236db7538d67236d67436d87538e27e3eea8440ee8843ec8643e68442e38040e2803fdf7f40d0753acf763bc67136be6a34b66734b36332b1612fb16232ad6134ae6135b06239b0623ab06238b4673eba6c42bd6c42c87245db804af99959ffad71ffcaa2ffe9cefff8dcfff8e0fffae8ffffeefffaedfffaeffffcef"],
+  ];
+  const ORIGINAL_COLS = 90;
+  const ORIGINAL_ROWS = 60;
+  // The original HTML displays 10px monospace characters at a 12px line height.
+  // This aspect ratio matches that display, without stretching the portrait.
+  const ART_ASPECT = (ORIGINAL_COLS * 0.60) / (ORIGINAL_ROWS * 1.20);
+  let framePending = false;
+
+  function draw() {
+    const { width, height } = canvas.getBoundingClientRect();
+    if (!(width > 0 && height > 0)) return;
+    const dpr = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+    const pixelWidth = Math.round(width * dpr);
+    const pixelHeight = Math.round(height * dpr);
+    if (canvas.width !== pixelWidth || canvas.height !== pixelHeight) {
+      canvas.width = pixelWidth;
+      canvas.height = pixelHeight;
+    }
+    const ctx = canvas.getContext('2d', { alpha: false });
+    if (!ctx) return;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.fillStyle = '#0b110d';
+    ctx.fillRect(0, 0, width, height);
+
+    const inset = Math.min(12, Math.min(width, height) * 0.035);
+    const availableWidth = Math.max(1, width - inset * 2);
+    const availableHeight = Math.max(1, height - inset * 2);
+    const drawWidth = Math.min(availableWidth, availableHeight * ART_ASPECT);
+    const drawHeight = drawWidth / ART_ASPECT;
+    const startX = (width - drawWidth) / 2;
+    const startY = (height - drawHeight) / 2;
+
+    // Use a slightly less dense sampling on small phones to keep the characters
+    // legible. Every drawn cell is still sampled from the supplied artwork.
+    const cols = width < 370 ? 66 : width < 480 ? 78 : ORIGINAL_COLS;
+    const rows = Math.round(ORIGINAL_ROWS * cols / ORIGINAL_COLS);
+    const cellWidth = drawWidth / cols;
+    const cellHeight = drawHeight / rows;
+    const fontSize = Math.min(cellHeight / 1.20, cellWidth / 0.60);
+    ctx.font = `${fontSize}px 'JetBrains Mono', Consolas, 'Courier New', monospace`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    for (let y = 0; y < rows; y++) {
+      const originalY = Math.min(ORIGINAL_ROWS - 1, Math.floor((y + 0.5) * ORIGINAL_ROWS / rows));
+      const [characters, colours] = SOURCE[originalY];
+      for (let x = 0; x < cols; x++) {
+        const originalX = Math.min(ORIGINAL_COLS - 1, Math.floor((x + 0.5) * ORIGINAL_COLS / cols));
+        const char = characters[originalX];
+        if (char === ' ') continue;
+        ctx.fillStyle = '#' + colours.slice(originalX * 6, originalX * 6 + 6);
+        ctx.fillText(char, startX + (x + 0.5) * cellWidth, startY + (y + 0.5) * cellHeight);
+      }
+    }
   }
-  const ctx = canvas.getContext('2d', {alpha: false});
-  if (!ctx) return;
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-  ctx.fillStyle = '#0b110d';
-  ctx.fillRect(0,0,w,h);
-  // Fixed aspect ratio: only uniform scaling, never text reflow/stretch.
-  const inset = Math.min(12, Math.min(w,h) * .035);
-  const drawW = Math.min(w - 2*inset, (h - 2*inset) * ART_ASPECT);
-  const drawH = drawW / ART_ASPECT;
-  const left = (w - drawW)/2, top = (h - drawH)/2;
-  const lines = w < 520 ? MOBILE : DESKTOP;
-  const cols = Math.max(...lines.map(line => line.length));
-  const rows = lines.length;
-  const stepX = drawW / cols;
-  const stepY = drawH / rows;
-  // Position characters individually so font metrics cannot stretch the face.
-  const fontSize = Math.min(stepY * .98, stepX * 1.74);
-  ctx.font = `${fontSize}px 'Courier New', 'Liberation Mono', monospace`;
-  ctx.textAlign = 'center';
-  ctx.textBaseline = 'middle';
-  ctx.fillStyle = '#e6f6dc';
-  for (let row = 0; row < lines.length; row++) {
-   const line = lines[row];
-   for (let col = 0; col < line.length; col++) {
-    if (line[col] === ' ') continue;
-    ctx.fillText(line[col], left + (col+.5)*stepX, top + (row+.51)*stepY);
-   }
+  function schedule() {
+    if (framePending) return;
+    framePending = true;
+    requestAnimationFrame(() => { framePending = false; draw(); });
   }
- }
- let scheduled = false;
- function schedule(){if (scheduled) return; scheduled=true; requestAnimationFrame(()=>{scheduled=false;paint();});}
- if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(canvas);
- window.addEventListener('resize',schedule,{passive:true});
- window.addEventListener('orientationchange',schedule,{passive:true});
- if(document.fonts?.ready) document.fonts.ready.then(schedule).catch(()=>{});
- schedule();
- window.ABHI_ASCII_PORTRAIT = {render:paint, version:'fixed-grid-v1'};
+  if ('ResizeObserver' in window) new ResizeObserver(schedule).observe(canvas);
+  window.addEventListener('resize', schedule, { passive: true });
+  window.addEventListener('orientationchange', schedule, { passive: true });
+  if (document.fonts?.ready) document.fonts.ready.then(schedule).catch(() => {});
+  schedule();
+  window.ABHI_ASCII_PORTRAIT = {
+    render: draw,
+    source: 'ascii-art-2026-11-21-21-00-41(1).html',
+    columns: ORIGINAL_COLS,
+    rows: ORIGINAL_ROWS,
+    version: 'user-colour-grid-v2'
+  };
 })();
