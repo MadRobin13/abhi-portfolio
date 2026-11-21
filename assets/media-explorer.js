@@ -33,18 +33,26 @@
   const intro=document.getElementById('ascii-intro');
   const noMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   if (intro) {
-    let finished=false;
-    let revealComplete=false;
-    const finishIntro=()=>{
-      if(finished)return;
-      finished=true;
-      intro.classList.add('intro-finish');
-      window.setTimeout(()=>intro.remove(),450);
-    };
-    document.getElementById('skip-intro')?.addEventListener('click',finishIntro);
-    if (noMotion) {
-      finishIntro();
+    if (document.documentElement.classList.contains('intro-seen')) {
+      // Returning from About or reloading in the same tab should never replay it.
+      intro.remove();
     } else {
+      let finished=false;
+      let revealComplete=false;
+      const finishIntro=()=>{
+        if(finished)return;
+        finished=true;
+        intro.classList.add('intro-finish');
+        window.setTimeout(()=>intro.remove(),450);
+      };
+      // Also dismiss a suspended intro if the browser restores this page from bfcache.
+      window.addEventListener('pageshow',event=>{
+        if(event.persisted && intro.isConnected) finishIntro();
+      });
+      document.getElementById('skip-intro')?.addEventListener('click',finishIntro);
+      if (noMotion) {
+        finishIntro();
+      } else {
       // Wait for the name reveal itself, then let viewers see the completed ASCII art.
       const nameArt=intro.querySelector('.name-ascii');
       const afterReveal=()=>{
@@ -59,7 +67,8 @@
       if (reveal) reveal.finished.then(afterReveal,afterReveal);
       else window.setTimeout(afterReveal,1250);
       // Last resort: never leave an overlay hiding the site if animation events fail.
-      window.setTimeout(finishIntro,3700);
+        window.setTimeout(finishIntro,3700);
+      }
     }
   }
 })();

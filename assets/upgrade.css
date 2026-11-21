@@ -51,6 +51,7 @@ body::selection{background:var(--orange);color:#030603}
 .evidence-grid button{border:1px solid #c4cbc0;padding:0;background:#fff;text-align:left;min-width:0;color:#222a20}
 .evidence-grid button img{display:block;height:94px;width:100%;object-fit:contain;background:#152018}
 .evidence-grid button small{display:block;padding:8px;font-size:10px;line-height:1.4;color:#515950}
+.intro-seen .ascii-intro{display:none!important}
 .ascii-intro{position:fixed;inset:0;z-index:100;background:#060806;color:#b9ff39;display:grid;place-items:center;animation:introFadeIn .22s ease both,introSafetyExit .38s 4s forwards;transition:opacity .38s ease,visibility .38s ease}
 .ascii-intro.intro-finish{animation:none;opacity:0;visibility:hidden;pointer-events:none}
 .intro-inner{width:min(92vw,920px);display:grid;justify-items:center;gap:17px}

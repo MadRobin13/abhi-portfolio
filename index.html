@@ -10,6 +10,20 @@
 <meta content="Abhimanyu Chaudhary. Robotics, electronics, programming and mechatronics projects." property="og:description"/>
 <title>Abhimanyu Chaudhary | Work</title>
 <link href="assets/abhi-mark.svg" rel="icon" type="image/svg+xml"/>
+<!-- Set the tab-scoped intro flag before styles and the intro element render. -->
+<script>
+  try {
+    const introKey = 'abhi-portfolio-intro-played-v1';
+    if (sessionStorage.getItem(introKey) === '1') {
+      document.documentElement.classList.add('intro-seen');
+    } else {
+      sessionStorage.setItem(introKey, '1');
+    }
+  } catch (error) {
+    // If tab storage is blocked, keep the original intro and its safety exit.
+  }
+</script>
+
 <link href="assets/site.css" rel="stylesheet"/><link href="assets/upgrade.css" rel="stylesheet"/>
 <script defer="" src="assets/content.js"></script><script defer="" src="assets/content-extensions.js"></script><script defer="" src="assets/media.js"></script><script defer="" src="assets/archive.js"></script><script defer="" src="assets/project-evidence.js"></script><script defer="" src="assets/responsive-ascii-portrait.js"></script><script defer="" src="assets/site.js"></script><script defer="" src="assets/media-explorer.js"></script>
 <link href="assets/refinement.css" rel="stylesheet"/><link href="assets/responsive-ascii-portrait.css" rel="stylesheet"/><link href="assets/identity-rail.css" rel="stylesheet"/><link rel="stylesheet" href="assets/recognitions.css"/>

@@ -22,7 +22,7 @@ for(const html of [homepage,about]){
 }
 assert(loader.includes("event.animationName==='introReveal'"), 'Loader waits for full intro reveal');
 assert(loader.includes('window.setTimeout(finishIntro,800)'), 'Full intro stays visible before fading');
-assert(!loader.includes('abhi-intro-seen'), 'Intro must not silently skip on reload');
+assert(homepage.includes("sessionStorage.getItem(introKey)"), 'Intro is gated per browser tab session');
 assert(homepage.includes('aria-label="Skip introduction">Skip intro</button>'), 'Intro escape hatch remains accessible');
 assert(!homepage.includes('Skip intro →'), 'Old high-profile skip label is gone');
 assert(css.includes('right:clamp(16px,3vw,36px)'), 'Skip link stays in the bottom right on different viewports');

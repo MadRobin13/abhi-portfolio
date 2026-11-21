@@ -1,0 +1,30 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const vm=require('node:vm');
+const root=path.resolve(__dirname,'..');
+const html=fs.readFileSync(path.join(root,'index.html'),'utf8');
+const css=fs.readFileSync(path.join(root,'assets/upgrade.css'),'utf8');
+const loader=fs.readFileSync(path.join(root,'assets/media-explorer.js'),'utf8');
+const head=html.split('</head>')[0];
+const inline=head.match(/<!-- Set the tab-scoped intro flag[^]*?<script>([^]*?)<\/script>/);
+assert(inline,'Startup script must execute in head');
+assert(head.indexOf(inline[0]) < head.indexOf('assets/site.css'),'Session guard must precede CSS / initial paint');
+assert(css.includes('.intro-seen .ascii-intro{display:none!important}'),'Overlay hidden before subsequent paint');
+assert(loader.includes("document.documentElement.classList.contains('intro-seen')"));
+assert(loader.includes('intro.remove()'),'Returning sessions remove the overlay entirely');
+const storage=new Map();
+function visit(){
+ const classes=new Set();
+ const env={sessionStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},document:{documentElement:{classList:{add:c=>classes.add(c)}}}};
+ vm.runInNewContext(inline[1],env);
+ return classes;
+}
+assert(!visit().has('intro-seen'),'First visit must play intro');
+assert(visit().has('intro-seen'),'Second visit must skip intro');
+assert(visit().has('intro-seen'),'Reload must skip intro');
+const newTab=new Map();
+const classes=new Set();
+vm.runInNewContext(inline[1],{sessionStorage:{getItem:k=>newTab.get(k)||null,setItem:(k,v)=>newTab.set(k,v)},document:{documentElement:{classList:{add:c=>classes.add(c)}}}});
+assert(!classes.has('intro-seen'),'A new tab gets its own first-time intro');
+console.log('PASS: Intro plays once per tab session and bypasses homepage return/reload before paint.');
