@@ -1,28 +1,23 @@
-# Apply the programmed ASCII 3D + About page update
+# Apply the responsive ASCII restoration
 
-The `UPDATE_ONLY` archive is rooted at the same directory as your `index.html` and `package.json`. Extract it **inside your existing `abhi-portfolio` repository**, not into a new subfolder.
+This incremental update is intended for the **November 21 ASCII3D + About** portfolio source, including the earlier verified media corrections.
 
-Example on a Mac, if the ZIP was downloaded to `~/Downloads`:
+1. Back up or commit any current uncommitted work in `abhi-portfolio`.
+2. Extract `ABHI_PORTFOLIO_ASCII_RESTORED_UPDATE_ONLY_NOV21_2026.zip` into the root of that repository, overwriting the specified files.
+3. Optional cleanup: delete three **unused** former-3D-head files, if present: `assets/portrait3d.js`, `assets/portrait-upgrade.css`, and `tests/portrait3d.cjs`. They are no longer referenced by HTML, CSS, or `npm test`.
+4. Run `npm ci`, `npm run lint`, `npm test`, `npm run build`.
+5. Check `git diff`, then commit and push `main` for the Vercel redeployment.
 
-```bash
-cd ~/Documents/code/github/abhi-portfolio
-git status
-unzip -o ~/Downloads/ABHI_ASCII3D_ABOUT_UPDATE_ONLY.zip -d .
-npm ci
-npm run lint
-npm test
-npm run build
-git diff --stat
-git status
-git add index.html about.html assets/site.js assets/portrait3d.js assets/about.js assets/about.css assets/portrait-upgrade.css scripts/build.mjs package.json tests/portrait3d.cjs docs/ASCII3D_ABOUT_CHANGELOG.md
-git commit -m "Build live rotating ASCII head and dedicated About page"
-git push origin main
-```
+Your is-a.dev DNS records do **not** need to change. No new media assets, remote APIs, image generation, GIFs, or dependencies were added.
 
-Before `git add`, inspect `git diff` if you have made independent edits. Avoid overwriting those changes. The original project media assets from the previous revision should remain in place.
+### What changed
+- Restored the exact original live gyroscope drawing code to the ASCII hero.
+- Restored Abhi's original ASCII portrait to the left column of the homepage About section, below the project, recognition, experience, and source sections.
+- The portrait is now **real canvas text**: each character is placed at fixed grid coordinates, uniformly fitted to its container and rendered at device pixel ratio. Small screens use a downsampled grid generated from the original ASCII art, not a new image.
+- Kept the separate About page, NVIDIA and childhood photos, and the fossil exhibit photo with a friend; changed the last section to discuss biking, friends, Scouts, Transformers and broad interests rather than an extensive paleontology explanation.
+- Kept prior FRC / Muse / PET / Strobe / TRIGR / SymptoAI / Eureka media fixes, project link labels, videos with no audio, and no pause-art button.
 
-To test locally: `npm run dev`. After deployment, visit both
-- https://abhimanyu.is-a.dev/
-- https://abhimanyu.is-a.dev/about.html
-
-No is-a.dev DNS changes are needed.
+### Verification
+- `npm run lint`, `npm test`, `npm run build`: PASS.
+- Browser checks with inline local source (environment blocks network navigation): desktop 1440px, mobile 390px and mobile 320px: no JavaScript errors, no horizontal page overflow, responsive portrait canvas visible.
+- The live Vercel deployment is not modified by downloading this file; deployment requires pushing to GitHub.

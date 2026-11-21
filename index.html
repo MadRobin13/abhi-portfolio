@@ -11,8 +11,8 @@
 <title>Abhimanyu Chaudhary — Work</title>
 <link href="assets/abhi-mark.svg" rel="icon" type="image/svg+xml"/>
 <link href="assets/site.css" rel="stylesheet"/><link href="assets/upgrade.css" rel="stylesheet"/>
-<script defer="" src="assets/content.js"></script><script defer="" src="assets/content-extensions.js"></script><script defer="" src="assets/media.js"></script><script defer="" src="assets/archive.js"></script><script defer="" src="assets/project-evidence.js"></script><script defer="" src="assets/portrait3d.js"></script><script defer="" src="assets/site.js"></script><script defer="" src="assets/media-explorer.js"></script>
-<link href="assets/refinement.css" rel="stylesheet"/><link href="assets/portrait-upgrade.css" rel="stylesheet"/></head>
+<script defer="" src="assets/content.js"></script><script defer="" src="assets/content-extensions.js"></script><script defer="" src="assets/media.js"></script><script defer="" src="assets/archive.js"></script><script defer="" src="assets/project-evidence.js"></script><script defer="" src="assets/responsive-ascii-portrait.js"></script><script defer="" src="assets/site.js"></script><script defer="" src="assets/media-explorer.js"></script>
+<link href="assets/refinement.css" rel="stylesheet"/><link href="assets/responsive-ascii-portrait.css" rel="stylesheet"/></head>
 <body><div aria-label="ASCII rendering of Abhimanyu Chaudhary" class="ascii-intro" id="ascii-intro"><div class="intro-inner"><img alt="" class="intro-mark" height="75" src="assets/abhi-mark.svg" width="75"/><pre aria-hidden="true" class="name-ascii">                   ++   ++++   +   +  +  ++   ++   ++   ++  + ++  ++ +  ++
                    ##+  ##+## +#+ +#  #+ ##+ ##+  +##  +## +# +#++#++#+ +#
                   +###  ## ## +#+ +#  #+ ###+##+  ###+ +##++#  ####  #+ +#
@@ -81,7 +81,7 @@
 
 
 
-</pre><canvas id="ascii-field"></canvas><canvas id="ascii-orb" role="img" aria-label="Continuously rotating three-dimensional ASCII portrait, drawn as characters in real time"></canvas><div class="art-vignette"></div></div>
+</pre><canvas id="ascii-field"></canvas><canvas id="ascii-orb" aria-hidden="true"></canvas><div class="art-vignette"></div></div>
 <div class="layout-shell">
 <header class="site-header" id="top">
 <a aria-label="Home, Abhimanyu Chaudhary" class="site-mark" href="#top"><img alt="" height="39" src="assets/abhi-mark.svg" width="39"/></a>
@@ -125,17 +125,25 @@
 <div class="source-heading"><h2 id="source-heading">The code<span class="orange-dot">.</span></h2><a class="source-external" href="https://github.com/MadRobin13" rel="noopener noreferrer" target="_blank">Open GitHub ↗</a></div>
 <div class="source-frame paper-frame"><div class="source-tools"><label for="repo-query">Search public repositories</label><input autocomplete="off" id="repo-query" placeholder="Search by project or language" type="search"/></div><div class="repo-list" id="repo-list"></div><button class="expand-sources" id="expand-repos" type="button">View all repositories <span>↓</span></button></div>
 </section>
-<section aria-labelledby="about-heading" class="about-section about-teaser" id="about">
-
-<div class="about-overview paper-frame">
-  <div class="about-overview-heading">
-    <p class="about-overview-kicker">BEYOND THE PROJECTS</p>
-    <h2 id="about-heading">About<br/>me<span class="orange-dot">.</span></h2>
+<section aria-labelledby="about-heading" class="about-section" id="about">
+<div class="about-grid">
+  <div class="about-signature">
+    <div class="portrait-slot ascii-portrait-slot">
+      <canvas id="ascii-portrait" class="ascii-face-canvas" role="img" aria-label="ASCII portrait of Abhi rendered in a fixed character grid"></canvas>
+      <noscript><p class="ascii-portrait-noscript">ASCII portrait requires JavaScript.</p></noscript>
+    </div>
   </div>
-  <div class="about-overview-content">
-    <p>I'm a student in Oakville, Ontario, spending a lot of my time on robotics, programming, electronics, and 3D printing. I like seeing an idea work beyond the screen.</p>
-    <p>Outside engineering, I've been interested in paleontology for as long as I can remember. Scouts, mentoring, and collecting Transformers are part of the picture too.</p>
+  <div class="about-panel paper-frame">
+    <p class="about-kicker">BEYOND THE PROJECTS</p>
+    <h2 id="about-heading">Abhimanyu<br/>Chaudhary.</h2>
+    <p>I'm a student in Oakville, Ontario, interested in robotics, programming, electronics and making things I can actually test.</p>
+    <p>I've been part of FRC Team 1360 since 2022. Outside engineering, I enjoy trail biking, collecting Transformers, Scouts, spending time with friends and learning about prehistoric life.</p>
     <a class="about-teaser-link" href="about.html">More about me <span aria-hidden="true">↗</span></a>
+    <div class="about-links">
+      <a href="https://github.com/MadRobin13" rel="noopener noreferrer" target="_blank">GitHub ↗</a>
+      <a href="https://ca.linkedin.com/in/abhimanyu-chaudhary-a1174733b" rel="noopener noreferrer" target="_blank">LinkedIn ↗</a>
+      <a href="https://devpost.com/MadRobin13" rel="noopener noreferrer" target="_blank">Devpost ↗</a>
+    </div>
   </div>
 </div>
 </section>

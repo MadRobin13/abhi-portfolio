@@ -76,12 +76,30 @@
     ctx.font='11px monospace';for(let i=0;i<28;i++){const seed=hash(i*24);const y=(hash(i*47)*h+t*(8+hash(i*13)*12))%(h+90)-45;const x=(hash(i*91)*w+(t*11*hash(i*4)))%(w+130)-65;const a=.04+hash(i*2)*.085;ctx.fillStyle=`rgba(161,216,148,${a})`;for(let j=0;j<5;j++)ctx.fillText(j%2?'·':'-',x+j*14,y-j*2);}
     for(let ring=0;ring<3;ring++){const x=(.15+.33*ring)*w,y=(.22+.27*ring)*h;const age=(t*.045+ring*.37)%1;const radius=age*95;const alpha=(1-age)*.025;ctx.strokeStyle=`rgba(165,210,148,${alpha})`;ctx.beginPath();ctx.arc(x,y,radius,0,Math.PI*2);ctx.stroke();}
   }
-  // The main illustration is a real-time 3D, source-photo-textured ASCII head.
-  // Character coordinates are drawn directly to canvas, so fonts cannot reflow
-  // the artwork as happened to the SVG text portrait in some deployments.
-  function drawOrb(ctx,w,h,t){
-    if(window.ABHI_PORTRAIT_3D) window.ABHI_PORTRAIT_3D.render(ctx,w,h,t);
-    else ctx.clearRect(0,0,w,h);
+  // Three-dimensional character-rendered gyroscope: toroidal shell and crossing orbit rings.
+  function drawOrb(ctx,w,h,t){ctx.clearRect(0,0,w,h);let scroll=Math.min(1,window.scrollY/Math.max(300,window.innerHeight*.75));const isMobile=w<650;const centerX=isMobile?w*.52:w*(.615+.19*scroll),centerY=isMobile?h*(.37-.04*scroll):h*(.46-.2*scroll),scale=(isMobile?Math.min(w*.24,h*.18):Math.min(w*.196,h*.305))*(1-.52*scroll);
+    const cell=isMobile?7.7:9.7,rowH=cell*1.25,cols=Math.ceil(w/cell),rows=Math.ceil(h/rowH);const zb=new Float32Array(cols*rows).fill(-Infinity),glyphs=new Array(cols*rows),ink=new Array(cols*rows),chars=' .,:;+*xX%#@';
+    const ry=t*.27,rx=.54+.14*Math.sin(t*.13),rz=.11*Math.sin(t*.11);
+    function put(x,y,z,brightness,color=0){let cy=Math.cos(ry),sy=Math.sin(ry),cx=Math.cos(rx),sx=Math.sin(rx),cz=Math.cos(rz),sz=Math.sin(rz);
+      let X=x*cy+z*sy,Z=-x*sy+z*cy,Y=y*cx-Z*sx;Z=y*sx+Z*cx;let XX=X*cz-Y*sz,YY=X*sz+Y*cz;
+      let p=3.8/(3.8-Z*.28),screenX=centerX+XX*scale*p,screenY=centerY+YY*scale*p;
+      let ix=Math.round(screenX/cell),iy=Math.round(screenY/rowH);if(ix<0||ix>=cols||iy<0||iy>=rows)return;const index=ix+iy*cols;if(Z<=zb[index])return;zb[index]=Z;let val=Math.min(1,Math.max(.04,brightness*(.72+.28*(Z+2)/4)));glyphs[index]=chars[Math.min(chars.length-1,Math.max(1,Math.floor(val*(chars.length-1))))];ink[index]=(color?`rgba(184,255,57,${(.22+.73*val)*(1-.46*scroll)})`:`rgba(222,238,221,${(.25+.72*val)*(1-.46*scroll)})`);}
+    // Parametric torus, seeded samples distributed across surfaces.
+    for(let i=0;i<154;i++)for(let j=0;j<43;j++){
+      const a=i/154*6.28318,b=j/43*6.28318;const R=1.18,r=.27;let q=R+r*Math.cos(b);let x=q*Math.cos(a),y=r*Math.sin(b),z=q*Math.sin(a);
+      let lum=.25+.42*Math.max(0,Math.sin(b)*.65+Math.cos(a)*.4)+.25*Math.max(0,Math.cos(b));
+      put(x,y,z,lum,((i%31<2)||(j%19===0))&&Math.sin(a+b+t*.1)>.25);
+    }
+    // Three intersecting orbital bands: glyph-generated, not SVG shapes.
+    for(let ring=0;ring<3;ring++)for(let s=0;s<470;s++){let a=s/470*6.28318;let r=1.78+.035*Math.sin(a*9+t*.3);let x=r*Math.cos(a),y=r*Math.sin(a),z=0;const ang=ring*1.047+.42;const Y=y*Math.cos(ang)-z*Math.sin(ang),Z=y*Math.sin(ang)+z*Math.cos(ang);
+      const x2=x*Math.cos(ring*.7)-Z*Math.sin(ring*.7),z2=x*Math.sin(ring*.7)+Z*Math.cos(ring*.7);
+      if((s+ring)%3===0)put(x2,Y,z2,.36+(s%11)/22,ring===1);
+    }
+    // Small orbiting satellites and measured fiducial marks.
+    for(let k=0;k<17;k++){let a=k*2.39996+t*.11;let r=2.12+.3*Math.sin(k*7);put(r*Math.cos(a),r*.32*Math.sin(a*.8),r*Math.sin(a),.45,k%5===0?1:0);}
+    ctx.textAlign='center';ctx.textBaseline='middle';ctx.font=`${cell*1.18}px 'Courier New',monospace`;for(let i=0;i<glyphs.length;i++)if(glyphs[i]){ctx.fillStyle=ink[i];ctx.fillText(glyphs[i],(i%cols)*cell,Math.floor(i/cols)*rowH);}
+    // Sparse UI measurement marks are actual drawn glyphs.
+    ctx.fillStyle=`rgba(177,201,175,${.3*(1-scroll*.5)})`;ctx.font='10px monospace';ctx.textAlign='left';ctx.fillText('    . :  •    ',Math.max(10,centerX-scale*1.55),Math.max(28,centerY-scale*1.85));ctx.fillStyle=`rgba(184,255,57,${.58*(1-scroll*.4)})`;ctx.fillText('+',centerX+scale*1.4,centerY-scale*.9);
   }
   function paintCard(c){const v=sizeCanvas(c);if(!v)return;const {ctx,w,h}=v;ctx.fillStyle='#151d2a';ctx.fillRect(0,0,w,h);const cell=Math.max(8,Math.min(12,w/45)),row=cell*1.35;ctx.font=`${cell*1.15}px Courier New,monospace`;ctx.textAlign='center';ctx.textBaseline='middle';const nx=Math.ceil(w/cell),ny=Math.ceil(h/row),kind=c.dataset.kind||'helix';const ramp=' .:;-+*X#@';for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){
     const x=i/nx*2-1,y=j/ny*2-1,rr=Math.hypot(x*.85,y),aa=Math.atan2(y,x);let z=0;
