@@ -6,6 +6,7 @@ const dist = path.join(root,'dist');
 await rm(dist,{recursive:true,force:true});
 await mkdir(dist,{recursive:true});
 await copyFile(path.join(root,'index.html'),path.join(dist,'index.html'));
+await copyFile(path.join(root,'about.html'),path.join(dist,'about.html')); 
 await cp(path.join(root,'assets'),path.join(dist,'assets'),{recursive:true, filter: (source) => !source.split(path.sep).includes('original-photos') && !source.split(path.sep).includes('original-videos')});
 await stat(path.join(dist,'index.html'));
 console.log('PASS: Static production files copied into dist/.');

@@ -1,0 +1,9 @@
+/* Stable glyph-rendered hero and an intentional, compact About-page gateway. */
+#ascii-orb{image-rendering:auto;user-select:none}
+.about-overview{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(25px,5vw,78px);align-items:center;padding:clamp(29px,5.4vw,74px);background:#101b14;border:1px solid #557159}
+.about-overview-kicker{font:11px var(--mono);color:#b9ff39;letter-spacing:.14em;margin:0 0 21px}
+.about-overview-heading h2{margin:0;font-size:clamp(48px,6vw,85px);line-height:.97;letter-spacing:-.07em;color:#f1f8f0}
+.about-overview-content p{font-size:clamp(14px,1.35vw,17px);color:#c8ddc7;line-height:1.8;margin:0 0 16px;max-width:67ch}
+.about-teaser-link{display:inline-flex;align-items:center;gap:24px;text-decoration:none;margin-top:22px;border:1px solid #b9ff39;color:#061008;background:#b9ff39;padding:13px 17px;font:12px var(--mono)}
+.about-teaser-link:hover{background:#e0ffae}
+@media(max-width:700px){.about-overview{grid-template-columns:1fr;gap:24px}.about-overview-heading h2{font-size:58px}}
