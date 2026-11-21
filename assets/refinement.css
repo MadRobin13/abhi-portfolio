@@ -9,7 +9,7 @@ a,button{touch-action:manipulation}
 .site-mark{display:inline-flex;align-items:center;justify-content:center;padding:1px;min-width:40px;min-height:40px}
 .site-mark img{width:39px;height:39px;object-fit:contain;transition:transform .22s ease}
 .site-mark:hover img{transform:rotate(-7deg) scale(1.07)}
-.desktop-nav a,.motion-button{color:#d5e0d3}
+.desktop-nav a{color:#d5e0d3}
 .desktop-nav a:hover,.action-quiet:hover{color:#b9ff39}
 .mobile-nav{background:#141b17;border:1px solid #6b866a;color:#eaf2e9}
 .mobile-nav a{border-bottom:1px solid rgba(220,239,216,.16)}
@@ -103,7 +103,7 @@ a,button{touch-action:manipulation}
 .publication-note{color:#f4c698!important;border-color:#56695b}
 .intro-mark{box-shadow:0 0 36px rgba(185,255,57,.11);max-width:25vw}
 .intro-caption{display:none}
-#skip-intro{font-size:12px}
+#skip-intro{font-size:11px}
 @media(max-width:900px){.about-journey{grid-template-columns:repeat(2,minmax(0,1fr))}.about-journey figure:last-child{grid-column:1/-1}}
 @media(max-width:700px){.hero{height:auto;min-height:560px}.about-grid{grid-template-columns:1fr}.ascii-portrait-slot{min-height:310px}.about-journey{grid-template-columns:repeat(3,minmax(0,1fr))}.about-journey figure:last-child{grid-column:auto}.about-journey img{height:110px}.record-media-item img{height:100px}}
 @media(max-width:470px){.hero{min-height:520px}.project-tile{box-shadow:inset 1px 1px 0 rgba(255,255,255,.05),5px 7px 0 -2px #0b100c,8px 11px 23px rgba(0,0,0,.43)}.project-tile:hover{transform:translateY(-2px)}.about-journey{grid-template-columns:1fr 1fr}.about-journey figure:last-child{grid-column:1/-1}.about-journey img{height:140px}.record-media{grid-template-columns:repeat(2,minmax(0,1fr))}.footer-links{gap:7px}}

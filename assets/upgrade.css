@@ -7,8 +7,8 @@ body::selection{background:var(--orange);color:#030603}
 .art-vignette{background:linear-gradient(90deg,rgba(4,7,5,.36),transparent 50%),linear-gradient(to bottom,rgba(5,7,6,.3),transparent 15%,transparent 80%,rgba(5,7,6,.55))}
 .site-header{background:rgba(7,10,8,.9);border-color:#445247}
 .site-mark .mark-star{color:#ff8b36}
-.motion-button{border-color:#465748;color:#e5efe1}
-.motion-indicator{background:var(--orange);box-shadow:0 0 15px var(--orange)}
+
+
 .hero h1{color:#fff}.hero .name-point{color:var(--orange)}
 .hero::after{background:linear-gradient(90deg,rgba(6,8,7,.58),rgba(6,8,7,.2) 46%,transparent 73%)}
 .hero-descriptor,.intro-label,.hero-meta,.hero-edge{color:#e7e9e3}
@@ -51,13 +51,16 @@ body::selection{background:var(--orange);color:#030603}
 .evidence-grid button{border:1px solid #c4cbc0;padding:0;background:#fff;text-align:left;min-width:0;color:#222a20}
 .evidence-grid button img{display:block;height:94px;width:100%;object-fit:contain;background:#152018}
 .evidence-grid button small{display:block;padding:8px;font-size:10px;line-height:1.4;color:#515950}
-.ascii-intro{position:fixed;inset:0;z-index:100;background:#060806;color:#b9ff39;display:grid;place-items:center;animation:introFadeIn .22s ease both;transition:opacity .38s ease,visibility .38s ease}
-.ascii-intro.intro-finish{opacity:0;visibility:hidden;pointer-events:none}
+.ascii-intro{position:fixed;inset:0;z-index:100;background:#060806;color:#b9ff39;display:grid;place-items:center;animation:introFadeIn .22s ease both,introSafetyExit .38s 4s forwards;transition:opacity .38s ease,visibility .38s ease}
+.ascii-intro.intro-finish{animation:none;opacity:0;visibility:hidden;pointer-events:none}
 .intro-inner{width:min(92vw,920px);display:grid;justify-items:center;gap:17px}
 .intro-caption{font:12px var(--mono);color:#d9e3d6;letter-spacing:.22em}
 .name-ascii{font:clamp(3px,.68vw,9px)/1.05 var(--mono);white-space:pre;overflow:hidden;max-width:100%;margin:0;clip-path:inset(0 100% 0 0);animation:introReveal 1.1s steps(42,end) .1s forwards;text-shadow:0 0 16px rgba(185,255,57,.3);color:#b9ff39}
-#skip-intro{border:1px solid #b9ff39;color:#b9ff39;background:#060806;padding:10px 13px;font:11px var(--mono)}
-@keyframes introReveal{to{clip-path:inset(0 0 0 0)}}@keyframes introFadeIn{from{opacity:0}to{opacity:1}}
+/* A quiet escape hatch, kept out of the main ASCII composition. */
+#skip-intro{position:absolute;right:clamp(16px,3vw,36px);bottom:max(16px,env(safe-area-inset-bottom));border:0;border-radius:0;padding:10px 3px;background:transparent;box-shadow:none;color:#929e91;font:11px var(--mono);letter-spacing:.02em;text-decoration:underline;text-decoration-color:rgba(146,158,145,.55);text-underline-offset:4px;text-decoration-thickness:1px;cursor:pointer;opacity:.78;transition:color .16s ease,opacity .16s ease,text-decoration-color .16s ease}
+#skip-intro:hover,#skip-intro:focus-visible{color:#b9ff39;text-decoration-color:#b9ff39;opacity:1}
+#skip-intro:focus-visible{outline:1px solid #b9ff39;outline-offset:3px}
+@keyframes introReveal{to{clip-path:inset(0 0 0 0)}}@keyframes introFadeIn{from{opacity:0}to{opacity:1}}@keyframes introSafetyExit{to{opacity:0;visibility:hidden;pointer-events:none}}
 .ascii-portrait-slot{display:flex;align-items:center;justify-content:center;min-height:450px;padding:18px;overflow:hidden}
 .ascii-portrait-slot pre{font:clamp(4px,.60vw,8px)/1.07 var(--mono);letter-spacing:0;color:#c0fb5a;white-space:pre;margin:0;text-shadow:0 0 10px rgba(162,255,91,.2);transform:scale(1);max-height:92%;overflow:hidden}
 .about-photo-strip{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-top:16px}
@@ -66,7 +69,7 @@ body::selection{background:var(--orange);color:#030603}
 .about-photo-strip figcaption{font:10px var(--mono);padding:12px 14px}
 @media(max-width:1050px){.archive-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:700px){.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.archive-image{height:145px}.media-viewer{display:block}.media-viewer>img,.media-viewer>video{height:56svh}.ascii-portrait-slot pre{font-size:6px}.about-photo-strip img{height:260px}}
-@media(max-width:470px){.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.archive-image{height:116px}.archive-caption{padding:8px;min-height:88px}.archive-caption span{font-size:11px}.evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-photo-strip{grid-template-columns:1fr}.about-photo-strip img{height:290px}.ascii-portrait-slot pre{font-size:4px}.name-ascii{font-size:3px}}
+@media(max-width:470px){.archive-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}.archive-image{height:116px}.archive-caption{padding:8px;min-height:88px}.archive-caption span{font-size:11px}.evidence-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.about-photo-strip{grid-template-columns:1fr}.about-photo-strip img{height:290px}.ascii-portrait-slot pre{font-size:4px}.name-ascii{font-size:clamp(5px,1.65vw,7px)}}
 @media(prefers-reduced-motion:reduce){.ascii-intro{display:none}.name-ascii{animation:none;clip-path:none}}
 /* Prevent oversized desktop grid spans and filter controls from widening narrow viewports. */
 .media-archive-section{min-width:0;overflow-x:clip}
@@ -77,3 +80,16 @@ body::selection{background:var(--orange);color:#030603}
 /* Parent clipping prevents the category scroller's off-screen buttons from widening the document. */
 .media-archive-section{overflow:hidden}
 html,body{max-width:100%;overflow-x:clip}
+
+/* Keep NAVI's generated media centered until an authentic photograph is supplied. */
+#project-navi .project-media {display:grid;place-items:center;}
+#project-navi .project-media .ascii-placeholder {width:100%;height:100%;display:block;margin:auto;}
+#project-dialog .dialog-image .ascii-placeholder[data-kind="compass"] {display:block;margin-inline:auto;}
+/* Position the NAVI canvas against the media frame, not its intrinsic canvas size. */
+#project-navi .project-media .ascii-placeholder[data-kind="compass"] {
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  min-height:0;
+}

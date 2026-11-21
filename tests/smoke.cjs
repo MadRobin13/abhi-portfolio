@@ -14,7 +14,7 @@ const projects=captured.get('featured-grid').innerHTML+captured.get('secondary-g
 const awards=captured.get('awards-list').innerHTML,exp=captured.get('experience-grid').innerHTML,repo=captured.get('repo-list').innerHTML;
 assert.equal((projects.match(/class="project-tile /g)||[]).length,15);
 assert.equal((awards.match(/class="record-row"/g)||[]).length,6);
-assert.equal((exp.match(/class="experience-tile"/g)||[]).length,10);
+assert.equal((exp.match(/class="experience-tile"/g)||[]).length,11);
 assert.equal((repo.match(/class="repo-item"/g)||[]).length,10);
 assert(projects.includes('video-02-frc-1360.mp4'));
 assert(projects.includes('video-08-muse.mp4'));
@@ -25,6 +25,6 @@ assert(!projects.includes('ASCII / IMAGE PENDING'));
 assert(!projects.includes('ACTUAL PROJECT MEDIA'));
 assert(!projects.includes('19-frc-1360-andromeda-cad-in-2026-judges-book'));
 assert(projects.includes('ABC2XYZ'));
-console.log('PASS: JS initializes and renders all 15 featured projects, 6 awards, 10 activities, 10 search-preview repositories (64 indexed).');
+console.log('PASS: JS initializes and renders all 15 featured projects, 6 awards, 11 activities, 10 search-preview repositories (64 indexed).');
 console.log('PASS: Original photographic media preserved; obsolete internal links rerouted.');
 console.log('PASS: ASCII environment initializes without runtime exceptions in mocked DOM.');

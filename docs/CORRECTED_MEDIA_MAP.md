@@ -1,23 +1,24 @@
-# Corrected project-to-media mapping (2026-11-21)
+# Verified project media map — November 21, 2026
 
-Project evidence is now defined explicitly in `assets/project-evidence.js`; individual galleries no longer inherit every image from broad tags such as `hardware` or `community`.
+This document supersedes the previous media map. The gallery list in `assets/project-evidence.js` is authoritative. Labels from filenames are **not proof** of the scene inside a video: the included clips were inspected as real video frames.
 
-| Project | Approved uploaded media |
-| --- | --- |
-| Strobe | Photo `21C3...jpeg` (LED backside wiring), video `054346...MP4` (blue LED matrix). **Exactly two items.** |
-| TRIGR | `8869...jpeg`, `7D24...jpeg`, `IMG_0658.MOV` only. |
-| PET filament | `798E...jpeg`, `0897...jpeg` (wiring), `2A14...jpeg` (shredder), `08CB...jpeg` (shark printed from PET), `20DE...jpeg` (mayor), `IMG_0122.MOV`, `IMG_5478 2.MOV` only. |
-| Muse | original Muse device photo + `IMG_4133(2).MOV`. The duplicate older file is hidden. |
-| SymptoAI | Raspberry Pi photo `E8BE...jpeg`, classroom Hack the Ridge team `073455...jpeg`, stage team `073455...(1).jpeg`. |
-| ICanSort | finished recycling prototype `IMG_3992.JPG`, Samsung team `IMG_4002.JPG`, green-screen Samsung group photo `F6BE...jpeg`. |
-| 3D Printing Business | Bambu orange fidget production `52CE...jpeg` only. |
-| Splittr | local PCB photos plus real repository routing `design_v2.png`. |
-| DVD Pong | original project logo. Public repository and live game checked; no verifiable in-repo GIF found. Do not substitute a fake. |
-| Soap | official repo `Soap_logo_v2.png`. Animation folder exists but individual GIF file not verifiable from current web access. |
-| TerminalAI | official repo `example.png` screenshot. No public GIF verified. |
+| Project | Media shown after revision | User-requested correction |
+| --- | --- | --- |
+| FRC 1360 | Existing competition/robot photographs and two FRC clips | Removed only `legacy-frc` ("Historical FRC hardware photograph") from the gallery. Other FRC media unchanged. |
+| Muse | Existing device image and Muse demonstration | No changes. |
+| PET filament | Five project photographs plus `IMG_0122.MOV`, served as `pet-filament-demo-verified.mp4` | Removed `video-04-pet-filament` (formerly captioned "PET filament-making equipment operating") from visible media and replaced the featured video with the verified `IMG_0122` PET clip. |
+| Splittr | Existing PCB and enclosure photos plus repo copper traces | No changes. |
+| ICanSort | Existing recycling hardware/team photos | No changes. |
+| NAVI | No user photo/video; existing generic ASCII graphic only | No new photo invented. |
+| Strobe | Original wiring photo and blue LED matrix clip `054346…MP4`, served as `strobe-led-matrix-verified.mp4` | Actual clip frames verified as blue LED matrix. New URL avoids stale same-name video. |
+| SymptoAI | Raspberry Pi equipment photograph and `39-symptoai-hack-the-ridge-team` | Removed duplicate copy `35-community-hackathon-group-photograph-in-classroom`. Team caption clarified. |
+| DVD Pong / Soap | Existing logo media | GIFs NOT added because actual repository GIF file paths were not accessible/verified. No substitute GIFs created. |
+| TerminalAI | Existing genuine repo image | No changes. |
+| CAD | Existing model photos | No changes. |
+| TRIGR | Two actual controller photographs, no video | Removed the video slot at user's request to avoid showing the complained-of mismatched clip. Original TRIGR video binary remains as unreferenced source material. |
+| 3D Printing Business | One Bambu printer production photo | Removed the generic GitHub link from project dialog (and from other unlinked projects). |
+| Eureka Hacks / ABC2XYZ | `40-eureka-hacks-certificate-team` | Removed duplicate `34-community-eureka-hacks-award-winning-team…` and unrelated `37-community-eureka-hacks-team-with-best-use-of-ai-recogni`. |
 
-External repo images use their genuine `raw.githubusercontent.com` URLs (requires internet when viewing); all other media is bundled. No video has an audio track, and all site video elements use `muted`.
+Other record media fixes: Hack the Ridge's repeated stage photo and Hack Club's misassigned hackathon photo have been removed from those record galleries. The unrelated prehistoric display image is no longer used to illustrate Shad Canada.
 
-**Privacy:** The programming collaboration image caption is now "Mentoring programming team members" without the peer's name. This photo and other clearly recognizable group photos remain flagged for permission review.
-
-**Cropping:** No original photographs or video frames were cropped or retouched in this revision. Source media preserved.
+No bundled video contains an audio stream. Existing original photos were not retouched or cropped as part of this update. Media files no longer linked in galleries remain in the source package for traceability.

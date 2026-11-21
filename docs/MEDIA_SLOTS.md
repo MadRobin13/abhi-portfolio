@@ -1,26 +1,5 @@
-# Authentic media handoff
+# Media ownership and handoff
 
-Update `assets/media.js` and add your files under `assets/images/` (or create `assets/video/`). Images always render as genuine photographs, not ASCII. Project previews can autoplay muted when in view.
+Use `docs/CORRECTED_MEDIA_MAP.md` and the explicit ID lists in `assets/project-evidence.js` for the current allowed media. Never infer project ownership from broad tags such as `hardware` or `community` or assume a media title matches its actual contents.
 
-Priority order:
-
-1. `frc-1360` — 2026 robot competition photograph, autonomous shooting, shooting while moving. Current FRC image is a real but **older workshop** photograph.
-2. `muse` — device photograph, head/arm/hand demonstration clips. Current device photo is authentic.
-3. `pet-filament` — PET strip -> extrusion -> final filament -> printed object.
-4. `ican-sort` — sorter hardware working demonstration.
-5. `navi` — prototype navigation test and screen interface.
-6. `led-matrix` — programmed light animation footage.
-7. `symptoai`, `soap`, `terminal-ai` — real app screenshots or recordings.
-8. `cad` — your actual models/renders.
-
-Existing `splitter` board and enclosure photographs are authentic. Supplied images are left completely unchanged.
-
-For example, edit:
-
-```js
-"frc-1360": {
-  image: "assets/images/frc-2026.jpg",
-  video: "assets/video/frc-moving-shot.mp4",
-  caption: "REAL 2026 FRC ROBOT FOOTAGE"
-}
-```
+NAVI currently has no user-supplied media. User-requested DVD Pong and Soap GIFs are still pending verification from their original public GitHub repositories; do not use arbitrary or generated substitutions. All existing site videos are muted and stripped of audio streams. Preserve the original assets and obtain appropriate permission before publishing recognizable people in new group photos.

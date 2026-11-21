@@ -4,7 +4,7 @@ window.PORTFOLIO_CONTENT = {
       "id": "frc-1360",
       "tier": "flagship",
       "title": "FRC 1360",
-      "summary": "I joined FRC Team 1360 for the 2022–23 season and led programming in 2024–25 and 2025–26. I developed vision-based alignment, autonomous scoring and moving-shot calculations while mentoring newer programmers.",
+      "summary": "I started in Team 1360’s FIRST community through LEGO League in 2019 and joined FRC in 2022. I led programming for the 2025 and 2026 robots, working on autonomous scoring and shots calculated while driving.",
       "detail": "Java · WPILib · PhotonVision",
       "links": [
         {
@@ -29,7 +29,7 @@ window.PORTFOLIO_CONTENT = {
       "id": "muse",
       "tier": "flagship",
       "title": "Muse",
-      "summary": "I built Muse so a friend could control a computer using head, arm or hand movement. Its firmware, electronics and printed housing earned second place in the 2025 IEEE SSCS Arduino Contest’s high-school category.",
+      "summary": "I built Muse so a friend could control a computer using head, arm or hand movement. Its firmware, electronics and printed housing earned second place in the 2025 IEEE SSCS Arduino Contest’s high school category.",
       "detail": "ESP32 · Motion sensing · Bluetooth",
       "links": [
         {
@@ -59,7 +59,7 @@ window.PORTFOLIO_CONTENT = {
       "id": "splitter",
       "tier": "supporting",
       "title": "Splittr",
-      "summary": "I designed the PCB and 3D-printed enclosure for a four-port USB-A hub, giving our FRC workspace more accessible USB connections.",
+      "summary": "I designed the PCB and printed enclosure for a USB hub with four USB-A ports, giving our robotics workspace more accessible connections.",
       "detail": "Custom PCB · Enclosure design",
       "links": [
         {
@@ -102,7 +102,7 @@ window.PORTFOLIO_CONTENT = {
       "id": "led-matrix",
       "tier": "supporting",
       "title": "Arduino LED Matrix",
-      "summary": "I made an Arduino-controlled LED matrix for my dad and programmed custom light patterns, a countdown and a Pong animation.",
+      "summary": "I made an LED matrix driven by an Arduino for my dad. I programmed several light patterns, a countdown and an animated Pong game.",
       "detail": "Arduino · FastLED",
       "links": [
         {
@@ -115,7 +115,7 @@ window.PORTFOLIO_CONTENT = {
       "id": "symptoai",
       "tier": "supporting",
       "title": "SymptoAI",
-      "summary": "Our team won Hack the Ridge 2024 with SymptoAI, a Raspberry Pi prototype that uses voice, text and camera input.",
+      "summary": "Our team built SymptoAI, a Raspberry Pi prototype with voice, text and camera input, and won Hack the Ridge 2024.",
       "detail": "Python · Raspberry Pi",
       "links": [
         {
@@ -162,7 +162,7 @@ window.PORTFOLIO_CONTENT = {
       "id": "terminal-ai",
       "tier": "experiment",
       "title": "TerminalAI in Go",
-      "summary": "While learning Go, I built a terminal-based AI chat application with a Bubble Tea interface and Gemini integration.",
+      "summary": "While learning Go, I built a terminal AI chat application with a Bubble Tea interface and Gemini integration.",
       "detail": "Go · Command line",
       "links": [
         {
@@ -174,7 +174,7 @@ window.PORTFOLIO_CONTENT = {
     {
       "id": "cad",
       "tier": "cad",
-      "title": "3D Design, Commissions & Open-Source Models",
+      "title": "3D Design, Commissions & open source Models",
       "summary": "I design custom 3D parts and publish original printable models. That includes accessories for my Transformers figures, functional hardware and commissioned designs.",
       "detail": "Design & fabrication",
       "links": [
@@ -196,12 +196,12 @@ window.PORTFOLIO_CONTENT = {
   "highlights": [
     {
       "title": "Programming Lead · FRC 1360",
-      "text": "FRC member since 2022; Programming Lead for two seasons.",
+      "text": "FIRST with Team 1360 since 2019. FRC programmer from 2022 and lead for two seasons.",
       "href": "/activities#frc-1360"
     },
     {
       "title": "IEEE SSCS Arduino Contest",
-      "text": "Second place in the 2025 high-school category.",
+      "text": "Second place in the 2025 high school category.",
       "href": "/awards#ieee-sscs-2025"
     },
     {
@@ -220,8 +220,8 @@ window.PORTFOLIO_CONTENT = {
       "id": "ieee-sscs-2025",
       "date": "2025",
       "title": "IEEE SSCS Arduino Contest",
-      "outcome": "Second place in the 2025 high-school category.",
-      "body": "Muse, my motion-controlled assistive mouse, received second-place recognition in the high-school category. I developed its firmware, electronics and printed housing.",
+      "outcome": "Second place in the 2025 high school category.",
+      "body": "Muse, my controlled through motion assistive mouse, received second place recognition in the high school category. I developed its firmware, electronics and printed housing.",
       "links": [
         {
           "label": "IEEE results",
@@ -235,10 +235,10 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       "id": "climate-grant",
-      "date": "2025–26",
+      "date": "2025 to 26",
       "title": "Oakville Youth Climate Action Fund",
       "outcome": "I secured $6,000 to develop my filament maker.",
-      "body": "I secured project funding to design, test and demonstrate a bottle-to-filament recycling system. The prototype produced material I used for finished 3D prints.",
+      "body": "I secured project funding to design, test and demonstrate a bottle recycling recycling system. The prototype produced material I used for finished 3D prints.",
       "links": [
         {
           "label": "Project coverage",
@@ -265,10 +265,10 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       "id": "frc",
-      "date": "2022–2026",
+      "date": "2019 onward",
       "title": "Orbit Robotics · FRC Team 1360",
-      "outcome": "FRC participation through 2025–26; Programming Lead in 2024–25 and 2025–26",
-      "body": "I joined Team 1360 for the 2022–23 season and have been involved with its robots every year since. I led programming for two seasons. Team honours include the 2025 Quality Award and regional and provincial recognition in 2026, including FIRST Impact and Engineering Inspiration awards.",
+      "outcome": "Started in FIRST LEGO League in 2019. Joined FRC in 2022 and led programming for the 2025 and 2026 seasons.",
+      "body": "I joined Team 1360’s FIRST community through LEGO League in 2019. After moving into FRC in 2022, I led programming for two seasons. Our team earned the Quality Award in 2025 and several district and provincial awards in 2026, including FIRST Impact and Engineering Inspiration.",
       "links": [
         {
           "label": "Leadership & contribution",
@@ -326,10 +326,10 @@ window.PORTFOLIO_CONTENT = {
   "activities": [
     {
       "id": "frc-1360",
-      "date": "2022–2026",
+      "date": "FIRST since 2019, FRC from 2022 to 2026",
       "title": "Orbit Robotics · FRC 1360",
-      "outcome": "Four FRC seasons; Programming Lead for 2024–25 and 2025–26",
-      "body": "I joined the FRC team for 2022–23 and am now in my fourth season. I've worked in robot software throughout that time, led the programming subteam for two seasons, mentored 17–20 programmers, and developed vision alignment and autonomous scoring. I've also contributed to electrical work, testing and drive-team operations.",
+      "outcome": "Four FRC seasons; Programming Lead for 2024 to 25 and 2025 to 26",
+      "body": "I started in LEGO League in 2019 before joining FRC in 2022. I led the programming subteam for the 2025 and 2026 seasons, working on vision alignment and autonomous scoring while mentoring around 17 to 20 programmers. I also served as Human Player during competition.",
       "links": [
         {
           "label": "2025 robot code",
@@ -354,14 +354,14 @@ window.PORTFOLIO_CONTENT = {
       "date": "Abbey Park",
       "title": "Computer Engineering Club",
       "outcome": "Technical & project leadership",
-      "body": "I led electronics, robotics and CAD projects, taught peers how to debug circuits and software, and helped club members turn their designs into working hardware."
+      "body": "As Technical and Project Lead, I planned club activities and taught members about electronics. I also helped them develop CAD and robotics projects."
     },
     {
       "id": "code-ninjas",
       "date": "Summer 2026",
       "title": "Code Ninjas",
-      "outcome": "Educational co-op · coding instructor",
-      "body": "During my summer co-op at Code Ninjas Mississauga West, I taught children coding, robotics and 3D design through Scratch, Roblox, Minecraft, LEGO SPIKE and CAD. I spent much of the day helping students debug projects and become more confident solving problems independently.",
+      "outcome": "Educational cooperative education · coding instructor",
+      "body": "I spent 317 hours teaching programming, robotics and 3D design at Code Ninjas in summer 2026. That includes 97 hours I chose to stay beyond my required placement. I helped younger students debug Scratch, Roblox, Minecraft and LEGO projects themselves.",
       "links": [
         {
           "label": "Mississauga West location",
@@ -371,7 +371,7 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       "id": "makers-making-change",
-      "date": "2025–26",
+      "date": "2025 to 26",
       "title": "Makers Making Change",
       "outcome": "Assembly, soldering & peer instruction",
       "body": "I assembled, soldered and tested accessible toys and switches and helped teach other students. Together, the school workshop produced 42 adapted toys and 42 switches.",
@@ -384,10 +384,10 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       "id": "fll",
-      "date": "Robotics",
+      "date": "Started in 2019",
       "title": "FIRST LEGO League",
       "outcome": "Participant, then mentor",
-      "body": "I spent three years competing in FIRST LEGO League, then returned as a mentor to help younger students program, design and prepare their innovation projects.",
+      "body": "I started in FIRST LEGO League in 2019, spent three seasons competing and later returned as a mentor. I helped younger students program their robots and work on their innovation projects.",
       "links": [
         {
           "label": "FIRST LEGO League",
@@ -409,11 +409,18 @@ window.PORTFOLIO_CONTENT = {
       ]
     },
     {
+      "id": "girl-guides-outreach",
+      "date": "Community outreach",
+      "title": "Girl Guides STEM Outreach",
+      "outcome": "Practical robotics and engineering activities",
+      "body": "Through FRC Team 1360, I helped younger students explore robotics and engineering, answered questions and supported their first attempts with unfamiliar tools."
+    },
+    {
       "id": "hack-club",
       "date": "Abbey Park",
       "title": "Hack Club",
       "outcome": "Former chapter president",
-      "body": "As president of Abbey Park's Hack Club chapter, I helped organize student-led programming and hardware projects and supported members as they developed their own ideas.",
+      "body": "As president of Abbey Park's Hack Club chapter, I helped organize programming and hardware projects. I also worked with students as they developed their own ideas.",
       "links": [
         {
           "label": "Hack Club",
@@ -443,7 +450,7 @@ window.PORTFOLIO_CONTENT = {
     },
     {
       "id": "hackathons",
-      "date": "2024–26",
+      "date": "2024 to 26",
       "title": "Hackathons",
       "outcome": "Hack the North · Hack the Ridge · Eureka Hacks",
       "body": "At Hack the North 2026, I worked on NAVI’s mechanical design, fabrication, display interface and elevator integration. Earlier team projects included SymptoAI and ABC2XYZ.",
@@ -473,10 +480,10 @@ window.PORTFOLIO_CONTENT = {
       "number": "01",
       "title": "FRC Team 1360",
       "category": "Autonomous robotics",
-      "period": "2022–2026 (Programming Lead, 2024–26)",
+      "period": "FIRST since 2019, FRC from 2022 to 2026",
       "headline": "Autonomous scoring, engineered for competition.",
-      "summary": "I joined Orbit Robotics’ FRC team in 2022–23 and led programming in 2024–25 and 2025–26. Across these seasons I developed autonomous pathfinding, field localization, scoring routines and vision-based alignment.",
-      "role": "FRC member from 2022–23 · Programming Lead in 2024–25 & 2025–26",
+      "summary": "I joined Team 1360’s FIRST community in 2019 through LEGO League and moved into FRC in 2022. As Programming Lead in 2025 and 2026, I worked on autonomous routines and using camera vision alignment for our competition robots.",
+      "role": "FIRST participant since 2019. FRC member from 2022, Programming Lead for the 2025 and 2026 seasons.",
       "tools": [
         "Java",
         "WPILib",
@@ -486,8 +493,8 @@ window.PORTFOLIO_CONTENT = {
         "Electrical integration"
       ],
       "build": [
-        "I directed major software development and electrical integration across the 2024–25 and 2025–26 competition seasons. My autonomous systems connected drivetrain control, field localization, target alignment and coordinated scoring.",
-        "I configured and refined the YAGSL swerve implementation, integrated PhotonVision and AprilTag pose estimates with odometry, and developed autonomous routines for multi-object scoring. The localization and alignment systems also supported driver assistance during teleoperated play."
+        "I led major software development for the 2025 and 2026 competition robots and contributed to their electrical integration. The autonomous code coordinated drivetrain movement with robot localization and scoring.",
+        "I configured YAGSL swerve control, integrated PhotonVision and AprilTag estimates with odometry, and built autonomous scoring routines. In 2026, I used projectile physics and Newton Raphson iteration to calculate shots while our robot was moving. I also implemented field restrictions logic to decide when to shoot or pass and when to lower the hood under the trenches."
       ],
       "contributions": [
         {
@@ -496,7 +503,7 @@ window.PORTFOLIO_CONTENT = {
         },
         {
           "title": "Autonomous scoring",
-          "text": "Spearheaded autonomous pathfinding and multi-object scoring, especially in the 2024–25 season. Connected navigation and target alignment to scoring sequences."
+          "text": "Built autonomous scoring sequences in 2025. In 2026, I worked on shooting while moving calculations that accounted for robot motion, with aim corrections and field restrictions restrictions."
         },
         {
           "title": "Electrical & testing",
@@ -504,13 +511,13 @@ window.PORTFOLIO_CONTENT = {
         },
         {
           "title": "Team leadership",
-          "text": "Led programming across two competition seasons and mentored roughly 17–20 programmers. Served on the drive team as Human Player from 2023–24 through 2025–26."
+          "text": "I led programming for two competition seasons and mentored roughly 17 to 20 programmers. I also served on the drive team as Human Player."
         }
       ],
       "decisions": [
         {
           "title": "Integrate proven tools",
-          "text": "I integrated YAGSL and PhotonVision into a coordinated control system, configuring the swerve drivetrain and connecting vision-based localization to autonomous navigation and scoring."
+          "text": "I integrated YAGSL and PhotonVision into a coordinated control system, configuring the swerve drivetrain and connecting using vision localization to autonomous navigation and scoring."
         },
         {
           "title": "Make localization useful",
@@ -521,7 +528,7 @@ window.PORTFOLIO_CONTENT = {
           "text": "I tested across software, electrical and mechanical boundaries, combining robot simulation with direct hardware debugging to investigate how the full system behaved."
         }
       ],
-      "result": "Delivered major autonomous systems for Team 1360’s competition robots, including integrated swerve control, vision-assisted alignment and multi-object scoring. My software, electrical and community work supported the team’s competitive and outreach achievements.",
+      "result": "The 2026 robot used my calculations to aim and shoot while driving, with additional code handling field restrictions. I also led programming for two seasons and helped newer programmers take ownership of their own code.",
       "recognition": "Team recognition includes the 2025 Quality Award and 2026 FIRST Impact and Engineering Inspiration awards.",
       "links": [
         {
@@ -553,7 +560,7 @@ window.PORTFOLIO_CONTENT = {
       "title": "Muse",
       "category": "Assistive interface",
       "period": "2025",
-      "headline": "Award-winning assistive computing, controlled by movement.",
+      "headline": "A wearable mouse controlled through movement.",
       "summary": "I designed and developed Muse, a wearable assistive mouse with head, arm and hand control, Bluetooth connectivity, haptic feedback and an LCD interface.",
       "role": "Embedded software · Electronics · CAD",
       "tools": [
@@ -574,7 +581,7 @@ window.PORTFOLIO_CONTENT = {
         },
         {
           "title": "Three ways to use it",
-          "text": "Implemented head, hand and arm control. Each mode maps movement differently, with mode-specific sensitivity and filtering in the firmware."
+          "text": "Implemented head, hand and arm control. Each mode maps movement differently, with separate sensitivity and filtering in the firmware."
         },
         {
           "title": "Feedback & enclosure",
@@ -588,15 +595,15 @@ window.PORTFOLIO_CONTENT = {
         },
         {
           "title": "Filter before sending",
-          "text": "A weighted filter combines current and previous sensor values before converting them to cursor movement. Mode-specific scaling makes that motion usable as mouse input."
+          "text": "A weighted filter combines current and previous sensor values before converting them into cursor movement. Each control mode uses different scaling."
         },
         {
           "title": "Give the user feedback",
           "text": "Bluetooth connection status and the selected mode appear on the LCD. The haptic motor responds to click gestures, adding a physical indication of input."
         }
       ],
-      "result": "Delivered a working three-mode assistive mouse and published its firmware and printable hardware. Muse earned second place worldwide in the IEEE SSCS Arduino Contest’s high-school category, with a USD $250 prize.",
-      "recognition": "Second place worldwide, 2025 IEEE SSCS Arduino Contest, high-school category. USD $250 prize.",
+      "result": "Delivered a working assistive mouse with three control modes and published its firmware and printable hardware. Muse earned second place worldwide in the IEEE SSCS Arduino Contest’s high school category, with a USD $250 prize.",
+      "recognition": "Second place worldwide, 2025 IEEE SSCS Arduino Contest, high school category. USD $250 prize.",
       "links": [
         {
           "label": "Watch the demonstration",
@@ -622,9 +629,9 @@ window.PORTFOLIO_CONTENT = {
       "number": "03",
       "title": "Bottle to filament",
       "category": "Materials & fabrication",
-      "period": "2025–2026",
+      "period": "2025 to 2026",
       "headline": "Discarded PET, engineered into printable filament.",
-      "summary": "I designed, constructed and refined a machine that converts discarded PET bottle strips into usable 3D-printing filament, successfully producing material for finished prints.",
+      "summary": "I designed a machine that turns discarded PET bottle strips into printable filament. It produced material I could print with, although the output still needs further refinement.",
       "role": "Project lead · Mechanical design · Fabrication",
       "tools": [
         "PET processing",
@@ -634,17 +641,17 @@ window.PORTFOLIO_CONTENT = {
         "Prototyping"
       ],
       "build": [
-        "I secured a CAD $6,000 Youth Climate Action Fund grant through the Town of Oakville and its Bloomberg-supported program to engineer a bottle-to-filament system.",
-        "I designed, built, tested and refined the strip-fed machinery, then used its output to manufacture physical objects on my printers. Repeated successful prints demonstrate the complete process from discarded bottle to usable material and finished part."
+        "I secured a CAD $6,000 Youth Climate Action Fund grant through the Town of Oakville and its supported by Bloomberg Philanthropies program to engineer a bottle recycling system.",
+        "I built a strip based prototype and spent hours adjusting strip width and pulling speed to produce printable filament. Some prints worked, but the output was inconsistent. I then started a larger shredded plastic machine and built a steel hand crank shredder rather than buying an industrial one."
       ],
       "contributions": [
         {
           "title": "A complete material path",
-          "text": "Developed the bottle-strip feed and heated forming process, bringing mechanical design, electrical integration and fabrication into one working system."
+          "text": "Developed the PET strip feed and heated forming process, bringing mechanical design, electrical integration and fabrication into one working system."
         },
         {
           "title": "Design, build, revise",
-          "text": "Designed the machine in CAD, fabricated its components and refined successive iterations through hands-on testing. Validated the output by printing finished objects with the filament."
+          "text": "Designed the machine in CAD, fabricated its components and refined successive iterations through practical testing. Validated the output by printing finished objects with the filament."
         },
         {
           "title": "Public demonstration",
@@ -661,8 +668,8 @@ window.PORTFOLIO_CONTENT = {
           "text": "Producing a strand is only part of the task. Using the material for finished prints gave me a tangible way to assess whether the process achieved its purpose."
         }
       ],
-      "result": "Manufactured usable PET filament and successfully printed physical objects with it on multiple occasions. I demonstrated the machinery publicly, presenting practical material reuse and fabrication to community members and local officials.",
-      "recognition": "CAD $6,000 Youth Climate Action Fund grant, Town of Oakville, through the Bloomberg-supported program.",
+      "result": "The prototype produced PET filament I could use for test prints. I demonstrated it at community events, and the larger machine for shredded plastic is still under development.",
+      "recognition": "CAD $6,000 Youth Climate Action Fund grant, Town of Oakville, through the supported by Bloomberg Philanthropies program.",
       "links": [
         {
           "label": "Oakville project coverage",
@@ -681,7 +688,7 @@ window.PORTFOLIO_CONTENT = {
       "title": "ICanSort",
       "category": "Vision & physical computing",
       "period": "2026",
-      "headline": "Computer vision meets physical sorting and education.",
+      "headline": "A recycling robot that explains what it sorts.",
       "summary": "I spearheaded ICanSort’s software, electrical systems and CAD: a robotic recycling system and Samsung Solve for Tomorrow Canada national finalist that secured $5,000 for our school.",
       "role": "Technical development · CAD · Presenter",
       "tools": [
@@ -692,7 +699,7 @@ window.PORTFOLIO_CONTENT = {
         "Voice interface"
       ],
       "build": [
-        "ICanSort combines computer-vision classification with a physical waste-sorting mechanism. Biggie, its interactive screen-based robotic mascot, verbally teaches children how to sort their waste.",
+        "ICanSort combines computer vision classification with a physical waste sorting mechanism. Biggie, its interactive on screen robotic mascot, verbally teaches children how to sort their waste.",
         "I spearheaded much of the technical development, handling most of the software and electrical work, essentially all of the CAD, and substantial robotics integration. I was also one of two presenters who demonstrated the project to Samsung in Mississauga."
       ],
       "contributions": [
@@ -740,7 +747,7 @@ window.PORTFOLIO_CONTENT = {
       "category": "Indoor navigation",
       "period": "Hack the North · 2026",
       "headline": "Autonomous navigation across building levels.",
-      "summary": "NAVI combines autonomous indoor navigation, depth-camera mapping and persistent multi-level spatial representations with elevator traversal. I developed its mechanical design, display interface, meeting recording and elevator integration.",
+      "summary": "At Hack the North 2026, our team built NAVI to navigate indoor spaces, including travel between floors. I designed its printed mechanical parts, worked on its screen interface and developed the elevator integration.",
       "role": "CAD & printing · Display UI · Elevator integration",
       "tools": [
         "Depth imaging",
@@ -750,8 +757,8 @@ window.PORTFOLIO_CONTENT = {
         "Interface design"
       ],
       "build": [
-        "At Hack the North 2026, our team built NAVI, a mobile robot for navigating indoor spaces. The system used depth-camera scanning and persistent maps to move through complex buildings, with elevator integration for travel between levels.",
-        "I designed and fabricated printed mechanical components, developed the interactive screen-based face and meeting-recording functionality, and implemented elevator traversal integration for movement between levels."
+        "At Hack the North 2026, our team built NAVI to navigate indoor spaces. Its depth camera and mapping system helped it operate inside buildings, while elevator integration addressed movement between floors.",
+        "I designed and printed mechanical parts for the robot, developed its on screen interface and meeting recording feature, and worked on the elevator integration."
       ],
       "contributions": [
         {
@@ -760,11 +767,11 @@ window.PORTFOLIO_CONTENT = {
         },
         {
           "title": "A visible interface",
-          "text": "Developed the screen-based face and interface, giving the robot a clear visual point of interaction."
+          "text": "Developed the on screen face and interface, giving the robot a clear visual point of interaction."
         },
         {
           "title": "Beyond a single floor",
-          "text": "Developed elevator and multi-level traversal integration, alongside meeting-recording functionality."
+          "text": "Developed integration for elevator travel between floors. I also worked on meeting recording features."
         }
       ],
       "decisions": [
@@ -777,7 +784,7 @@ window.PORTFOLIO_CONTENT = {
           "text": "The display and mechanical structure were part of the same physical experience. I worked across both so the navigation system had an approachable form and face."
         }
       ],
-      "result": "Delivered mechanical hardware, an interactive display, meeting-recording functionality and elevator integration for a working indoor robot with persistent mapping and multi-level navigation.",
+      "result": "I contributed printed mechanical hardware, the screen interface and features for elevator integration and meeting recording.",
       "recognition": "Built at Hack the North 2026.",
       "links": [],
       "media": {
@@ -792,8 +799,8 @@ window.PORTFOLIO_CONTENT = {
       "title": "SymptoAI",
       "category": "Software & computer vision",
       "period": "Hack the Ridge · 2024",
-      "headline": "Voice, text and vision on resource-constrained hardware.",
-      "summary": "I built SymptoAI, a Raspberry Pi-based health assistant prototype combining voice, text and computer vision. It earned first place at Hack the Ridge 2024.",
+      "headline": "A health assistant prototype running on Raspberry Pi.",
+      "summary": "Our team built SymptoAI, a health assistant prototype on a Raspberry Pi that accepted voice, text and camera input. We won Hack the Ridge 2024.",
       "role": "Software development · Hardware integration",
       "tools": [
         "Python",
@@ -802,8 +809,8 @@ window.PORTFOLIO_CONTENT = {
         "Voice interface"
       ],
       "build": [
-        "I developed an assistant prototype that brought voice, text and vision interactions together on a Raspberry Pi. The build combined software interfaces with the constraints of a small computing platform.",
-        "The project was developed for Hack the Ridge 2024, where it earned first place. Its source repository and project story document the implementation."
+        "Our team combined voice, text and camera input on a Raspberry Pi to build SymptoAI. We used the same small computer for the different ways people could interact with it.",
+        "We demonstrated SymptoAI at Hack the Ridge 2024 and won first place. The GitHub repository and Devpost page document the build."
       ],
       "contributions": [
         {
@@ -1099,7 +1106,7 @@ window.PORTFOLIO_CONTENT = {
         "slug": "Muse",
         "title": "Muse",
         "category": "Robotics & embedded",
-        "shortDescription": "Wearable motion-controlled mouse with head, arm and hand modes.",
+        "shortDescription": "Wearable controlled through motion mouse with head, arm and hand modes.",
         "languages": [
           "C++"
         ],
@@ -1284,7 +1291,7 @@ window.PORTFOLIO_CONTENT = {
         "slug": "3D-Printing-Business-Website",
         "title": "3D-Printing-Business-Website",
         "category": "Web & interfaces",
-        "shortDescription": "This is the website for my 3D-printing business",
+        "shortDescription": "This is the website for my 3D printing business",
         "languages": [
           "JavaScript"
         ],
@@ -1345,7 +1352,7 @@ window.PORTFOLIO_CONTENT = {
         "slug": "TerminalAI",
         "title": "TerminalAI",
         "category": "Go tools",
-        "shortDescription": "A terminal-based AI chat",
+        "shortDescription": "A terminal AI chat",
         "languages": [
           "Go"
         ],
@@ -1596,7 +1603,7 @@ window.PORTFOLIO_CONTENT = {
         "slug": "Chattr",
         "title": "Chattr",
         "category": "Web & interfaces",
-        "shortDescription": "A web-based chat application made using Go, React.js, MongoDB, and Docker",
+        "shortDescription": "A web chat application made using Go, React.js, MongoDB, and Docker",
         "languages": [
           "JavaScript"
         ],
@@ -1968,7 +1975,7 @@ window.PORTFOLIO_CONTENT = {
         "slug": "Sprig-Space-Game",
         "title": "Sprig-Space-Game",
         "category": "Web & interfaces",
-        "shortDescription": "🍃 Learn to code by making games in a JavaScript web-based game editor.",
+        "shortDescription": "🍃 Learn to code by making games in a JavaScript web game editor.",
         "languages": [
           "JavaScript"
         ],
@@ -2010,7 +2017,7 @@ window.PORTFOLIO_CONTENT = {
         "slug": "project-based-learning-MadRobin13",
         "title": "project-based-learning-MadRobin13",
         "category": "Other projects",
-        "shortDescription": "Curated list of project-based tutorials",
+        "shortDescription": "Curated list of project based tutorials",
         "languages": [],
         "repoUrl": "https://github.com/MadRobin13/project-based-learning-MadRobin13",
         "liveUrl": null,

@@ -26,7 +26,7 @@
   const visualKinds={ 'pet-filament':'helix','ican-sort':'grid','navi':'compass','led-matrix':'pixels','symptoai':'wave','soap':'shield','terminal-ai':'code','cad':'shape'};
   function visual(p, i, modal=false) {
     const m=media[p.id]||{};
-    const asset=m.video?`<video muted ${m.image?`poster="${escape(m.image)}"`:''} ${modal?'controls playsinline preload="metadata"':'loop playsinline preload="none"'} data-video="${escape(m.video)}" aria-label="${escape(p.title)} — silent project demonstration"></video>`:m.image?`<img src="${escape(m.image)}" ${m.fallback?`data-fallback="${escape(m.fallback)}"`:``} alt="${escape(p.title)}" loading="${i<2?'eager':'lazy'}" decoding="async">`:`<canvas class="ascii-placeholder" data-kind="${escape(visualKinds[p.id]||'shape')}" role="img" aria-label="Generative ASCII project artwork for ${escape(p.title)}"></canvas>`;
+    const asset=m.video?`<video muted ${m.image?`poster="${escape(m.image)}"`:''} ${modal?'controls playsinline preload="metadata"':'loop playsinline preload="none"'} data-video="${escape(m.video)}" aria-label="${escape(p.title)} (silent project demonstration)"></video>`:m.image?`<img src="${escape(m.image)}" ${m.fallback?`data-fallback="${escape(m.fallback)}"`:``} alt="${escape(p.title)}" loading="${i<2?'eager':'lazy'}" decoding="async">`:`<canvas class="ascii-placeholder" data-kind="${escape(visualKinds[p.id]||'shape')}" role="img" aria-label="Generative ASCII project artwork for ${escape(p.title)}"></canvas>`;
     return asset;
   }
   function tile(p,i,feature){return `<article class="project-tile ${feature?['feature-one','feature-two','feature-three'][i]:''}" id="project-${escape(p.id)}">
@@ -102,10 +102,15 @@
     ctx.fillStyle=`rgba(177,201,175,${.3*(1-scroll*.5)})`;ctx.font='10px monospace';ctx.textAlign='left';ctx.fillText('    . :  •    ',Math.max(10,centerX-scale*1.55),Math.max(28,centerY-scale*1.85));ctx.fillStyle=`rgba(184,255,57,${.58*(1-scroll*.4)})`;ctx.fillText('+',centerX+scale*1.4,centerY-scale*.9);
   }
   function paintCard(c){const v=sizeCanvas(c);if(!v)return;const {ctx,w,h}=v;ctx.fillStyle='#151d2a';ctx.fillRect(0,0,w,h);const cell=Math.max(8,Math.min(12,w/45)),row=cell*1.35;ctx.font=`${cell*1.15}px Courier New,monospace`;ctx.textAlign='center';ctx.textBaseline='middle';const nx=Math.ceil(w/cell),ny=Math.ceil(h/row),kind=c.dataset.kind||'helix';const ramp=' .:;-+*X#@';for(let j=0;j<ny;j++)for(let i=0;i<nx;i++){
-    const x=i/nx*2-1,y=j/ny*2-1,rr=Math.hypot(x*.85,y),aa=Math.atan2(y,x);let z=0;
+    const cellX=(i+.5)*cell,cellY=(j+.5)*row;
+    // NAVI has no photograph yet. Its ASCII symbol stays centered in any card or dialog aspect ratio.
+    const naviScale=Math.min(w,h)*.43;
+    const x=kind==='compass'?(cellX-w/2)/naviScale:i/nx*2-1;
+    const y=kind==='compass'?(cellY-h/2)/naviScale:j/ny*2-1;
+    const rr=Math.hypot(x*.85,y),aa=Math.atan2(y,x);let z=0;
     if(kind==='helix')z=Math.exp(-Math.pow(rr-(.43+.08*Math.sin(6*aa)),2)/.007)+.44*Math.exp(-Math.pow(y-.26*Math.sin(x*10),2)/.01);
     else if(kind==='grid')z=(Math.sin(x*19)*Math.cos(y*16)>.54?1:0)*Math.exp(-rr*.8);
-    else if(kind==='compass')z=.7*Math.exp(-Math.pow(rr-.47,2)/.005)+.7*Math.exp(-Math.pow(x*.8+y*.2,2)/.007);
+    else if(kind==='compass')z=.7*Math.exp(-Math.pow(rr-.47,2)/.005)+.7*Math.exp(-Math.pow(x*.8+y*.2,2)/.007)*Math.exp(-rr*rr*.5);
     else if(kind==='pixels')z=(Math.sin(x*22)*Math.sin(y*18)>.55?1:0);
     else if(kind==='wave')z=Math.exp(-Math.pow(y-.24*Math.sin(x*15+Math.sin(x*10)),2)/.009);
     else if(kind==='shield')z=Math.exp(-Math.pow(Math.abs(x)*.5+y*y-.5,2)/.015);

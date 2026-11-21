@@ -15,7 +15,6 @@ window.ABHI_PROJECT_EVIDENCE = {
     "16-frc-1360-2026-workshop-robot-and-programming-practice",
     "17-frc-1360-robot-close-up-earlier-season-archive",
     "18-frc-1360-frc-robot-from-an-earlier-season",
-    "legacy-frc",
     "video-01-frc-1360",
     "video-02-frc-1360"
   ],
@@ -29,8 +28,7 @@ window.ABHI_PROJECT_EVIDENCE = {
     "22-pet-filament-builder-beside-shredder-version-with-respi",
     "23-pet-filament-small-3d-printed-shark-fidget-printed-outp",
     "24-pet-filament-with-oakville-mayor-at-youth-climate-actio",
-    "video-03-pet-filament",
-    "video-04-pet-filament"
+    "video-03-pet-filament"
   ],
   "splitter": [
     "28-splitter-splittr-usb-hub-circuit-board-and-printed-encl",
@@ -50,14 +48,15 @@ window.ABHI_PROJECT_EVIDENCE = {
   ],
   "symptoai": [
     "33-misc-raspberry-pi-workstation-and-peripherals-project-a",
-    "35-community-hackathon-group-photograph-in-classroom",
     "39-symptoai-hack-the-ridge-team"
   ],
   "soap": [
-    "github-soap-logo"
+    "github-soap-logo",
+    "github-soap-database-example"
   ],
   "dvd-pong": [
-    "legacy-dvd"
+    "legacy-dvd",
+    "github-dvd-game-image"
   ],
   "terminal-ai": [
     "github-terminalai-example"
@@ -69,16 +68,13 @@ window.ABHI_PROJECT_EVIDENCE = {
   ],
   "trigr": [
     "26-trigr-trigr-multi-camera-controller-with-camera-setup",
-    "27-trigr-trigr-handheld-eight-release-connectors-and-red-b",
-    "video-05-trigr"
+    "27-trigr-trigr-handheld-eight-release-connectors-and-red-b"
   ],
   "printing-business": [
     "25-printing-business-bambu-printer-producing-orange-printe"
   ],
   "abc2xyz": [
-    "40-eureka-hacks-certificate-team",
-    "34-community-eureka-hacks-award-winning-team-with-certific",
-    "37-community-eureka-hacks-team-with-best-use-of-ai-recogni"
+    "40-eureka-hacks-certificate-team"
   ]
 };
 window.ABHI_GITHUB_EVIDENCE = [
@@ -125,4 +121,22 @@ window.ABHI_GITHUB_EVIDENCE = [
     "remote": true
   }
 ];
+window.ABHI_GITHUB_EVIDENCE.push(
+  {
+    id: 'github-soap-database-example', type: 'photo', group: 'soap', groups: ['soap'],
+    title: 'Soap moderation logs stored in MongoDB',
+    src: 'https://raw.githubusercontent.com/MadRobin13/Soap-the-Discord-Bot/main/mongodb_exmple.png',
+    original: 'https://github.com/MadRobin13/Soap-the-Discord-Bot/blob/main/mongodb_exmple.png',
+    originalName: 'MadRobin13/Soap-the-Discord-Bot/mongodb_exmple.png',
+    review: false, remote: true
+  },
+  {
+    id: 'github-dvd-game-image', type: 'photo', group: 'dvd-pong', groups: ['dvd-pong'],
+    title: 'DVD Pong original game image from the repository',
+    src: 'https://raw.githubusercontent.com/MadRobin13/DVD-Pong/main/index.png',
+    original: 'https://github.com/MadRobin13/DVD-Pong/blob/main/index.png',
+    originalName: 'MadRobin13/DVD-Pong/index.png',
+    review: false, remote: true
+  }
+);
 window.ABHI_ARCHIVE.push(...window.ABHI_GITHUB_EVIDENCE);

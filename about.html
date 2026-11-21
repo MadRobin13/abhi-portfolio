@@ -11,7 +11,9 @@
 <link rel="stylesheet" href="assets/upgrade.css"/>
 <link rel="stylesheet" href="assets/refinement.css"/>
 <link rel="stylesheet" href="assets/about.css"/>
+<link rel="stylesheet" href="assets/identity-rail.css"/>
 <script defer src="assets/about.js"></script>
+<link rel="stylesheet" href="assets/recognitions.css"/>
 </head>
 <body class="about-page">
 <a class="skip-link" href="#about-main">Skip to about me</a>
@@ -22,33 +24,76 @@
 <div class="header-tools"><button type="button" class="mobile-menu-button" id="menu-toggle" aria-controls="mobile-nav" aria-expanded="false">Menu <span>+</span></button></div>
 </header>
 <nav class="mobile-nav" id="mobile-nav" aria-label="Mobile navigation" hidden><a href="index.html#projects">Work</a><a href="index.html#recognition">Awards</a><a href="index.html#experience">Experience</a><a href="about.html" aria-current="page">About</a><a href="index.html#contact">Contact</a></nav>
+<aside class="identity-rail" aria-label="Profile and recognitions">
+  <div class="rail-identity">
+    <a class="rail-wordmark" href="index.html" aria-label="Portfolio home">
+      <img alt="" src="assets/abhi-mark.svg" width="56" height="56"/>
+      <span>PORTFOLIO / 2026</span>
+    </a>
+    <p class="rail-overline">ENGINEERING / SOFTWARE / FABRICATION</p>
+    <p class="rail-name"><span>Abhimanyu</span><span class="rail-last-name">Chaudhary<span class="rail-dot">.</span></span></p>
+    <p class="rail-summary">I'm Abhi, a Grade 12 student from Oakville. I led FRC 1360's programming for two seasons and work across robotics, software, electronics and fabrication.</p>
+    <a class="rail-about-link" href="about.html">More about me <span aria-hidden="true">↗</span></a>
+  </div>
+  <section class="rail-highlights" aria-label="Recognitions">
+    <h2>RECOGNITIONS <span class="rail-recognition-range">01 to 04 / 13</span><small class="rail-cycle-cue" title="Recognitions move upward automatically" aria-label="Automatically scrolling recognitions">↑</small></h2>
+    <div class="rail-recognition-window" aria-label="Four recognitions visible at a time; they scroll upward automatically">
+      <ul class="rail-recognition-track" data-recognitions="desktop" aria-live="off">
+      <li class="rail-recognition-item"><a href="index.html#recognition"><strong>IEEE SSCS Arduino Contest</strong><span>Second place worldwide in 2025, high school category</span></a></li>
+      <li class="rail-recognition-item"><a href="index.html#recognition"><strong>Youth Climate Action Fund</strong><span>$6,000 grant for the PET filament maker</span></a></li>
+      <li class="rail-recognition-item"><a href="index.html#recognition"><strong>Samsung Solve for Tomorrow</strong><span>National finalist for our recycling robot in 2026</span></a></li>
+      <li class="rail-recognition-item"><a href="index.html#recognition"><strong>FIRST Ontario Championship</strong><span>Engineering Inspiration Award for the team in 2026</span></a></li>
+      </ul>
+    </div>
+  </section>
+  <nav class="rail-navigation" aria-label="Sidebar navigation">
+    <a href="index.html#projects">Work <span>↗</span></a>
+    <a href="index.html#recognition">Awards <span>↗</span></a>
+    <a href="index.html#experience">Experience <span>↗</span></a>
+    <a href="about.html" aria-current="page">About <span>↗</span></a>
+  </nav>
+  <div class="rail-socials"><a href="https://github.com/MadRobin13" rel="noopener noreferrer" target="_blank">GitHub</a><a href="https://ca.linkedin.com/in/abhimanyu-chaudhary-a1174733b" rel="noopener noreferrer" target="_blank">LinkedIn</a><a href="mailto:madrobin1340@gmail.com">Email</a></div>
+  <details class="rail-mobile-highlights">
+    <summary>Recognitions <small class="rail-cycle-cue" aria-label="Scrolls upward through recognitions when opened">↑</small><span>13 <span aria-hidden="true">+</span></span></summary>
+    <div class="rail-recognition-window" aria-label="Four recognitions visible at a time; they scroll upward automatically">
+      <ul class="rail-recognition-track" data-recognitions="mobile" aria-live="off">
+      <li class="rail-recognition-item"><a href="index.html#recognition"><strong>IEEE SSCS Arduino Contest</strong><span>Second place worldwide in 2025, high school category</span></a></li>
+      <li class="rail-recognition-item"><a href="index.html#recognition"><strong>Youth Climate Action Fund</strong><span>$6,000 grant for the PET filament maker</span></a></li>
+      <li class="rail-recognition-item"><a href="index.html#recognition"><strong>Samsung Solve for Tomorrow</strong><span>National finalist for our recycling robot in 2026</span></a></li>
+      <li class="rail-recognition-item"><a href="index.html#recognition"><strong>FIRST Ontario Championship</strong><span>Engineering Inspiration Award for the team in 2026</span></a></li>
+      </ul>
+    </div>
+  </details>
+</aside>
 <main class="about-main" id="about-main">
 <a class="about-return" href="index.html#about">← Back to portfolio</a>
 <section class="about-cover" aria-labelledby="about-title">
 <div>
 <p class="about-eyebrow">Away from the projects</p>
 <h1 id="about-title">About<br/><span>me.</span></h1>
-<p class="about-lede">I'm Abhi. I like robotics, programming, designing things, and figuring out why something doesn't work.</p>
-<p class="about-context">I'm a student in Oakville, Ontario. I spend a lot of time with code, electronics and 3D printing, but that's not my whole life. I also enjoy the outdoors, collecting Transformers, spending time with friends and trying new things.</p>
+<p class="about-lede">I'm Abhi. I spend a lot of my time programming robots, and I enjoy building projects that other people can use.</p>
+<p class="about-context">I'm in Grade 12 in Oakville, Ontario. Outside my projects, I enjoy biking and spending time with friends. I've been collecting Transformers for years, and I still design little accessories for them.</p>
 </div>
 <figure class="about-hero-photo">
 <img src="assets/media/photos/02-identity-at-nvidia-headquarters-california.webp" alt="Abhi visiting NVIDIA headquarters in California"/>
-<figcaption>At NVIDIA headquarters · California</figcaption>
+<figcaption>Visiting NVIDIA headquarters in California</figcaption>
 </figure>
 </section>
 <div class="about-notes">
 <section class="about-note" aria-labelledby="early-title">
-<div class="about-note-copy"><span class="about-note-index">01 / EARLY CURIOSITY</span><h2 id="early-title">Taking things apart, putting them together.</h2><p>I was interested in electronics before high school. I liked experimenting with speakers and other small builds, and eventually found robotics through FIRST. I've been part of FRC Team 1360 since 2022.</p><p>Engineering became a place where I could combine programming with something physical I could test, troubleshoot, and improve.</p></div>
+<div class="about-note-copy"><span class="about-note-index">01 / EARLY CURIOSITY</span><h2 id="early-title">Where it started.</h2><p>I was interested in electronics long before high school and liked making small projects at home. I joined Team 1360's FIRST community in 2019 through LEGO League. I later moved into FRC in 2022.</p><p>In FRC, I got to work on robot software while learning more about the hardware it controlled. I became Programming Lead for the 2025 and 2026 seasons.</p></div>
 <figure class="about-note-photo"><img src="assets/media/photos/03-identity-childhood-visit-to-the-electrical-engineering.webp" loading="lazy" alt="Abhi as a child near an electrical engineering department sign"/><figcaption>An early visit to an electrical engineering department</figcaption></figure>
 </section>
 <section class="about-note" aria-labelledby="outside-title">
-<div class="about-note-copy"><span class="about-note-index">02 / OFF THE CLOCK</span><h2 id="outside-title">More than just projects.</h2><p>When I'm not building something, I like getting outside on my bike, spending time with friends, and exploring places that catch my interest. Scouts has been a big part of my life, both for the outdoors and for the people I've met.</p><p>I've collected Transformers for years, and I've been into dinosaurs and paleontology since I was little. I like learning about all sorts of things, even when they have nothing to do with engineering.</p></div>
+<div class="about-note-copy"><span class="about-note-index">02 / OFF THE CLOCK</span><h2 id="outside-title">More than my work.</h2><p>When I'm not building something, I like getting outside on my bike, spending time with friends, and exploring places that catch my interest. Scouts has been a big part of my life, both for the outdoors and for the people I've met.</p><p>I've collected Transformers for years, and I've been into dinosaurs and paleontology since I was little. I like learning about all sorts of things, even when they have nothing to do with engineering.</p></div>
 <figure class="about-note-photo"><img src="assets/media/photos/04-identity-at-a-prehistoric-shark-jaw-display-with-a-frie.webp" loading="lazy" alt="Abhi and a friend posing together at a large fossil shark jaw display"/><figcaption>Out with a friend at a fossil exhibit</figcaption></figure>
 </section>
 </div>
 <div class="about-end"><p>For the technical side of things:</p><a href="index.html#projects">Explore my work ↗</a></div>
+<nav class="about-social-links" aria-label="My profiles"><a href="https://github.com/MadRobin13" target="_blank" rel="noopener noreferrer">GitHub</a><a href="https://ca.linkedin.com/in/abhimanyu-chaudhary-a1174733b" target="_blank" rel="noopener noreferrer">LinkedIn</a><a href="https://devpost.com/MadRobin13" target="_blank" rel="noopener noreferrer">Devpost</a><a href="https://www.printables.com/@mando13_1132886" target="_blank" rel="noopener noreferrer">Printables</a><a href="https://cults3d.com/en/users/MadRobin13/3d-models" target="_blank" rel="noopener noreferrer">Cults3D</a><a href="mailto:madrobin1340@gmail.com">Email</a></nav>
 </main>
-<footer class="footer paper-frame" id="contact"><div><span class="footer-small">GET IN TOUCH</span><strong>Have something in mind?</strong></div><a class="footer-contact" href="mailto:madrobin1340@gmail.com">Email me <span>↗</span></a><div class="footer-links"><a href="https://github.com/MadRobin13" rel="noopener noreferrer" target="_blank">GitHub</a><a href="https://ca.linkedin.com/in/abhimanyu-chaudhary-a1174733b" rel="noopener noreferrer" target="_blank">LinkedIn</a><a href="https://devpost.com/MadRobin13" rel="noopener noreferrer" target="_blank">Devpost</a></div><div class="footer-bottom"><a href="#top">BACK TO TOP ↑</a></div></footer>
+<footer class="footer paper-frame" id="contact"><div><span class="footer-small">GET IN TOUCH</span><strong>Have something in mind?</strong></div><a class="footer-contact" href="mailto:madrobin1340@gmail.com">Email me <span>↗</span></a><div class="footer-links"><a href="https://github.com/MadRobin13" rel="noopener noreferrer" target="_blank">GitHub</a><a href="https://ca.linkedin.com/in/abhimanyu-chaudhary-a1174733b" rel="noopener noreferrer" target="_blank">LinkedIn</a><a href="https://devpost.com/MadRobin13" rel="noopener noreferrer" target="_blank">Devpost</a><a href="https://www.printables.com/@mando13_1132886" rel="noopener noreferrer" target="_blank">Printables</a><a href="https://cults3d.com/en/users/MadRobin13/3d-models" rel="noopener noreferrer" target="_blank">Cults3D</a><a href="mailto:madrobin1340@gmail.com">Email</a></div><div class="footer-bottom"><a href="#top">BACK TO TOP ↑</a></div></footer>
 </div>
+  <script defer src="assets/recognitions.js"></script>
 </body>
 </html>

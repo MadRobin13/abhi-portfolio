@@ -13,7 +13,7 @@
   function openMedia(id){
     const m=byId.get(id);if(!m||!dialog||!dialogBody)return;
     const frame=m.type==='video'?`<video src="${escape(m.src)}" poster="${escape(m.poster)}" controls muted playsinline preload="metadata"></video>`:`<img src="${escape(m.src)}" alt="${escape(m.title)}">`;
-    dialogBody.innerHTML=`<div class="media-viewer">${frame}<div class="media-viewer-text"><span class="viewer-label">${m.type==='video'?'VIDEO RECORDING':'PHOTOGRAPH'} / ${escape(m.group.toUpperCase())}</span><h2>${escape(m.title)}</h2><p>Source: ${escape(m.originalName)}</p>${m.review?'<p class="publication-note">Contains identifiable people or unresolved attribution. Review permission and caption accuracy before publishing.</p>':''}${m.type==='photo'?`<a href="${escape(m.original)}" target="_blank" rel="noopener">Open full-size website image ↗</a>`:''}</div></div>`;
+    dialogBody.innerHTML=`<div class="media-viewer">${frame}<div class="media-viewer-text"><span class="viewer-label">${m.type==='video'?'VIDEO RECORDING':'PHOTOGRAPH'} / ${escape(m.group.toUpperCase())}</span><h2>${escape(m.title)}</h2>${m.type==='photo'?`<a href="${escape(m.original)}" target="_blank" rel="noopener">Open full-size website image ↗</a>`:''}</div></div>`;
     dialog.showModal(); const v=dialogBody.querySelector('video');if(v){v.muted=true;v.defaultMuted=true;v.volume=0;}
   }
   document.addEventListener('click',e=>{
@@ -32,7 +32,34 @@
   document.addEventListener('keydown',e=>{if(e.key==='Escape'&&dialog?.open)dialogBody.innerHTML=''});
   const intro=document.getElementById('ascii-intro');
   const noMotion=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  function finishIntro(){if(!intro)return;intro.classList.add('intro-finish');window.setTimeout(()=>intro.remove(),450);}
-  document.getElementById('skip-intro')?.addEventListener('click',finishIntro);
-  if(intro){let prior=false;try{prior=sessionStorage.getItem('abhi-intro-seen')==='yes';sessionStorage.setItem('abhi-intro-seen','yes')}catch(e){}if(prior||noMotion)finishIntro();else window.setTimeout(finishIntro,1450);}
+  if (intro) {
+    let finished=false;
+    let revealComplete=false;
+    const finishIntro=()=>{
+      if(finished)return;
+      finished=true;
+      intro.classList.add('intro-finish');
+      window.setTimeout(()=>intro.remove(),450);
+    };
+    document.getElementById('skip-intro')?.addEventListener('click',finishIntro);
+    if (noMotion) {
+      finishIntro();
+    } else {
+      // Wait for the name reveal itself, then let viewers see the completed ASCII art.
+      const nameArt=intro.querySelector('.name-ascii');
+      const afterReveal=()=>{
+        if(revealComplete)return;
+        revealComplete=true;
+        window.setTimeout(finishIntro,800);
+      };
+      nameArt?.addEventListener('animationend',event=>{
+        if(event.animationName==='introReveal')afterReveal();
+      });
+      const reveal=nameArt?.getAnimations?.().find(animation=>animation.animationName==='introReveal');
+      if (reveal) reveal.finished.then(afterReveal,afterReveal);
+      else window.setTimeout(afterReveal,1250);
+      // Last resort: never leave an overlay hiding the site if animation events fail.
+      window.setTimeout(finishIntro,3700);
+    }
+  }
 })();

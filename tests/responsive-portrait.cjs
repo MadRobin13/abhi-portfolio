@@ -19,7 +19,7 @@ assert(!site.includes('ABHI_PORTRAIT_3D'), 'No remnant 3D face in moving backgro
 assert(about.includes('02-identity-at-nvidia-headquarters-california.webp'));
 assert(about.includes('03-identity-childhood-visit-to-the-electrical-engineering.webp'));
 assert(about.includes('04-identity-at-a-prehistoric-shark-jaw-display-with-a-frie.webp'));
-assert(about.includes('More than just projects.'));
+assert(about.includes('More than my work.'));
 assert(!about.includes('Prehistoric life has always had my attention.'));
 assert(build.includes("'about.html'"));
 assert(!/pause art/i.test(html));

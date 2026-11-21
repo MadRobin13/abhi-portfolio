@@ -11,8 +11,8 @@ window.ABHI_MEDIA = {
   },
   "pet-filament": {
     "image": "assets/media/photos/20-pet-filament-pet-pull-extrusion-machine-assembled-proto.webp",
-    "video": "assets/media/videos/video-04-pet-filament.mp4",
-    "caption": "PET filament machine, running prototype"
+    "video": "assets/media/videos/pet-filament-demo-verified.mp4",
+    "caption": "PET filament prototype demonstration"
   },
   "splitter": {
     "image": "https://raw.githubusercontent.com/MadRobin13/Splittr/main/design_v2.png",
@@ -28,11 +28,11 @@ window.ABHI_MEDIA = {
   "navi": {
     "image": null,
     "video": null,
-    "caption": "Original ASCII study, NAVI media not provided"
+    "caption": "NAVI project media will be added later"
   },
   "led-matrix": {
-    "image": "assets/media/photos/29-led-matrix-strobe-led-matrix-wiring-on-reverse-of-panel.webp",
-    "video": "assets/media/videos/video-06-led-matrix.mp4",
+    "image": "assets/media/posters/video-06-led-matrix.webp",
+    "video": "assets/media/videos/strobe-led-matrix-verified.mp4",
     "caption": "Strobe live LED matrix demonstration"
   },
   "symptoai": {
@@ -43,7 +43,7 @@ window.ABHI_MEDIA = {
   "soap": {
     "image": "https://raw.githubusercontent.com/MadRobin13/Soap-the-Discord-Bot/main/Soap_logo_v2.png",
     "video": null,
-    "caption": "Original ASCII artwork, project screenshot pending"
+    "caption": "Project repository media"
   },
   "dvd-pong": {
     "image": "assets/images/dvd-pong-logo.png",
@@ -58,12 +58,12 @@ window.ABHI_MEDIA = {
   "cad": {
     "image": "assets/media/photos/43-cad-articulated-design-03.webp",
     "video": null,
-    "caption": "Original 3D-printed model designed by Abhi"
+    "caption": "Original 3D printed model designed by Abhi"
   },
   "trigr": {
     "image": "assets/media/photos/27-trigr-trigr-handheld-eight-release-connectors-and-red-b.webp",
-    "video": "assets/media/videos/video-05-trigr.mp4",
-    "caption": "TRIGR camera controller, actual synchronized release test"
+    "video": null,
+    "caption": "TRIGR camera controller and isolated eight camera connections"
   },
   "printing-business": {
     "image": "assets/media/photos/25-printing-business-bambu-printer-producing-orange-printe.webp",

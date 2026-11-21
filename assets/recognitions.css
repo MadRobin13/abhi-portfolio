@@ -1,0 +1,24 @@
+/* Four-row scrolling recognitions, desktop and responsive drawer. */
+.identity-rail .rail-recognition-window{height:calc(4 * var(--recognition-row-height));overflow:hidden;position:relative}
+.identity-rail .rail-highlights{--recognition-row-height:77px}
+.identity-rail .rail-mobile-highlights{--recognition-row-height:79px}
+.identity-rail .rail-recognition-track{list-style:none;padding:0;margin:0;transform:translateY(0);transition:transform .72s cubic-bezier(.27,.05,.2,1);will-change:transform}
+.identity-rail .rail-recognition-track.is-shifting{transform:translateY(calc(0px - var(--recognition-row-height)))}
+.identity-rail .rail-recognition-item{box-sizing:border-box;height:var(--recognition-row-height);margin:0;padding:0!important;list-style:none;overflow:hidden}
+.identity-rail .rail-recognition-item a{height:100%;box-sizing:border-box;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding:7px 6px 7px 0!important}
+.identity-rail .rail-recognition-item strong{font-size:11.5px;line-height:1.32;max-height:2.64em;overflow:hidden}
+.identity-rail .rail-recognition-item span{font-size:10.5px;line-height:1.34;max-height:2.68em;overflow:hidden;margin-top:4px}
+.identity-rail .rail-highlights h2 span{display:inline;margin:0;white-space:nowrap;letter-spacing:0}
+@media(max-width:1199px){
+  .identity-rail .rail-mobile-highlights ul{padding:0}
+  .identity-rail .rail-recognition-item a{padding:7px 4px!important}
+}
+@media(prefers-reduced-motion:reduce){.identity-rail .rail-recognition-track{transition:none!important}}
+
+/* A small, steady cue shows the sidebar list moves upward on its own. */
+.identity-rail .rail-highlights h2{gap:7px;align-items:center}
+.identity-rail .rail-highlights h2 .rail-recognition-range{margin-left:auto}
+.identity-rail .rail-cycle-cue{color:#b9ff39;display:inline-block;flex:none;font:700 15px/1 var(--mono);letter-spacing:0;animation:railCycleCue 2.6s ease-in-out infinite}
+.identity-rail .rail-mobile-highlights summary .rail-cycle-cue{margin-left:auto;margin-right:5px;font-size:15px}
+@keyframes railCycleCue{0%,100%{opacity:.6;transform:translateY(2px)}55%{opacity:1;transform:translateY(-2px)}}
+@media(prefers-reduced-motion:reduce){.identity-rail .rail-cycle-cue{animation:none}}

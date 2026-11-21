@@ -7,7 +7,7 @@ window.ABHI_ARCHIVE = [
       "identity",
       "about"
     ],
-    "title": "Restaurant portrait — original photograph",
+    "title": "Restaurant portrait : original photograph",
     "src": "assets/media/photos/01-identity-restaurant-portrait-original-photograph.webp",
     "original": "assets/media/photos/01-identity-restaurant-portrait-original-photograph.webp",
     "originalName": "D7F83E86-C713-477F-9046-4B16635B069F_1_105_c.jpeg",
@@ -170,7 +170,7 @@ window.ABHI_ARCHIVE = [
       "frc-1360",
       "robots"
     ],
-    "title": "2026 Andromeda at Niagara — field scene",
+    "title": "2026 Andromeda at Niagara : field scene",
     "src": "assets/media/photos/10-frc-1360-2026-andromeda-at-niagara-field-scene.webp",
     "original": "assets/media/photos/10-frc-1360-2026-andromeda-at-niagara-field-scene.webp",
     "originalName": "2026NiagaraDistrict (36).JPG",
@@ -242,7 +242,7 @@ window.ABHI_ARCHIVE = [
       "frc-1360",
       "recognition"
     ],
-    "title": "Niagara team photo — finalist and Engineering Inspiration",
+    "title": "Niagara team photo : finalist and Engineering Inspiration",
     "src": "assets/media/photos/14-frc-1360-niagara-team-photo-finalist-and-engineering-in.webp",
     "original": "assets/media/photos/14-frc-1360-niagara-team-photo-finalist-and-engineering-in.webp",
     "originalName": "2026DistrictNiagara (17).JPG",
@@ -332,7 +332,7 @@ window.ABHI_ARCHIVE = [
       "pet-filament",
       "hardware"
     ],
-    "title": "PET pull-extrusion machine — assembled prototype",
+    "title": "PET pull-extrusion machine : assembled prototype",
     "src": "assets/media/photos/20-pet-filament-pet-pull-extrusion-machine-assembled-proto.webp",
     "original": "assets/media/photos/20-pet-filament-pet-pull-extrusion-machine-assembled-proto.webp",
     "originalName": "798ED425-DA30-4CFA-A6B3-FCFF470A474A_1_105_c.jpeg",
@@ -385,7 +385,7 @@ window.ABHI_ARCHIVE = [
     "groups": [
       "pet-filament"
     ],
-    "title": "Small 3D-printed shark fidget — printed output",
+    "title": "Small 3D printed shark fidget : printed output",
     "src": "assets/media/photos/23-pet-filament-small-3d-printed-shark-fidget-printed-outp.webp",
     "original": "assets/media/photos/23-pet-filament-small-3d-printed-shark-fidget-printed-outp.webp",
     "originalName": "08CBE60A-454D-43F7-8CD6-7460BB35AA85_1_105_c.jpeg",
@@ -456,7 +456,7 @@ window.ABHI_ARCHIVE = [
       "trigr",
       "hardware"
     ],
-    "title": "TRIGR handheld — eight release connectors and red button",
+    "title": "TRIGR handheld : eight release connectors and red button",
     "src": "assets/media/photos/27-trigr-trigr-handheld-eight-release-connectors-and-red-b.webp",
     "original": "assets/media/photos/27-trigr-trigr-handheld-eight-release-connectors-and-red-b.webp",
     "originalName": "7D24C3F1-A302-4B0D-AF9D-DDBBB7762F9C_1_105_c.jpeg",
@@ -510,7 +510,7 @@ window.ABHI_ARCHIVE = [
       "ican-sort",
       "samsung"
     ],
-    "title": "ICanSort — assembled three-stream recycling prototype",
+    "title": "ICanSort : assembled three-stream recycling prototype",
     "src": "assets/media/photos/30-ican-sort-icansort-assembled-three-stream-recycling-pro.webp",
     "original": "assets/media/photos/30-ican-sort-icansort-assembled-three-stream-recycling-pro.webp",
     "originalName": "IMG_3992.JPG",
@@ -573,43 +573,6 @@ window.ABHI_ARCHIVE = [
     ]
   },
   {
-    "id": "34-community-eureka-hacks-award-winning-team-with-certific",
-    "type": "photo",
-    "group": "abc2xyz",
-    "groups": [
-      "abc2xyz",
-      "community",
-      "hackathons"
-    ],
-    "title": "Eureka Hacks award-winning team with certificates",
-    "src": "assets/media/photos/34-community-eureka-hacks-award-winning-team-with-certific.webp",
-    "original": "assets/media/photos/34-community-eureka-hacks-award-winning-team-with-certific.webp",
-    "originalName": "461511B5-6FE7-4D8F-B367-C687B2DD3E47_1_105_c.jpeg",
-    "review": true,
-    "dimensions": [
-      1320,
-      594
-    ]
-  },
-  {
-    "id": "35-community-hackathon-group-photograph-in-classroom",
-    "type": "photo",
-    "group": "symptoai",
-    "groups": [
-      "symptoai",
-      "hackathons"
-    ],
-    "title": "SymptoAI team after Hack the Ridge presentation",
-    "src": "assets/media/photos/35-community-hackathon-group-photograph-in-classroom.webp",
-    "original": "assets/media/photos/35-community-hackathon-group-photograph-in-classroom.webp",
-    "originalName": "073455BC-9ECC-45CA-AB6D-30FAAE9BEB0B_1_105_c.jpeg",
-    "review": true,
-    "dimensions": [
-      1024,
-      768
-    ]
-  },
-  {
     "id": "36-community-hack-club-group-photograph-with-posters",
     "type": "photo",
     "group": "community",
@@ -628,49 +591,16 @@ window.ABHI_ARCHIVE = [
     ]
   },
   {
-    "id": "37-community-eureka-hacks-team-with-best-use-of-ai-recogni",
-    "type": "photo",
-    "group": "abc2xyz",
-    "groups": [
-      "abc2xyz",
-      "community",
-      "hackathons"
-    ],
-    "title": "Eureka Hacks team with Best Use of AI recognition",
-    "src": "assets/media/photos/37-community-eureka-hacks-team-with-best-use-of-ai-recogni.webp",
-    "original": "assets/media/photos/37-community-eureka-hacks-team-with-best-use-of-ai-recogni.webp",
-    "originalName": "452F3EEA-DC8A-47E2-B76E-C2B4C8E0E7A1_1_105_c.jpeg",
-    "review": true,
-    "dimensions": [
-      1304,
-      603
-    ]
-  },
-  {
     "id": "legacy-muse",
     "type": "photo",
     "group": "muse",
     "groups": [
       "muse"
     ],
-    "title": "Muse — original assistive device photograph",
+    "title": "Muse : original assistive device photograph",
     "src": "assets/images/muse-real.webp",
     "original": "assets/images/muse-real.webp",
     "originalName": "original archive: muse-real.webp",
-    "review": false,
-    "dimensions": []
-  },
-  {
-    "id": "legacy-frc",
-    "type": "photo",
-    "group": "frc-1360",
-    "groups": [
-      "frc-1360"
-    ],
-    "title": "Historical FRC hardware photograph",
-    "src": "assets/images/frc-real.jpg",
-    "original": "assets/images/frc-real.webp",
-    "originalName": "original archive: frc-real.jpg",
     "review": false,
     "dimensions": []
   },
@@ -681,7 +611,7 @@ window.ABHI_ARCHIVE = [
     "groups": [
       "splitter"
     ],
-    "title": "Splittr — original PCB photograph",
+    "title": "Splittr : original PCB photograph",
     "src": "assets/images/splittr-board.webp",
     "original": "assets/images/splittr-board.webp",
     "originalName": "original archive: splittr-board.webp",
@@ -695,7 +625,7 @@ window.ABHI_ARCHIVE = [
     "groups": [
       "splitter"
     ],
-    "title": "Splittr — original enclosure photograph",
+    "title": "Splittr : original enclosure photograph",
     "src": "assets/images/splittr-enclosure.webp",
     "original": "assets/images/splittr-enclosure.webp",
     "originalName": "original archive: splittr-enclosure.webp",
@@ -709,7 +639,7 @@ window.ABHI_ARCHIVE = [
     "groups": [
       "dvd-pong"
     ],
-    "title": "DVD Pong — original game logo",
+    "title": "DVD Pong : original game logo",
     "src": "assets/images/dvd-pong-logo.png",
     "original": "assets/images/dvd-pong-logo.webp",
     "originalName": "original archive: dvd-pong-logo.png",
@@ -724,7 +654,7 @@ window.ABHI_ARCHIVE = [
       "frc-1360",
       "robots"
     ],
-    "title": "Robot shooting in workshop — season of footage to verify",
+    "title": "FRC robot shooter testing in workshop",
     "src": "assets/media/videos/video-01-frc-1360.mp4",
     "poster": "assets/media/posters/video-01-frc-1360.webp",
     "originalName": "IMG_0180.MOV",
@@ -756,42 +686,10 @@ window.ABHI_ARCHIVE = [
       "pet-filament",
       "hardware"
     ],
-    "title": "PET machine running — vertical recording",
-    "src": "assets/media/videos/video-03-pet-filament.mp4",
+    "title": "PET machine running : vertical recording",
+    "src": "assets/media/videos/pet-filament-demo-verified.mp4",
     "poster": "assets/media/posters/video-03-pet-filament.webp",
     "originalName": "IMG_0122.MOV",
-    "review": false,
-    "dimensions": [],
-    "duration": null
-  },
-  {
-    "id": "video-04-pet-filament",
-    "type": "video",
-    "group": "pet-filament",
-    "groups": [
-      "pet-filament",
-      "hardware"
-    ],
-    "title": "PET filament-making equipment operating",
-    "src": "assets/media/videos/video-04-pet-filament.mp4",
-    "poster": "assets/media/posters/video-04-pet-filament.webp",
-    "originalName": "IMG_5478 2.MOV",
-    "review": false,
-    "dimensions": [],
-    "duration": null
-  },
-  {
-    "id": "video-05-trigr",
-    "type": "video",
-    "group": "trigr",
-    "groups": [
-      "trigr",
-      "hardware"
-    ],
-    "title": "TRIGR synchronized camera trigger — bench demonstration",
-    "src": "assets/media/videos/video-05-trigr.mp4",
-    "poster": "assets/media/posters/video-05-trigr.webp",
-    "originalName": "IMG_0658.MOV",
     "review": false,
     "dimensions": [],
     "duration": null
@@ -804,24 +702,13 @@ window.ABHI_ARCHIVE = [
       "led-matrix",
       "hardware"
     ],
-    "title": "Strobe blue LED matrix operating",
-    "src": "assets/media/videos/video-06-led-matrix.mp4",
+    "title": "Strobe Arduino LED matrix running blue light patterns",
+    "src": "assets/media/videos/strobe-led-matrix-verified.mp4",
     "poster": "assets/media/posters/video-06-led-matrix.webp",
     "originalName": "054346a4-e1bd-4bf7-9902-36327a3f0963.MP4",
     "review": false,
     "dimensions": [],
     "duration": null
-  },
-  {
-    "id": "source-duplicate-img4133",
-    "type": "duplicate",
-    "group": "muse",
-    "groups": [],
-    "title": "Second upload of orange LCD demonstration — identical decoded video frames; not repeated in gallery",
-    "src": "assets/media/videos/video-07-misc.mp4",
-    "originalName": "IMG_4133(1).MOV",
-    "review": true,
-    "dimensions": []
   },
   {
     "id": "38-community-engineering-club-stairwell",
@@ -850,7 +737,7 @@ window.ABHI_ARCHIVE = [
       "symptoai",
       "hackathons"
     ],
-    "title": "Hack the Ridge team photograph at presentation",
+    "title": "SymptoAI first place team at Hack the Ridge",
     "src": "assets/media/photos/39-symptoai-hack-the-ridge-team.webp",
     "original": "assets/media/photos/39-symptoai-hack-the-ridge-team.webp",
     "originalName": "073455BC-9ECC-45CA-AB6D-30FAAE9BEB0B_1_105_c(1).jpeg",
@@ -869,7 +756,7 @@ window.ABHI_ARCHIVE = [
       "hackathons",
       "community"
     ],
-    "title": "Eureka Hacks team with award certificates",
+    "title": "Eureka Hacks winning team with award certificates",
     "src": "assets/media/photos/40-eureka-hacks-certificate-team.webp",
     "original": "assets/media/photos/40-eureka-hacks-certificate-team.webp",
     "originalName": "IMG_20240504_220029.JPG",
@@ -886,7 +773,7 @@ window.ABHI_ARCHIVE = [
     "groups": [
       "cad"
     ],
-    "title": "Custom articulated 3D-printed model with accessories",
+    "title": "Custom articulated 3D printed model with accessories",
     "src": "assets/media/photos/41-cad-articulated-design-01.webp",
     "original": "assets/media/photos/41-cad-articulated-design-01.webp",
     "originalName": "IMG_2371.jpeg",
@@ -903,7 +790,7 @@ window.ABHI_ARCHIVE = [
     "groups": [
       "cad"
     ],
-    "title": "Articulated 3D-printed model on a display stand",
+    "title": "Articulated 3D printed model on a display stand",
     "src": "assets/media/photos/42-cad-articulated-design-02.webp",
     "original": "assets/media/photos/42-cad-articulated-design-02.webp",
     "originalName": "F0B6A657-8274-49B4-A286-45E04D8007A0_1_105_c.jpeg",
@@ -920,7 +807,7 @@ window.ABHI_ARCHIVE = [
     "groups": [
       "cad"
     ],
-    "title": "Custom 3D-printed figure photographed against a red background",
+    "title": "Custom 3D printed figure photographed against a red background",
     "src": "assets/media/photos/43-cad-articulated-design-03.webp",
     "original": "assets/media/photos/43-cad-articulated-design-03.webp",
     "originalName": "C6D2FF41-B9B9-4D19-8367-09533B83E117_1_105_c.jpeg",
