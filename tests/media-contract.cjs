@@ -46,7 +46,14 @@ const strobePoster=path.join(root,'assets/media/posters/video-06-led-matrix.webp
 const rgb=execFileSync('ffmpeg',['-hide_banner','-loglevel','error','-i',strobePoster,'-vf','scale=1:1','-frames:v','1','-pix_fmt','rgb24','-f','rawvideo','-']);
 assert(rgb[2]>rgb[0]*2 && rgb[2]>rgb[1]*2,'Strobe video poster must actually show the blue LED matrix, not TRIGR hardware');
 assert.equal(context.window.ABHI_MEDIA['led-matrix'].image,'assets/media/posters/video-06-led-matrix.webp');
-only('soap',2,0); only('dvd-pong',2,0);
+only('soap',1,0); only('dvd-pong',1,0);
+// Regressions: external repo images are not automatically suitable project media.
+for(const id of ['github-soap-database-example','github-dvd-game-image']) assert(!byId.has(id),`Removed unrelated repository image still in archive: ${id}`);
+assert.deepEqual(Array.from(evidence.soap), ['github-soap-logo']);
+assert.deepEqual(Array.from(evidence['dvd-pong']), ['legacy-dvd']);
+const extensions=readFileSync(path.join(root,'assets/content-extensions.js'),'utf8');
+assert(!/school photography program|school photography build|program.s synchronizing camera shutters/i.test(extensions),'TRIGR incorrectly described as school photography coursework/program');
+assert(extensions.includes('independently designed and built TRIGR') && extensions.includes('Independent invention'),'TRIGR independent invention attribution absent');
 const mediaExplorer=readFileSync(path.join(root,'assets/media-explorer.js'),'utf8');
 assert(!mediaExplorer.includes('Source: ${escape(m.originalName)}'),'Public gallery must not leak technical uploaded filenames');
 assert(!mediaExplorer.includes('Contains identifiable people or unresolved attribution'),'Internal review instruction must not appear in public modal');

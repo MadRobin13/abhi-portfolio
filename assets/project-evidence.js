@@ -51,12 +51,10 @@ window.ABHI_PROJECT_EVIDENCE = {
     "39-symptoai-hack-the-ridge-team"
   ],
   "soap": [
-    "github-soap-logo",
-    "github-soap-database-example"
+    "github-soap-logo"
   ],
   "dvd-pong": [
-    "legacy-dvd",
-    "github-dvd-game-image"
+    "legacy-dvd"
   ],
   "terminal-ai": [
     "github-terminalai-example"
@@ -121,22 +119,4 @@ window.ABHI_GITHUB_EVIDENCE = [
     "remote": true
   }
 ];
-window.ABHI_GITHUB_EVIDENCE.push(
-  {
-    id: 'github-soap-database-example', type: 'photo', group: 'soap', groups: ['soap'],
-    title: 'Soap moderation logs stored in MongoDB',
-    src: 'https://raw.githubusercontent.com/MadRobin13/Soap-the-Discord-Bot/main/mongodb_exmple.png',
-    original: 'https://github.com/MadRobin13/Soap-the-Discord-Bot/blob/main/mongodb_exmple.png',
-    originalName: 'MadRobin13/Soap-the-Discord-Bot/mongodb_exmple.png',
-    review: false, remote: true
-  },
-  {
-    id: 'github-dvd-game-image', type: 'photo', group: 'dvd-pong', groups: ['dvd-pong'],
-    title: 'DVD Pong original game image from the repository',
-    src: 'https://raw.githubusercontent.com/MadRobin13/DVD-Pong/main/index.png',
-    original: 'https://github.com/MadRobin13/DVD-Pong/blob/main/index.png',
-    originalName: 'MadRobin13/DVD-Pong/index.png',
-    review: false, remote: true
-  }
-);
 window.ABHI_ARCHIVE.push(...window.ABHI_GITHUB_EVIDENCE);
