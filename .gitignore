@@ -1,0 +1,36 @@
+# Dependencies and generated builds
+node_modules/
+dist/
+build/
+coverage/
+.cache/
+.turbo/
+
+# Deployment provider state
+.vercel/
+.netlify/
+
+# Secrets and private configuration
+.env
+.env.*
+!.env.example
+*.pem
+*.p12
+*.pfx
+
+# Original/private media backups (keep OUTSIDE the public repository)
+assets/media/original-photos/
+assets/media/original-videos/
+
+# Local editor, OS, and debug files
+.DS_Store
+._*
+Thumbs.db
+.vscode/
+.idea/
+*.log
+npm-debug.log*
+.DS_Store?
+
+# Local compressed exports / temporary previews
+*.zip

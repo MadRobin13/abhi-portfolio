@@ -1,0 +1,17 @@
+{
+  "name": "abhi-ascii-field-portfolio",
+  "version": "1.0.2",
+  "private": true,
+  "description": "Abhi ASCII Field \u2014 static all-media portfolio",
+  "type": "module",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "lint": "node scripts/lint.mjs",
+    "build": "node scripts/build.mjs",
+    "test": "node tests/smoke.cjs && node tests/media-contract.cjs",
+    "preview": "node scripts/serve.mjs dist 4173"
+  }
+}

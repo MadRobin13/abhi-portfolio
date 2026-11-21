@@ -1,0 +1,13 @@
+import { cp, copyFile, mkdir, rm, stat } from 'node:fs/promises';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
+const dist = path.join(root,'dist');
+await rm(dist,{recursive:true,force:true});
+await mkdir(dist,{recursive:true});
+await copyFile(path.join(root,'index.html'),path.join(dist,'index.html'));
+await cp(path.join(root,'assets'),path.join(dist,'assets'),{recursive:true, filter: (source) => !source.split(path.sep).includes('original-photos') && !source.split(path.sep).includes('original-videos')});
+await stat(path.join(dist,'index.html'));
+console.log('PASS: Static production files copied into dist/.');
+console.log('This project uses plain HTML, CSS and JavaScript; no bundling/minification is required.');
+console.log('Run npm run preview to inspect the dist/ output.');
