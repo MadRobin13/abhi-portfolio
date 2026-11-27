@@ -833,5 +833,39 @@ window.ABHI_ARCHIVE = [
       960,
       540
     ]
+  },
+  {
+    "id": "44-navi-solo",
+    "type": "photo",
+    "group": "navi",
+    "groups": [
+      "navi"
+    ],
+    "title": "With NAVI at Hack the North",
+    "src": "assets/media/photos/44-navi-solo.webp",
+    "original": "assets/media/photos/44-navi-solo.webp",
+    "originalName": "IMG_1550(1).JPG",
+    "review": false,
+    "dimensions": [
+      1536,
+      2048
+    ]
+  },
+  {
+    "id": "45-navi-team",
+    "type": "photo",
+    "group": "navi",
+    "groups": [
+      "navi"
+    ],
+    "title": "NAVI team at Hack the North",
+    "src": "assets/media/photos/45-navi-team.webp",
+    "original": "assets/media/photos/45-navi-team.webp",
+    "originalName": "7EDC70D1-5CF8-44D4-9579-8222A6E84A67(2).JPG",
+    "review": false,
+    "dimensions": [
+      1170,
+      1560
+    ]
   }
 ];

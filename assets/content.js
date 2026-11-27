@@ -789,8 +789,8 @@ window.PORTFOLIO_CONTENT = {
       "links": [],
       "media": {
         "id": "navi-hero",
-        "title": "NAVI, in its environment",
-        "detail": "Robot photograph, depth-map capture and elevator sequence reserved."
+        "title": "NAVI at Hack the North",
+        "detail": "Robot and team photographs."
       }
     },
     {

@@ -24,6 +24,7 @@ let pet=only('pet-filament',5,1);assert.equal(pet.find(x=>x.type==='video').orig
 let muse=only('muse',1,1);assert.equal(muse.find(x=>x.type==='video').originalName,'IMG_4133(2).MOV');
 let sympto=only('symptoai',2,0);assert(sympto.some(x=>x.originalName.startsWith('E8BEA')),'SymptoAI missing Raspberry Pi');
 assert(!sympto.some(x=>x.originalName.startsWith('F6BE')),'SymptoAI has Samsung team photograph');
+assert.deepEqual(Array.from(only('navi',2,0),m=>m.id),['44-navi-solo','45-navi-team']);
 only('printing-business',1,0);only('ican-sort',3,0);only('abc2xyz',1,0);
 assert(!evidence['frc-1360'].includes('legacy-frc'),'historical hardware must be removed');
 assert(!evidence['abc2xyz'].some(x=>x.startsWith('37-community')||x.startsWith('34-community')),'Eureka duplicates/misattribution remain');

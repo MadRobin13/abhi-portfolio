@@ -37,9 +37,9 @@ body::selection{background:var(--orange);color:#030603}
 #media-dialog{padding:0;background:#f5f6ef;border:2px solid #151915;color:#121812;width:min(1140px,calc(100vw - 28px));max-height:calc(100svh - 30px)}
 #media-dialog::backdrop{background:rgba(0,0,0,.88)}
 #media-dialog .dialog-close{position:sticky;top:0;margin-left:auto;z-index:3}
-.media-viewer{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(250px,.55fr);gap:0}
+.media-viewer{display:grid;grid-template-columns:minmax(0,1fr);gap:0}
 .media-viewer>img,.media-viewer>video{width:100%;height:min(76svh,750px);object-fit:contain;background:#0d140e}
-.media-viewer-text{padding:24px;align-self:center;overflow-wrap:anywhere}
+.media-viewer-text{padding:12px 20px;text-align:center;overflow-wrap:anywhere}
 .media-viewer-text h2{font-size:clamp(23px,3vw,40px);letter-spacing:-.05em;line-height:1.05}
 .media-viewer-text p{font:12px/1.6 var(--mono);color:#596159}
 .media-viewer-text a{color:inherit;font:12px var(--mono);text-underline-offset:4px}
@@ -81,16 +81,3 @@ body::selection{background:var(--orange);color:#030603}
 /* Parent clipping prevents the category scroller's off-screen buttons from widening the document. */
 .media-archive-section{overflow:hidden}
 html,body{max-width:100%;overflow-x:clip}
-
-/* Keep NAVI's generated media centered until an authentic photograph is supplied. */
-#project-navi .project-media {display:grid;place-items:center;}
-#project-navi .project-media .ascii-placeholder {width:100%;height:100%;display:block;margin:auto;}
-#project-dialog .dialog-image .ascii-placeholder[data-kind="compass"] {display:block;margin-inline:auto;}
-/* Position the NAVI canvas against the media frame, not its intrinsic canvas size. */
-#project-navi .project-media .ascii-placeholder[data-kind="compass"] {
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  min-height:0;
-}

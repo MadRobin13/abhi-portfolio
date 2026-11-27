@@ -13,7 +13,7 @@
   function openMedia(id){
     const m=byId.get(id);if(!m||!dialog||!dialogBody)return;
     const frame=m.type==='video'?`<video src="${escape(m.src)}" poster="${escape(m.poster)}" controls muted playsinline preload="metadata"></video>`:`<img src="${escape(m.src)}" alt="${escape(m.title)}">`;
-    dialogBody.innerHTML=`<div class="media-viewer">${frame}<div class="media-viewer-text"><span class="viewer-label">${m.type==='video'?'VIDEO RECORDING':'PHOTOGRAPH'} / ${escape(m.group.toUpperCase())}</span><h2>${escape(m.title)}</h2>${m.type==='photo'?`<a href="${escape(m.original)}" target="_blank" rel="noopener">Open full-size website image ↗</a>`:''}</div></div>`;
+    dialogBody.innerHTML=`<div class="media-viewer">${frame}${m.type==='photo'?`<div class="media-viewer-text"><a href="${escape(m.original)}" target="_blank" rel="noopener">Open full-size website image ↗</a></div>`:''}</div>`;
     dialog.showModal(); const v=dialogBody.querySelector('video');if(v){v.muted=true;v.defaultMuted=true;v.volume=0;}
   }
   document.addEventListener('click',e=>{
@@ -24,7 +24,7 @@
       const approvedIds=evidence[p.dataset.project]||[];
       const matches=approvedIds.map(id=>byId.get(id)).filter(Boolean);
       if(!matches.length)return;
-      const block=document.createElement('section');block.className='project-evidence';block.innerHTML=`<h3>Photographs & demonstrations <span>(${matches.length})</span></h3><div class="evidence-grid">${matches.map(m=>`<button type="button" data-media-open="${escape(m.id)}" aria-label="Open ${escape(m.title)}">${thumb(m)}<small>${escape(m.title)}</small></button>`).join('')}</div>`;area.appendChild(block);
+      const block=document.createElement('section');block.className='project-evidence';block.innerHTML=`<h3>Photographs & demonstrations <span>(${matches.length})</span></h3><div class="evidence-grid">${matches.map(m=>`<button type="button" data-media-open="${escape(m.id)}" aria-label="Open ${escape(m.title)}">${thumb(m)}</button>`).join('')}</div>`;area.appendChild(block);
     }
   });
   document.getElementById('media-dialog-close')?.addEventListener('click',()=>{dialog.close();dialogBody.innerHTML=''});

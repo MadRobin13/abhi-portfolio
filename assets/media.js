@@ -26,9 +26,9 @@ window.ABHI_MEDIA = {
     "caption": "Samsung ICanSort recycling prototype"
   },
   "navi": {
-    "image": null,
+    "image": "assets/media/photos/44-navi-solo.webp",
     "video": null,
-    "caption": "NAVI project media will be added later"
+    "caption": "NAVI at Hack the North"
   },
   "led-matrix": {
     "image": "assets/media/posters/video-06-led-matrix.webp",

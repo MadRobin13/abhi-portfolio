@@ -41,7 +41,10 @@ window.ABHI_PROJECT_EVIDENCE = {
     "31-ican-sort-icansort-samsung-team-photograph",
     "32-symptoai-project-team-in-front-of-green-screen-wall"
   ],
-  "navi": [],
+  "navi": [
+    "44-navi-solo",
+    "45-navi-team"
+  ],
   "led-matrix": [
     "29-led-matrix-strobe-led-matrix-wiring-on-reverse-of-panel",
     "video-06-led-matrix"
